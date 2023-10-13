@@ -8,17 +8,16 @@ use Illuminate\Http\Request;
 
 class prod_cont extends Controller
 {
-   
+
     public function addprod(Request $request)
     {
         $path=$request->image->store('public/images');
-      
         prod::create([
             'name' => $request->name,
             'desciption' => $request->description,
             'price'=> $request->price,
             'image'=>$path,
-            
+
         ]);
         return redirect('/');
     //     $products = \App\Models\prod::select('id', 'name', 'desciption', 'price','image')->get();
@@ -49,7 +48,7 @@ class prod_cont extends Controller
 
     // // ... (other methods)
 
-  
+
 
 
 }
