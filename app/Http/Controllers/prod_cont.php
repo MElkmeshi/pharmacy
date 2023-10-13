@@ -37,26 +37,30 @@ class prod_cont extends Controller
       // ['products' => $products]
        }
 
-    // public function deleteprod($id)
-    // {
-    //     // Find the product by its ID
-    //     $product = prod::find($id);
+    public function deleteprod($id)
+    {
+        
+        $product = prod::find($id);
 
-    //     if (!$product) {
-    //         // Product not found
-    //         return redirect()->route('home')->with('error', 'Product not found.');
-    //     }
+        if (!$product) {
+           
+            return redirect('/')->with('error', 'Product not found.');
+        }
 
-    //     // Delete the product
-    //     $product->delete();
+       
+        $product->delete();
 
-    //     $products = \App\Models\prod::select('id', 'model', 'color', 'price')->get();
 
-    //     // Pass the retrieved data to the "home" view
-    //     return view('home', ['products' => $products]);
-    // }
+        $products = prod::get();
+        //\App\Models\prod::select('id', 'name', 'desciption', 'price','image')->get();
+   
+       // Pass the retrieved data to the "home" view
+       return view('products',compact('products') );
+        // $products = \App\Models\prod::select('id', 'model', 'color', 'price')->get();
 
-    // // ... (other methods)
+        // // Pass the retrieved data to the "home" view
+        // return view('home', ['products' => $products]);
+    }
 
 
 

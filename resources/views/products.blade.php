@@ -13,7 +13,7 @@
         <p>Description: {{ $product->desciption }}</p>
         <p>Price: {{ $product->price }}</p>
         <img src="{{Storage::url($product->image)}}" width="80" alt="Product Image">
-        
+        <a href="{{ route('deleteprod', ['id' => $product->id]) }}"><button>Delete</button></a>
     </div>
 @endforeach
 </body>

@@ -44,3 +44,6 @@ Route::get('/deleteuserform', function () {
 Route::get('/displayprod', [App\Http\Controllers\prod_cont::class, 'displayproducts'])->name('displayproducts');
 
 
+Route::get('/delete/{id}', [App\Http\Controllers\prod_cont::class, 'deleteprod'])->name('deleteprod');
+
+
