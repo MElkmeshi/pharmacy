@@ -19,8 +19,12 @@ Route::get('/', function () {
 Route::get('/signup', function () {
     return view('signup');
 });
+Route::get('/loginform', function () {
+    return view('login');
+});
 
 
 Route::post('/register', [App\Http\Controllers\user_cont::class, 'store'])->name('reg');
+Route::post('/login', [App\Http\Controllers\user_cont::class, 'login'])->name('login');
 
 

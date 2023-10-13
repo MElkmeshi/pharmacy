@@ -25,5 +25,34 @@ class user_cont extends Controller
         return redirect('/');
     }
 
+
+    public function login(Request $request)
+{
+  
+    
+    // // Retrieve user session data
+    // $userId = $request->session()->get('user_id');
+    // $userName = $request->session()->get('user_name');
+
+    $email = $request->input('email');
+    $password = $request->input('password');
+
+    // Find a user with the given email
+    $user = user::where('email', $email)->first();
+
+    if ($user && Hash::check($password, $user->password)) {
+        // Password matches the stored password
+        // Authentication passed...
+        
+    $request->session()->put('user_id', $user->id);
+    $request->session()->put('user_name', $user->name);
+
+       return redirect('/');
+   
+    }
+
+    
+}
+
    
 }
