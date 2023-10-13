@@ -26,5 +26,7 @@ Route::get('/loginform', function () {
 
 Route::post('/register', [App\Http\Controllers\user_cont::class, 'store'])->name('reg');
 Route::post('/login', [App\Http\Controllers\user_cont::class, 'login'])->name('login');
+Route::get('/updateuserform', [App\Http\Controllers\user_cont::class, 'show_updateuser_form']);
+Route::post('/updateuser', [App\Http\Controllers\user_cont::class, 'updateuser'])->name('updateuser');
 
 

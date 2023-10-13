@@ -9,5 +9,6 @@
 <body>
 <a href="/pharmacy/public/signup"><button>signup</button></a>
 <a href="/pharmacy/public/loginform"><button>login</button></a>
+<a href="/pharmacy/public/updateuserform"><button>update user's data</button></a>
 </body>
 </html>
