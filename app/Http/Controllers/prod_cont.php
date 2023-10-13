@@ -62,6 +62,45 @@ class prod_cont extends Controller
         // return view('home', ['products' => $products]);
     }
 
+    public function editprodform($id){
+
+        $product = prod::find($id);
+        return view('editproduct',compact('product'));
+
+    }
+
+
+    public function update(Request $request, $id)
+    {
+        $products = prod::find($id);
+
+        if (!$products) {
+           
+            return redirect('/')->with('error', 'Product not found.');
+        }
+
+
+        if($request->has('image')){
+           
+            $path = $request->file('image')->store('public/images');
+           $products->image = $path;
+        }else{
+           $path =  $products->image;
+        }
+        
+        $products->name = $request->name;
+        $products->desciption = $request->description;
+        $products->price = $request->price;
+        $products->image = $path;
+        $products->save();
+        return redirect('/');
+
+
+    }
+
+
+
+
 
 
 
