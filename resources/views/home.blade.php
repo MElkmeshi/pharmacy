@@ -11,5 +11,6 @@
 <a href="/pharmacy/public/loginform"><button>login</button></a>
 <a href="/pharmacy/public/updateuserform"><button>update user's data</button></a>
 <a href="/pharmacy/public/deleteuserform"><button>delete user</button></a>
+<a href="/pharmacy/public/addproductform"><button>Add product</button></a>
 </body>
 </html>
