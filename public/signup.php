@@ -51,7 +51,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <div class="col-md-6 col-md-offset-3" align="center">
 
-<form action="#" method="post">
+<form action="login.php" method="post">
     <div>
     <input type="text" name="username" class="form-control" placeholder="Enter your name"><br>
     <span style="color: red;" > <?php echo $nameerror ?></span>
