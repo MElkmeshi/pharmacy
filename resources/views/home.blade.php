@@ -14,6 +14,7 @@
     <a href="{{ route('updateuserform') }}"><button>update user's data</button></a>
     <a href="{{ route('deleteuserform') }}"><button>delete user</button></a>
     <a href="{{ route('addproductform') }}"><button>Add product</button></a>
+    <a href="{{ route('displayproducts') }}"><button>Display product</button></a>
 </body>
 
 </html>
