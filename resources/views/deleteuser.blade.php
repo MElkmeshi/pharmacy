@@ -7,24 +7,19 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Login Form</h1>
-    <form method="POST" action="{{ route('login') }}">
+    <h1>delete user</h1>
+    <form method="POST" action="{{ route('deleteuser') }}">
         @csrf <!-- CSRF Token -->
     
-            <label for="email">Email:</label>
+            <label for="email">Enter the email to delete:</label>
             <input type="email" id="email" name="email" required>
         </div>
 
-        <!-- Password -->
         <div>
-            <label for="password">Password:</label>
-            <input type="password" id="password" name="password" required>
-        </div>
-
-        <div>
-            <button type="submit">Login</button>
+            <button type="submit">Delete</button>
         </div>
 
     </form>
 </body>
+
 </html>

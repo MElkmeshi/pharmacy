@@ -117,5 +117,26 @@ public function updateuser(Request $request){
 }
 
 
+
+
+
+public function deleteuser(Request $request){
+   
+    $emailToDelete = $request->input('email');
+
+    
+    $userToDelete = user::where('email', $emailToDelete)->first();
+
+    if ($userToDelete) {
+        
+        $userToDelete->delete();
+        return redirect('/');
+    } else {
+        
+        return redirect('/deleteuserform')->with('error', 'User not found');
+    }
+}
+
+
    
 }
