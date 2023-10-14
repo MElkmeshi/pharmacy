@@ -1,0 +1,16 @@
+.container{
+    margin-top: 150px;
+}
+body{
+    background-color: #080823;
+}
+input{
+    min-width: 300px;
+    max-width: 300px;
+}
+.nothave{
+    color: aliceblue;
+}
+#siup{
+    text-decoration: none;
+}
