@@ -48,8 +48,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <span style="color: red;" > <?php echo $passworderror ?></span>
 </div>
             <input type="submit" value="login" class="btn btn-success" /><br />
-            <p class="text-light">OR</p>
-            <a  class=" text-decoration-none link link-success" href="{{route("signupform")}}">signup</a>
+            <p class="text-light">or not have an account please </p>
+            <a  class=" text-decoration-none link link-success" href="{{route("signupform")}}"><button type="button" class="btn btn-success">signup</button></a>
           </form>
         </div>
       </div>

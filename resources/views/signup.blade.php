@@ -76,8 +76,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <input type="date" id="date" name="date" class="form-control" required><br>
     <span style="color: red;" > <?php echo $birthdateerror ?></span>
 </div>
-<input type="submit" value="login" class="btn btn-success"><br>
-<p class="text-light">OR</p><a  class="text-decoration-none link link-success"href="{{route("loginform")}}">login</a>
+<input type="submit" value="signup" class="btn btn-success"><br>
+<p class="text-light">or have an account please</p><a href="{{route("loginform")}}"><button type="button" class="btn btn-success">login</button></a>
 
 </form>
 
