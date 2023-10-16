@@ -49,7 +49,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </div>
             <input type="submit" value="login" class="btn btn-success" /><br />
             <p class="text-light">OR</p>
-            <a id="siup" class=" text-decoration-none link link-success" href="{{route("signup")}}">signup</a>
+            <a  class=" text-decoration-none link link-success" href="{{route("signupform")}}">signup</a>
           </form>
         </div>
       </div>

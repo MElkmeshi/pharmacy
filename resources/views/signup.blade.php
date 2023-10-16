@@ -77,7 +77,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <span style="color: red;" > <?php echo $birthdateerror ?></span>
 </div>
 <input type="submit" value="login" class="btn btn-success"><br>
-<p class="text-light">OR</p><a  class="text-decoration-none link link-success"href="{{route("login")}}">signin</a>
+<p class="text-light">OR</p><a  class="text-decoration-none link link-success"href="{{route("loginform")}}">login</a>
 
 </form>
 
