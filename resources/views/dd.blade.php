@@ -1,6 +1,9 @@
 
 
 @extends('aside_bar')
+@section('name')
+    <link rel="stylesheet" href="css/dashboard.css">
+@endsection
 @section('card')
     <!-- ======================= Cards ================== -->
     <div class="cardBox">

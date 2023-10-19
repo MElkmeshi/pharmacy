@@ -16,6 +16,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('home');
 })->name('homepage');
+Route::get('/dd', function () {
+    return view('dd');
+})->name('miu');
+
+
 Route::get('/signup', function () {
     return view('signup');
 })->name('signupform');

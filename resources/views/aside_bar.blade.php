@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>rfgfg</title>
     <link rel="stylesheet"  href="css/asidebar.css">
-    
+    @yield('name')
     
     
 </head>
@@ -111,11 +111,11 @@
                 </div>
             </div>
             {{-- add here the main of pages --}}
-
+               @yield('card')
         </div>
     </div>
 
-    @yield('card')
+   
     <!-- =========== Scripts =========  -->
     <script src="assets/js/main.js"></script>
 
