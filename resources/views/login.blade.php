@@ -194,7 +194,7 @@ span a:hover{
                         <input type="submit" class="submit" value="Sign Up">
                    </div> 
                    <div class="signin">
-                    <span>Don't have an account? <a href="{{route("signup")}}">Signup in here</a></span>
+                    <span>Don't have an account? <a href="{{route("signupform")}}">Signup in here</a></span>
                    </div>
                 </div>  
               </form>
