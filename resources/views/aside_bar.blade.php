@@ -5,7 +5,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title></title>
+    <title>rfgfg</title>
+    <link rel="stylesheet"  href="css/asidebar.css">
+    
     
     
 </head>
@@ -108,6 +110,8 @@
                     <h4>hi,admin</h4>
                 </div>
             </div>
+            {{-- add here the main of pages --}}
+
         </div>
     </div>
 
