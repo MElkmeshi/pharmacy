@@ -115,6 +115,7 @@
         </div>
     </div>
 
+    @yield('card')
     <!-- =========== Scripts =========  -->
     <script src="assets/js/main.js"></script>
 
