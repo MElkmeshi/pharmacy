@@ -62,5 +62,9 @@ Route::get('/AddToCart/{id}', [App\Http\Controllers\cart_cont::class, 'addtocart
 
 
 
+Route::get('/displayCart', [App\Http\Controllers\cart_cont::class, 'showUserCart'])->name('displaycart');
+
+
+
 
 

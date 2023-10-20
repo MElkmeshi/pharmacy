@@ -20,6 +20,23 @@ class cart_cont extends Controller
         ]);
         return redirect('/');
     }
+
+
+    
+    public function showUserCart(Request $request)
+{
+    $userId=$request->session()->get('user_id');
+    $user = user::find($userId);
+
+    $productsInCart = $user->carts->map(function ($cart) {
+        return [
+            'product' => $cart->product,
+            'amount' => $cart->amount,
+        ];
+    });
+
+    return view('cart', ['productsInCart' => $productsInCart]);
+}
     
  
 
