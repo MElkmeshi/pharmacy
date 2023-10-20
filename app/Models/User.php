@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Cart;
 
 
 
@@ -32,6 +33,11 @@ class user extends Model
         'age',
         'role',
     ];
+
+    public function carts()
+    {
+        return $this->hasMany(Cart::class);
+    }
 
 
     /**

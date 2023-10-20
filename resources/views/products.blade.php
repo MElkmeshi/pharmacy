@@ -15,6 +15,8 @@
         <img src="{{Storage::url($product->image)}}" width="80" alt="Product Image">
         <a href="{{ route('deleteprod', ['id' => $product->id]) }}"><button>Delete</button></a>
         <a href="{{ route('editprodform', ['id' => $product->id]) }}"><button>Edit</button></a>
+        <a href="{{ route('addtocart', ['id' => $product->id]) }}"><button>Add to cart</button></a>
+        
 
     </div>
 @endforeach

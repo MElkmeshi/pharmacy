@@ -181,8 +181,8 @@ span a:hover{
                    <form action="{{route("login")}}" id="loginform" method="post">
                     @csrf
                     <div class="input-field">
-                      <input type="text" class="input" id="name" name="username" required="">
-                      <label for="name">Name</label>
+                      <input type="text" class="input" id="email" name="email" required="">
+                      <label for="email">Email</label>
                       <div style="color: red" class="error-message" id="name-error"></div>
                   </div> 
                    <div class="input-field">
@@ -191,7 +191,7 @@ span a:hover{
                         <div style="color: red" class="error-message" id="password-error"></div>
                     </div> 
                    <div class="input-field">
-                        <input type="submit" class="submit" value="Sign Up">
+                        <input type="submit" class="submit" value="Login">
                    </div> 
                    <div class="signin">
                     <span>Don't have an account? <a href="{{route("signupform")}}">Signup in here</a></span>

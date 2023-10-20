@@ -179,7 +179,7 @@ span a:hover{
                 <div class="input-box">
                    
                    <header>Create Product</header>
-                   <form id="adpordform" method="POST" action="#" enctype="multipart/form-data">
+                   <form id="adpordform" method="POST" action="{{route("addprod")}}" enctype="multipart/form-data">
                     @csrf
                     <div class="input-field">
                       <input type="text" class="input" name="name" id="name" required="" >

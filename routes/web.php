@@ -53,7 +53,14 @@ Route::get('/delete/{id}', [App\Http\Controllers\prod_cont::class, 'deleteprod']
 Route::get('/edit/{id}', [App\Http\Controllers\prod_cont::class, 'editprodform'])->name('editprodform');
 
 
+
 Route::post('/editproduct/{id}', [App\Http\Controllers\prod_cont::class, 'update'])->name('editprod');
+
+
+
+Route::get('/AddToCart/{id}', [App\Http\Controllers\cart_cont::class, 'addtocart'])->name('addtocart');
+
+
 
 
 

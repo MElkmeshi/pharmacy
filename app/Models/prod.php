@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 
 
-class prod extends Model
+class Prod extends Model
 {
    // use HasApiTokens, HasFactory, Notifiable;
 
@@ -27,6 +27,12 @@ class prod extends Model
         'price',
         'image',
     ];
+
+
+    public function carts()
+    {
+        return $this->hasMany(Cart::class);
+    }
 
   
 }

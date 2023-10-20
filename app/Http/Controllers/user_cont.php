@@ -13,7 +13,7 @@ class user_cont extends Controller
     public function store(Request $request)
     {
         user::create([
-            'name' => $request->name,
+            'name' => $request->username,
             'email' => $request->email,
             'password' => Hash::make($request->password), // Hash the password
             'address'=>$request->address,

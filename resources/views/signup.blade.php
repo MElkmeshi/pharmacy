@@ -211,6 +211,7 @@ span a:hover{
                       <label for="age">Age</label>
                       <div style="color: red" class="error-message" id="age-error"></div>
                   </div> 
+                  <input type="hidden" value="user" name='role'>
                    <div class="input-field">
                         <input type="submit" class="submit" value="Sign Up">
                    </div> 
