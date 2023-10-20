@@ -72,7 +72,7 @@ class prod_cont extends Controller
     }
 
 
-    public function update(Request $request, $id)
+    public function update(UpdateProductRequest $request, $id)
     {
         $products = prod::find($id);
 
