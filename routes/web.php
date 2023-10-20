@@ -66,5 +66,10 @@ Route::get('/displayCart', [App\Http\Controllers\cart_cont::class, 'showUserCart
 
 
 
+Route::post('/update-cart/{product}', [App\Http\Controllers\cart_cont::class, 'updateCart'])->name('update.cart');
+
+
+
+
 
 
