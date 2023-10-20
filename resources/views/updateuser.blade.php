@@ -74,6 +74,19 @@
     </style>
 </head>
 <body>
+
+    @if (count($errors) > 0)
+    <div class="card mt-5">
+        <div class="card-body">
+            <div class="alert alert-danger">
+                @foreach ($errors->all() as $error)
+                   <p> {{ $error }}</p>
+                @endforeach
+            </div>
+        </div>
+    </div>
+    @endif
+
     <div class="form-container">
         <h1>Update User</h1>
         <form id="updateuserform" method="POST" action="{{ route('updateuser') }}">

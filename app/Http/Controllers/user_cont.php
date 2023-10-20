@@ -6,6 +6,7 @@ use App\Models\user;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash; // Import the Hash facade
 use App\Http\Requests\CreateUserRequest;
+use App\Http\Requests\UpdateUserRequest;
 
 class user_cont extends Controller
 {
@@ -85,7 +86,7 @@ public function show_updateuser_form(Request $request){
 }
 
 
-public function updateuser(Request $request){
+public function updateuser(UpdateUserRequest $request){
     $name = $request->input('name');
     $address = $request->input('address');
     $age = $request->input('age');
