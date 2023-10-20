@@ -70,6 +70,19 @@ button[type="submit"]:hover {
 
 </style>
 <body>
+
+    @if (count($errors) > 0)
+    <div class="card mt-5">
+        <div class="card-body">
+            <div class="alert alert-danger">
+                @foreach ($errors->all() as $error)
+                   <p> {{ $error }}</p>
+                @endforeach
+            </div>
+        </div>
+    </div>
+    @endif
+    
     <form method="POST" action="{{ route('editprod',$product->id) }}" enctype="multipart/form-data">
         @csrf
         <label for="name">name:</label>

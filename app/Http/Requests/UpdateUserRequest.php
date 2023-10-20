@@ -21,6 +21,7 @@ class UpdateUserRequest extends FormRequest
             'name' => 'required|string|min:3|max:40',
             'address' => 'required|string|min:3|max:100',
             'age' => 'required|integer|min:18',
+            'password' => 'required|string|min:8', // Adjust the minimum password length as needed
             
         ];
     }

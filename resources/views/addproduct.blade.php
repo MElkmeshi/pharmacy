@@ -168,6 +168,19 @@ span a:hover{
     </style>
 </head>
 <body>
+
+    @if (count($errors) > 0)
+    <div class="card mt-5">
+        <div class="card-body">
+            <div class="alert alert-danger">
+                @foreach ($errors->all() as $error)
+                   <p> {{ $error }}</p>
+                @endforeach
+            </div>
+        </div>
+    </div>
+    @endif
+
   <div class="wrapper">
     <div class="container main">
         <div class="row">
