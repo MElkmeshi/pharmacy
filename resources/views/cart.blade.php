@@ -62,6 +62,9 @@ $.ajaxSetup({
                 Amount: <span id="amount-{{ $item['product']->id }}">{{ $item['amount'] }}</span>
                 <button type="button" onclick="incrementCart({{ $item['product']->id }})">+</button>
                 <button type="button" onclick="decrementCart({{ $item['product']->id }})">-</button>
+
+                <br>
+               <a href="{{ route('deletecart', ['id' => $item['cart_id']]) }}"><button>Delete</button></a>
             </li>
         @endforeach
     </ul>

@@ -70,6 +70,10 @@ Route::post('/update-cart/{product}', [App\Http\Controllers\cart_cont::class, 'u
 
 
 
+Route::get('/deleteCart/{id}', [App\Http\Controllers\cart_cont::class, 'deletecart'])->name('deletecart');
+
+
+
 
 
 

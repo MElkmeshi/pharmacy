@@ -32,6 +32,8 @@ class cart_cont extends Controller
         return [
             'product' => $cart->product,
             'amount' => $cart->amount,
+            'cart_id' => $cart->id,
+            
         ];
     });
 
@@ -82,6 +84,24 @@ public function updateCart(Request $request, $productId)
 
 
     
+
+
+public function deletecart(Request $request,$id)
+{
+    
+    $cart = Cart::find($id);
+
+    if (!$cart) {
+       
+        return redirect('/')->with('error', 'cart not found.');
+    }
+
+   
+    $cart->delete();
+
+   //return $this->showUserCart($request);
+   return redirect()->back();
+}
  
 
 
