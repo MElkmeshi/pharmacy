@@ -5,12 +5,13 @@ namespace App\Http\Controllers;
 use App\Models\user;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash; // Import the Hash facade
+use App\Http\Requests\CreateUserRequest;
 
 class user_cont extends Controller
 {
   
 
-    public function store(Request $request)
+    public function store(CreateUserRequest $request)
     {
         user::create([
             'name' => $request->username,
