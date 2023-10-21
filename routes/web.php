@@ -20,6 +20,10 @@ Route::get('/dd', function () {
     return view('dd');
 })->name('dash');
 
+Route::get('/addproduct', function () {
+    return view('add__product');
+})->name('addproduct');
+
 
 Route::get('/signup', function () {
     return view('signup');
