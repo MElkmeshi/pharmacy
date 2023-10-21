@@ -5,11 +5,13 @@ namespace App\Http\Controllers;
 use App\Models\prod;
 use App\Models\user;
 use Illuminate\Http\Request;
+use App\Http\Requests\AddProductRequest;
+use App\Http\Requests\UpdateProductRequest;
 
 class prod_cont extends Controller
 {
 
-    public function addprod(Request $request)
+    public function addprod(AddProductRequest $request)
     {
         $path=$request->image->store('public/images');
         prod::create([
@@ -70,7 +72,7 @@ class prod_cont extends Controller
     }
 
 
-    public function update(Request $request, $id)
+    public function update(UpdateProductRequest $request, $id)
     {
         $products = prod::find($id);
 
