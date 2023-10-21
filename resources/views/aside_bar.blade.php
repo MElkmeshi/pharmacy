@@ -46,7 +46,7 @@
 
 
                 <li>
-                    <a href="#">
+                    <a href="{{ route('disproduct') }}">
                         <span class="icon">
                             <ion-icon name="create-outline"></ion-icon>
                         </span>
