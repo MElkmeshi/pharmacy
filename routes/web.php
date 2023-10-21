@@ -18,7 +18,7 @@ Route::get('/', function () {
 })->name('homepage');
 Route::get('/dd', function () {
     return view('dd');
-})->name('miu');
+})->name('dash');
 
 
 Route::get('/signup', function () {
