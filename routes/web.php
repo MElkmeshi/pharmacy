@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('home');
-})->name('homepage');
+})->name('home');
 Route::get('/dd', function () {
     return view('dd');
 })->name('dash');
