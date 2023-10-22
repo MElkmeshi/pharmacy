@@ -16,6 +16,7 @@
     <a href="{{ route('addproductform') }}"><button>Add product</button></a>
     <a href="{{ route('displayproducts') }}"><button>Display product</button></a>
     <a href="{{ route('displaycart') }}"><button>Display Cart</button></a>
+    <a href="{{ route('dash') }}"><button>Dashboard</button></a>
     
 </body>
 

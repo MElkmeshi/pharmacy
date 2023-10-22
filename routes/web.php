@@ -18,9 +18,17 @@ Route::get('/', function () {
 })->name('homepage');
 Route::get('/dd', function () {
     return view('dd');
-})->name('miu');
+})->name('dash');
 
+Route::get('/addproduct', function () {
+    return view('add__product');
+})->name('addproduct');
 
+Route::get('/disproduct', function () {
+    return view('dis__product');
+})->name('disproduct');
+
+Route::get('/disproduct', [App\Http\Controllers\prod_cont::class, 'displayproduct'])->name('disproduct');
 Route::get('/signup', function () {
     return view('signup');
 })->name('signupform');

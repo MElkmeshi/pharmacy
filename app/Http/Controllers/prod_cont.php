@@ -39,6 +39,17 @@ class prod_cont extends Controller
       // ['products' => $products]
        }
 
+       public function displayproduct(){
+
+        $products = prod::get();
+        //\App\Models\prod::select('id', 'name', 'desciption', 'price','image')->get();
+   
+       // Pass the retrieved data to the "home" view
+       return view('dis__product',compact('products') );
+      // ['products' => $products]
+       }
+
+
     public function deleteprod($id)
     {
         
