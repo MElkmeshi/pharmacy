@@ -19,7 +19,7 @@
       <div class="collapse navbar-collapse" id="main">
         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link p-2 p-lg-3 active" aria-current="page" href="index.html">Home</a>
+            <a class="nav-link p-2 p-lg-3 active" aria-current="page" href="home.blade.php">Home</a>
           </li>
           <li class="nav-item dropdown">
             <a
@@ -50,11 +50,11 @@
           </li>
 
           <li class="nav-item">
-            <a class="nav-link p-2 p-lg-3" href="contact.html"> contact</a>
+            <a class="nav-link p-2 p-lg-3" href="contact.blade.php"> contact</a>
           </li>
 
           <li class="nav-item">
-            <a class="nav-link p-2 p-lg-3" href="about-us.html"> About us</a>
+            <a class="nav-link p-2 p-lg-3" href="about-us.blade.php"> About us</a>
           </li>
         </ul>
         <div class="icons ps-3 pe-3 d-none d-lg-block">
