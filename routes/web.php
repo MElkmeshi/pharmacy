@@ -35,6 +35,12 @@ Route::get('/signup', function () {
 Route::get('/loginform', function () {
     return view('login');
 })->name('loginform');
+Route::get('/contact', function () {
+    return view('contact');
+})->name('contact');
+Route::get('/about-us', function () {
+    return view('about-us');
+})->name('about-us');
 
 
 
