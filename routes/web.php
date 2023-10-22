@@ -43,6 +43,13 @@ Route::get('/about-us', function () {
 })->name('about-us');
 
 
+Route::get('/dis_users', function () {
+    return view('dis_users');
+})->name('dis_users');
+
+
+
+
 
 Route::post('/register', [App\Http\Controllers\user_cont::class, 'store'])->name('reg');
 Route::post('/login', [App\Http\Controllers\user_cont::class, 'login'])->name('login');
