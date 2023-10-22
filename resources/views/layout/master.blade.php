@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('title', 'unKnown page')</title>
-    
+    <link rel="stylesheet" href="public">
 </head>
 <body>
     {{-- start navbar --}}
