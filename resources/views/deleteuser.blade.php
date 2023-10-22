@@ -56,8 +56,8 @@ label:hover{
         }
 
         button[type="submit"] {
-            background-color: #fff;
-            color: black;
+            background-color: #1c1cf0;
+            color: #fff;
             border: none;
             padding: 15px 30px;
             font-size: 16px;
@@ -67,7 +67,7 @@ label:hover{
         }
 
         button[type="submit"]:hover {
-            background-color: #f4ec07;
+            background-color: #0000cd;
         }
     </style>
 </head>

@@ -57,10 +57,10 @@ img {
 
 /* Style the action buttons */
 button {
-    background-color: #fff;
+    background-color: #1c1cf0;
     border: none;
     border-radius: 5px;
-    color: black;
+    color: #fff;
     cursor: pointer;
     font-size: 1rem;
     margin: 5px;
@@ -72,7 +72,7 @@ button {
 
 /* Add hover effect to the buttons */
 button:hover {
-    background-color: #f4ec07;
+    background-color: #0000cd;
 }
 
 /* Responsive design */

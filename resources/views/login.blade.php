@@ -117,13 +117,13 @@ img{
     border: none;
     outline: none;
     height: 45px;
-    background: #ececec;
+    color: #fff;
+    background: #1c1cf0;
     border-radius: 5px;
     transition: .4s;
  }
  .submit:hover{
-    background: #f4ec07;
-    color: #fff;
+    background: #0000cd;
  }
  .signin{
     text-align: center;
@@ -133,12 +133,12 @@ img{
 span a{
     text-decoration: none;
     font-weight: 700;
-    color: #000;
+    color: #fff;
     transition: .5s;
 }
 span a:hover{
     text-decoration: underline;
-    color: #000;
+    color: #f4ec07;
 }
 
 @media only screen and (max-width: 768px){

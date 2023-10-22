@@ -54,7 +54,7 @@ img {
 }
 
 button[type="submit"] {
-    background-color: #fff;
+    background-color: #1c1cf0;
     border: none;
     border-radius: 5px;
     color: black;
@@ -65,7 +65,7 @@ button[type="submit"] {
 }
 
 button[type="submit"]:hover {
-    background-color: #f4ec07;
+    background-color: #0000cd;
 }
 
 </style>

@@ -58,8 +58,8 @@
 
         .form-group button {
             width: 100%;
-            background-color: #fff;
-            color: black;
+            background-color: #1c1cf0;
+            color: #fff;
             border: none;
             padding: 12px 20px;
             font-size: 16px;
@@ -69,7 +69,7 @@
         }
 
         .form-group button:hover {
-            background-color: #f4ec07;
+            background-color: #0000cd;
         }
     </style>
 </head>
