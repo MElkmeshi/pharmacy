@@ -18,6 +18,8 @@
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Roboto+Mono:ital,wght@0,100;0,300;0,600;1,400;1,600&display=swap"
       rel="stylesheet"
     />
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/all.min.js"></script>
 </head>
 <body>
     {{-- start navbar --}}
