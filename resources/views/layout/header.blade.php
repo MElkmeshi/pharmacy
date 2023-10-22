@@ -1,7 +1,8 @@
+<!-- start of navbar -->
 <nav class="navbar navbar-expand-lg sticky-top">
     <div class="container">
       <a class="navbar-brand"  href="#">
-        <img src="images/drpharmapng.png" alt="logo" />
+        <img src="images/logo.png" alt="logo" />
         
       </a>
       <button
@@ -32,18 +33,24 @@
               products
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item" href="#">Adult drugs</a></li>
+              <li><a class="dropdown-item" href="#">Medications</a></li>
               <li><a class="dropdown-item" href="#">Skin Care</a></li>
               <li><a class="dropdown-item" href="#">Baby Care</a></li>
-              <li><hr class="dropdown-divider" /></li>
               <li>
                 <a class="dropdown-item" href="#">Medical equipments</a>
+              </li>
+              <li><hr class="dropdown-divider" /></li>
+              <li><a class="dropdown-item" href="#">Vitamins</a></li>
+              <li><a class="dropdown-item" href="#"> Supplements</a></li>
+              <li><a class="dropdown-item" href="#">Bills</a></li>
+              <li>
+                <a class="dropdown-item" href="#">antibiotique</a>
               </li>
             </ul>
           </li>
 
           <li class="nav-item">
-            <a class="nav-link p-2 p-lg-3" href="#"> contact</a>
+            <a class="nav-link p-2 p-lg-3" href="contact.html"> contact</a>
           </li>
 
           <li class="nav-item">
@@ -63,3 +70,5 @@
       </div>
     </div>
   </nav>
+
+  <!-- end of navbar -->
