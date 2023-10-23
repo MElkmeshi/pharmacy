@@ -140,5 +140,15 @@ public function deleteuser(Request $request){
 }
 
 
+public function disusers(){
+
+    $users = user::get();
+    //\App\Models\prod::select('id', 'name', 'desciption', 'price','image')->get();
+
+   // Pass the retrieved data to the "home" view
+   return view('dis_users',compact('users') );
+  // ['products' => $products]
+   }
+
 
 }

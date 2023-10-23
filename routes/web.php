@@ -43,9 +43,7 @@ Route::get('/about-us', function () {
 })->name('about-us');
 
 
-Route::get('/dis_users', function () {
-    return view('dis_users');
-})->name('dis_users');
+Route::get('/dis_users',[App\Http\Controllers\user_cont::class, 'disusers'])->name('dis_users');
 
 
 

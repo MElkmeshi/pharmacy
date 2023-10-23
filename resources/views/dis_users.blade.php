@@ -16,6 +16,9 @@
             <thead>
                 <tr>
                     <td>Name</td>
+                    <td>Email</td>
+                    <td>Address</td>
+                    <td>Age</td>
                     <td>Action</td>
                 </tr>
             </thead>
@@ -24,32 +27,23 @@
             <tbody>
 
                 
+                
+                @foreach ($users as $user)
                 <tr>
-                    <td>mohamed</td>
+                    <td>{{ $user->name }}</td>
+                    <td>${{ $user->email }}</td>
                     
+                    <td>{{ $user->address }}</td>
+                    <td>{{ $user->age }} </td>
                     <td>
-                        <a href="#"><button class="edit">Edit</button></a>
-                        <a href="#"><button class="delete">Delete</button>
-                        </a></td>
+                        <a href="#"><button
+                                class="edit">Edit</button></a>
+                        <a href="#"><button
+                                class="delete">Delete</button>
+                        </a>
+                    </td>
                 </tr>
-                 
-                <tr>
-                    <td>mohamed</td>
-                    
-                    <td>
-                        <a href="#"><button class="edit">Edit</button></a>
-                        <a href="#"><button class="delete">Delete</button>
-                        </a></td>
-                </tr>
-                 
-                <tr>
-                    <td>mohamed</td>
-                    
-                    <td>
-                        <a href="#"><button class="edit">Edit</button></a>
-                        <a href="#"><button class="delete">Delete</button>
-                        </a></td>
-                </tr> 
+            @endforeach
             </tbody>
         </table>
     </div>
