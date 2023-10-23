@@ -9,7 +9,6 @@
     <div class="recentOrders">
         <div class="cardHeader">
             <h2>Products</h2>
-            <a href="#" class="btn">View All</a>
         </div>
 
         <table>

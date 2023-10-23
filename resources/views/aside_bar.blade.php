@@ -14,7 +14,7 @@
 
 <body>
     <!-- =============== Navigation ================ -->
-    <div class="container">
+    <div class="containerr">
         <div class="navigation">
             <ul>
                 <li>
@@ -55,7 +55,7 @@
                 </li>
 
                 <li>
-                    <a href="#">
+                    <a href="{{ route('dis_users') }}">
                         <span class="icon">
                             <ion-icon name="people-outline"></ion-icon>
                         </span>
@@ -72,32 +72,7 @@
                     </a>
                 </li>
 
-                <li>
-                    <a href="#">
-                        <span class="icon">
-                            <ion-icon name="help-outline"></ion-icon>
-                        </span>
-                        <span class="title">Help</span>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="#">
-                        <span class="icon">
-                            <ion-icon name="settings-outline"></ion-icon>
-                        </span>
-                        <span class="title">Settings</span>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="#">
-                        <span class="icon">
-                            <ion-icon name="lock-closed-outline"></ion-icon>
-                        </span>
-                        <span class="title">Password</span>
-                    </a>
-                </li>
+                
 
                 <li>
                     <a href="#">
