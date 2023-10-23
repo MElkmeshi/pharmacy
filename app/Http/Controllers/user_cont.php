@@ -10,7 +10,7 @@ use App\Http\Requests\UpdateUserRequest;
 
 class user_cont extends Controller
 {
-  
+
 
     public function store(CreateUserRequest $request)
     {
@@ -22,7 +22,7 @@ class user_cont extends Controller
             'age'=>$request->age,
             'role'=>$request->role,
 
-            
+
         ]);
         return redirect('/');
     }
@@ -30,8 +30,8 @@ class user_cont extends Controller
 
     public function login(Request $request)
 {
-  
-    
+
+
     // // Retrieve user session data
     // $userId = $request->session()->get('user_id');
     // $userName = $request->session()->get('user_name');
@@ -45,10 +45,10 @@ class user_cont extends Controller
     if ($user && Hash::check($password, $user->password)) {
         // Password matches the stored password
         // Authentication passed...
-        
+
     $request->session()->put('user_id', $user->id);
     $request->session()->put('user_name', $user->name);
-        
+
     $request->session()->put('user_email', $user->email);
     $request->session()->put('user_address', $user->address);
     $request->session()->put('user_age', $user->age);
@@ -57,13 +57,13 @@ class user_cont extends Controller
 
 
        return redirect('/');
-   
+
     }
     else{
         return redirect('/loginform');
     }
 
-    
+
 }
 
 
@@ -94,13 +94,13 @@ public function updateuser(UpdateUserRequest $request){
     $password = $request->input('password');
     $userId = $request->session()->get('user_id');
 
-   
+
     $user = user::find($userId);
 
-   
+
     $user->name = $name;
-   
-    
+
+
     if (!empty($password)) {
         if (Hash::needsRehash($password)) {
             $user->password = Hash::make($password);
@@ -108,11 +108,11 @@ public function updateuser(UpdateUserRequest $request){
             $user->password = $password;
         }
     }
-    
+
     $user->address = $address;
     $user->age = $age;
 
-    
+
     $user->save();
 
     return redirect('/');
@@ -123,22 +123,22 @@ public function updateuser(UpdateUserRequest $request){
 
 
 public function deleteuser(Request $request){
-   
+
     $emailToDelete = $request->input('email');
 
-    
+
     $userToDelete = user::where('email', $emailToDelete)->first();
 
     if ($userToDelete) {
-        
+
         $userToDelete->delete();
         return redirect('/');
     } else {
-        
+
         return redirect('/deleteuserform')->with('error', 'User not found');
     }
 }
 
 
-   
+
 }
