@@ -16,6 +16,21 @@
 
 
   
+  .recentOrders {
+    
+    min-height: 100px;
+    
+  }
+  
+ .cardHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+  .cardHeader h2 {
+    font-weight: 600;
+    color: var(--blue);
+  }
   
   
   /* ================== recently List ============== */

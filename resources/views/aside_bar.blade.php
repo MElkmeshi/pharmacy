@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>rfgfg</title>
-    <link rel="stylesheet"  href="css/asidebar.css">
+    <link rel="stylesheet"  href="/css/asidebar.css">
     @yield('name')
     
     
@@ -101,7 +101,7 @@
 
                 <!-- insert here name of admin -->
                 <div class="user">
-                    <h4>hi,admin</h4>
+                    <h6>hi,admin</h6>
                 </div>
             </div>
             {{-- add here the main of pages --}}
@@ -111,7 +111,7 @@
 
    
     <!-- =========== Scripts =========  -->
-    <script src="js/dashboard.js"></script>
+    <script src="/js/dashboard.js"></script>
 
     <!-- ====== ionicons ======= -->
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
