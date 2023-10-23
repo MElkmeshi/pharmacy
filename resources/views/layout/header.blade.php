@@ -51,21 +51,48 @@
                 <i class="fa-solid fa-cart-shopping"></i>
                 <i class="fa-regular fa-heart"></i>
             </div>
+            @if (session()->has('user_name'))
+                <div class="m-3">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle align-top" href="#" id="basic-nav-dropdown"
+                            role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: white">
+                            {{ session('user_name') }}
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="basic-nav-dropdown">
+                            @if (session('user_role') == 'admin')
+                                <li>
+                                    <a class="dropdown-item" href="{{ route('updateuserform') }}">Admin Profile</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="{{ route('dash') }}">Admin Dashboard</a>
+                                </li>
+                            @else
+                                <li>
+                                    <a class="dropdown-item" href="{{ route('updateuserform') }}">User Profile</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="{{ route('displaycart') }}">Cart</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="{{-- route('displaycart') --}}">Order History</a>
+                                </li>
+                            @endif
+                            <li>
+                                <a class="dropdown-item" href="{{ route('logout') }}">Logout</a>
+                            </li>
 
-            <div class="m-3">
-                <a class="btn btn-primary rounded-bill main-btn" href="{{ route('loginform') }}">Login</a>
-            </div>
+                    </li>
+                </div>
+            @else
+                <div class="m-3">
+                    <a class="btn btn-primary rounded-bill main-btn" href="{{ route('loginform') }}">Login</a>
+                </div>
 
-            <div class="m-3">
-                <a class="btn btn-primary rounded-bill main-btn" href="{{ route('dash') }}">Dashboard</a>
-            </div>
 
-            <div class="m-3">
-                <a class="btn btn-primary rounded-bill main-btn" href="{{ route('displaycart') }}">Cart</a>
-            </div>
-
-            <div class="m-1"><a class="btn btn-primary rounded-bill main-btn"
-                    href="{{ route('signupform') }}">SignUp</a></div>
+                <div class="m-1"><a class="btn btn-primary rounded-bill main-btn"
+                        href="{{ route('signupform') }}">SignUp</a>
+                </div>
+            @endif
         </div>
     </div>
 </nav>

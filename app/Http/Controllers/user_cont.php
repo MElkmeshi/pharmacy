@@ -26,7 +26,11 @@ class user_cont extends Controller
         ]);
         return redirect('/');
     }
-
+    public function logout(Request $request,)
+    {
+        $request->session()->flush();
+        return redirect(route('home'));
+    }
 
     public function login(Request $request)
 {
@@ -52,15 +56,13 @@ class user_cont extends Controller
     $request->session()->put('user_email', $user->email);
     $request->session()->put('user_address', $user->address);
     $request->session()->put('user_age', $user->age);
-    $request->session()->put('user_password', $user->password);
+        $request->session()->put('user_role', $user->role);
 
 
-
-       return redirect('/');
-
+       return redirect(route('home'));
     }
     else{
-        return redirect('/loginform');
+        return back()->with('error','Wrong email or password');
     }
 
 
@@ -73,14 +75,12 @@ public function show_updateuser_form(Request $request){
     $userAddress = $request->session()->get('user_address');
     $userAge = $request->session()->get('user_age');
     $username = $request->session()->get('user_name');
-    $userpassword=$request->session()->get('user_password');
 
     return view('updateuser', [
         'userEmail' => $userEmail,
         'userAddress' => $userAddress,
         'userAge' => $userAge,
         'userName' => $username,
-        'userPassword'=>$userpassword,
     ]);
 
 }
