@@ -7,12 +7,7 @@
 
 
     /* Global styles for your form */
-    label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: bold;
-        }
-
+  
         /* Style form inputs */
         input[type="text"],
         input[type="file"] {
@@ -50,6 +45,9 @@
 </Style>
 <link rel="stylesheet" href="/css/addproduct.css">
 @endsection
+
+
+
 @section('card')
 <div class="cardBox">
     <div class="card">
@@ -69,7 +67,7 @@
     
     <div class="recentOrders">
         <div class="cardHeader">
-            <h2>Create Product</h2>
+            <h2>Edit Product</h2>
         </div>
     </div>
     <form method="POST" action="{{ route('editprod',$product->id) }}" enctype="multipart/form-data">

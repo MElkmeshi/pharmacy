@@ -11,7 +11,7 @@
   .details .recentOrders {
     position: relative;
     display: grid;
-    min-height: 300px;
+    min-height: 250px;
     background: var(--white);
     padding: 20px;
     box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);

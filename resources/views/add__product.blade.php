@@ -2,7 +2,7 @@
 
 
 @section('name')
-    <link rel="stylesheet" href="css/addproduct.css">
+    <link rel="stylesheet" href="/css/addproduct.css">
    
     <Style>
         /* Apply a CSS reset to remove default browser styles */
@@ -10,14 +10,6 @@
 
         /* Global styles for your form */
 
-
-
-
-        header {
-            font-size: 24px;
-            font-weight: bold;
-            margin-bottom: 20px;
-        }
 
         /* Input field styling */
         .input-field {
@@ -43,9 +35,7 @@
         }
 
         /* Label styling */
-        label {
-            font-weight: bold;
-        }
+        
 
         /* Error message styling */
         .error-message {

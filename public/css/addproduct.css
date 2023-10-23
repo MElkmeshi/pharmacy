@@ -16,10 +16,8 @@
 
 
   
-  .recentOrders {
-    
-    min-height: 100px;
-    
+  .recentOrders {  
+    min-height: 50px;
   }
   
  .cardHeader {
@@ -27,10 +25,16 @@
     justify-content: space-between;
     align-items: flex-start;
   }
-  .cardHeader h2 {
+  .cardHeader h2 ,label{
     font-weight: 600;
     color: var(--blue);
   }
+  label {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 20px;
+    font-weight: 500;
+}
   
   
   /* ================== recently List ============== */
