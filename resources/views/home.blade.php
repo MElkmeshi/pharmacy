@@ -112,7 +112,7 @@
                 </a>
             </div>
             <div class="d-flex justify-content-center mt-5">
-                <a class="btn btn-primary rounded-bill main-btn" href="#">Show all products</a>
+                <a class="btn btn-primary rounded-bill main-btn" href="{{route("produser")}}">Show all products</a>
             </div>
         </div>
     </div>

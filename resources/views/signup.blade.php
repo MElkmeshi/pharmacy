@@ -4,6 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/all.min.css" />
+    <link rel="stylesheet" href="css/homepage.css" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <title>Signup</title>
@@ -15,7 +18,7 @@
         }
 
         .wrapper {
-            background: #838392f8;
+            background: #000039;
             padding: 0 20px 0 20px;
         }
 
@@ -26,23 +29,22 @@
             min-height: 100vh;
         }
 
-        .side-image {
-            background-image: url("https://images.unsplash.com/photo-1560582861-45078880e48e?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&ixid=eyJhcHBfaWQiOjEyMDd9");
-            background-position: center;
-            background-size: cover;
-            background-repeat: no-repeat;
-            border-radius: 10px 0 0 10px;
-            position: relative;
-        }
+    .hed{
+        min-width: 300px;
+        text-align: center;
+        padding-top: 50px;
+        padding-left: 100px;
+    }
 
-        .row {
-            color: #fff;
-            width: 950px;
+        .row1 {
+            color: #000;
+            width: 600px;
             height: 600px;
             border-radius: 10px;
-            background: #000039;
-            padding: 0px;
+            background: #fff;
+            padding-left: 150px;
             box-shadow: 10px 10px 20px 7px rgb(10, 10, 10);
+            align-items: center;
         }
 
         .text {
@@ -70,7 +72,6 @@
         }
 
         .input-box {
-            width: 330px;
             box-sizing: border-box;
         }
 
@@ -88,7 +89,9 @@
         }
 
         .input-field {
+            width: 500px;
             display: flex;
+            padding-left: 50px;
             flex-direction: column;
             position: relative;
             padding: 0 10px 0 10px;
@@ -153,14 +156,14 @@
             margin-top: 25px;
         }
 
-        span a {
+        #sp #anc{
             text-decoration: none;
             font-weight: 700;
-            color: #fff;
+            color:#000;
             transition: .5s;
         }
 
-        span a:hover {
+        #sp #anc:hover {
             text-decoration: underline;
             color: #f4ec07;
         }
@@ -197,20 +200,20 @@
 </head>
 
 <body>
-
+@include('layout.header')
 
 
     <div class="wrapper">
         <div class="container main">
-            <div class="row">
-                <div class="col-md-6 side-image">
+            <div class="row1">
+                <div class="col-md-6 ">
                 </div>
 
                 <div class="col-md-6 right">
 
                     <div class="input-box">
 
-                        <header>Create account</header>
+                        <h2 class="hed">Create Account </h2>
                         @if ($errors->any())
                             <div class="alert alert-danger">
                                 @foreach ($errors->all() as $error)
@@ -229,33 +232,33 @@
                             @csrf
                             <div class="input-field">
                                 <input type="text" class="input" id="name" name="username" required="">
-                                <label for="name">Name</label>
+                                <label id="input-label" for="name">Name</label>
                                 <div style="color: red" class="error-message" id="name-error"></div>
                             </div>
                             <input type="hidden" name="role" value="user">
                             <div class="input-field">
                                 <input type="email" class="input" id="email" name="email" required="">
-                                <label for="email">Email</label>
+                                <label id="input-label" for="email">Email</label>
                                 <div style="color: red" class="error-message" id="email-error"></div>
                             </div>
                             <div class="input-field">
                                 <input type="password" class="input" id="password" name="password" required="">
-                                <label for="password">Password</label>
+                                <label id="input-label"  for="password">Password</label>
                                 <div style="color: red" class="error-message" id="password-error"></div>
                             </div>
                             <div class="input-field">
                                 <input type="text" class="input" id="phone" name="phone" required="">
-                                <label for="pass">Phone</label>
+                                <label id="input-label" for="pass">Phone</label>
                                 <div style="color: red" class="error-message" id="phone-error"></div>
                             </div>
                             <div class="input-field">
                                 <input type="text" class="input" id="address" name="address" required="">
-                                <label for="address">Address</label>
+                                <label id="input-label" for="address">Address</label>
                                 <div style="color: red" class="error-message" id="address-error"></div>
                             </div>
                             <div class="input-field">
                                 <input type="text" class="input" id="age" name="age" required="">
-                                <label for="age">Age</label>
+                                <label id="input-label" for="age">Age</label>
                                 <div style="color: red" class="error-message" id="age-error"></div>
                             </div>
                             <input type="hidden" value="user" name='role'>
@@ -263,7 +266,7 @@
                                 <input type="submit" class="submit" value="Sign Up">
                             </div>
                             <div class="signin">
-                                <span>Already have an account? <a href="{{ route('loginform') }}">Login in
+                                <span id="sp">Already have an account? <a id="anc" href="{{ route('loginform') }}">Login in
                                         here</a></span>
                             </div>
                     </div>
@@ -272,6 +275,7 @@
             </div>
         </div>
     </div>
+    @include('layout.footer')
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">

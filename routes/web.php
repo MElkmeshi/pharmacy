@@ -42,8 +42,10 @@ Route::get('/about-us', function () {
     return view('about-us');
 })->name('about-us');
 
+Route::get('/allprod', [App\Http\Controllers\prod_cont::class, 'displayproductuser'])->name("produser");
 
-Route::get('/dis_users',[App\Http\Controllers\user_cont::class, 'disusers'])->name('dis_users');
+
+Route::get('/dis_users', [App\Http\Controllers\user_cont::class, 'disusers'])->name('dis_users');
 
 
 
@@ -67,6 +69,7 @@ Route::get('/deleteuserform', function () {
 
 Route::get('/displayprod', [App\Http\Controllers\prod_cont::class, 'displayproducts'])->name('displayproducts');
 
+Route::get('/displayprods', [App\Http\Controllers\prod_cont::class, 'displayproductuser'])->name('displayproducts');
 
 Route::get('/delete/{id}', [App\Http\Controllers\prod_cont::class, 'deleteprod'])->name('deleteprod');
 Route::get('/edit/{id}', [App\Http\Controllers\prod_cont::class, 'editprodform'])->name('editprodform');
@@ -90,9 +93,3 @@ Route::post('/update-cart/{product}', [App\Http\Controllers\cart_cont::class, 'u
 
 
 Route::get('/deleteCart/{id}', [App\Http\Controllers\cart_cont::class, 'deletecart'])->name('deletecart');
-
-
-
-
-
-
