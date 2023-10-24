@@ -18,11 +18,11 @@
         <div class="navigation">
             <ul>
                 <li>
-                    <a href="#">
+                    <a href="{{ route('home') }}">
                         <span class="icon">
-                            <ion-icon name="logo-pharm"></ion-icon>
+                            <img src="/images/logo.png" alt="logo" width="70px"/>
                         </span>
-                        <span class="title">Pharmacy</span>
+                        <span class="title">Dr Mohamed</span>
                     </a>
                 </li>
 

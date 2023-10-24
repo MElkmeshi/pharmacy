@@ -36,7 +36,7 @@
                     <td>{{ $user->address }}</td>
                     <td>{{ $user->age }} </td>
                     <td>
-                        <a href="{{route('updateuserform')}}"><button
+                        <a href="{{route('updateuserform',['id' => $user->id])}}"><button
                                 class="edit">Edit</button></a>
                         <a href="#"><button
                                 class="delete">Delete</button>
