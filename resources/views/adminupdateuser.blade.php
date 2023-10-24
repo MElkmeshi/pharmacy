@@ -41,7 +41,41 @@
             border-radius: 3px;
             cursor: pointer;
         }
+     
+        
+        
+        .form-control {
+  width: 100%; /* Set the width as needed */
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #fff;
+  color: #333;
+ 
+}
+        
+/* Style the select element when focused */
+.form-control:focus {
+  border-color: #007bff;
+  outline: none;
+}
 
+#category{
+    margin-bottom: 20px;
+}
+/* Style the options */
+#category option {
+  font-size: 14px;
+  background-color: #fff;
+  color: #333;
+}
+
+/* Style the options when hovered */
+#category option:hover {
+  background-color: #007bff;
+  color: #fff;
+}
 
     /* Additional styling for form elements can be added as needed */
 </Style>
@@ -121,6 +155,16 @@
             <label for="password">Password:</label>
             <input type="password" id="password" name="password">
             <div style="color: red" class="error-message" id="password-error"></div>
+        </div>
+        
+        <div class="form-group">
+                       
+            <label for="category">Type of user</label>
+            
+            <select class="form-control" name="category" id="category" required="">
+                <option value="user">User </option>
+                <option value="admin">Admin </option>
+            </select>
         </div>
 
         <div class="form-group">
