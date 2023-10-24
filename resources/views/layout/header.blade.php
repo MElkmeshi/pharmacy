@@ -2,7 +2,7 @@
 <nav class="navbar navbar-expand-lg sticky-top">
     <div class="container">
         <a class="navbar-brand" href="{{ route('home') }}">
-            <img src="images/logo.png" alt="logo" />
+            <img src="/images/logo.png" alt="logo" />
 
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main" aria-controls="main"
@@ -62,7 +62,7 @@
                                 </li>
                             @else
                                 <li>
-                                    {{-- <a class="dropdown-item" href="{{ route('updateuserform, ['id' => session('user_id')]') }}">User Profile</a> --}}
+                                    <a class="dropdown-item" href="{{ route('updateuserform') }}">User Profile</a>
                                 </li>
                                 <li>
                                     <a class="dropdown-item" href="{{ route('displaycart') }}">Cart</a>

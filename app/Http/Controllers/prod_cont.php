@@ -69,11 +69,11 @@ class prod_cont extends Controller
         if ($products->isEmpty()) {
             // No products found for the selected category
             $message = "No products found for the selected category.";
-            return view('userprodbycategory', compact('products', 'message'));
+            return view('products', compact('products', 'message'));
         }else{
     
         // Pass the filtered data to the view
-        return view('userprodbycategory', compact('products'));
+        return view('products', compact('products'));
         }
     }
     public function deleteprod($id)

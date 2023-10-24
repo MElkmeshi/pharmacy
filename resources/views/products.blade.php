@@ -5,9 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="css/bootstrap.min.css" />
-    <link rel="stylesheet" href="css/all.min.css" />
-    <link rel="stylesheet" href="css/homepage.css" />
+    <link rel="stylesheet" href="/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/css/all.min.css" />
+    <link rel="stylesheet" href="/css/homepage.css" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 
@@ -108,8 +108,6 @@
                 <p class="pr">Description: {{ $product->desciption }}</p>
                 <p class="pr">Price: {{ $product->price }}</p>
                 <img src="{{ Storage::url($product->image) }}" width="80" alt="Product Image">
-                <a href="{{ route('deleteprod', ['id' => $product->id]) }}"><button class="sbt">Delete</button></a>
-                <a href="{{ route('editprodform', ['id' => $product->id]) }}"><button class="sbt">Edit</button></a>
                 <a href="{{ route('addtocart', ['id' => $product->id]) }}"><button class="sbt">Add to
                         cart</button></a>
             </div>
