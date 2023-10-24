@@ -31,9 +31,6 @@
             }
         });
     </script>
-
-
-
 </head>
 
 <body>
