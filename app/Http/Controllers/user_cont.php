@@ -69,21 +69,36 @@ class user_cont extends Controller
 }
 
 
-public function show_updateuser_form(Request $request){
 
-    $userEmail = $request->session()->get('user_email');
-    $userAddress = $request->session()->get('user_address');
-    $userAge = $request->session()->get('user_age');
-    $username = $request->session()->get('user_name');
+public function show_updateuser_form(Request $request,$id){
 
-    return view('updateuser', [
-        'userEmail' => $userEmail,
-        'userAddress' => $userAddress,
-        'userAge' => $userAge,
-        'userName' => $username,
-    ]);
+    $user = user::find($id);
+    if (!$user) {
+           
+        return redirect('/')->with('error', 'Product not found.');
+    }
+    else
+
+    
+    return view('updateuser', compact('user'));
 
 }
+
+// public function show_updateuser_form(Request $request){
+
+//     $userEmail = $request->session()->get('user_email');
+//     $userAddress = $request->session()->get('user_address');
+//     $userAge = $request->session()->get('user_age');
+//     $username = $request->session()->get('user_name');
+
+//     return view('updateuser', [
+//         'userEmail' => $userEmail,
+//         'userAddress' => $userAddress,
+//         'userAge' => $userAge,
+//         'userName' => $username,
+//     ]);
+
+// }
 
 
 public function updateuser(UpdateUserRequest $request){

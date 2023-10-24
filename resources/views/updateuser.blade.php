@@ -98,21 +98,21 @@
         <!-- Name -->
         <div class="form-group">
             <label for="name">Name:</label>
-            <input type="text" id="name" name="name" value="{{ $userName }}" required>
+            <input type="text" id="name" name="name" value="{{ $user->name }}" required>
             <div style="color: red" class="error-message" id="name-error"></div>
         </div>
 
         <!-- Address -->
         <div class="form-group">
             <label for="address">Address:</label>
-            <input type="text" id="address" name="address" value="{{ $userAddress }}" required>
+            <input type="text" id="address" name="address" value="{{ $user->address }}" required>
             <div style="color: red" class="error-message" id="address-error"></div>
         </div>
 
         <!-- Age -->
         <div class="form-group">
             <label for="age">Age:</label>
-            <input type="text" id="age" name="age" value="{{ $userAge }}" required>
+            <input type="text" id="age" name="age" value="{{ $user->age }}" required>
             <div style="color: red" class="error-message" id="age-error"></div>
         </div>
 
