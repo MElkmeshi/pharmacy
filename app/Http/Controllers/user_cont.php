@@ -100,6 +100,11 @@ public function admin_show_updateuser_form(Request $request,$id){
 
 }
 
+public function isUniqueEmail(Request $request,$email){
+
+    $user = user::where('email',urldecode($email) )->get();
+    return $user->count() == 0 ? 'true' : 'false';
+}
 // public function show_updateuser_form(Request $request){
 
 //     $userEmail = $request->session()->get('user_email');

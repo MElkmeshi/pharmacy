@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@yield('title', 'unKnown page')</title>
+    <title>@yield('title', 'Display All Products')</title>
     <!-- favicon -->
     <link rel="icon" type="image/x-icon" href="/images/about-medicine.png">
     <!-- css styles -->
