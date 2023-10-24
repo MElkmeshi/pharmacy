@@ -97,7 +97,7 @@ img {
     @include('layout.header')
     <div class="big">
     @foreach($products as $product)
-    <div class="disp col-lg-8">
+    <div class="disp col-lg-8 ">
         <h2 class="hed2">{{ $product->name }}</h2>
         <p class="pr">Description: {{ $product->desciption }}</p>
         <p class="pr">Price: {{ $product->price }}</p>
