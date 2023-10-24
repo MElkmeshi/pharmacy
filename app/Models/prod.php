@@ -26,6 +26,7 @@ class Prod extends Model
         'desciption',
         'price',
         'image',
+        'category',
     ];
 
 

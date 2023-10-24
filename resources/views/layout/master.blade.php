@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,22 +16,39 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Roboto+Mono:ital,wght@0,100;0,300;0,600;1,400;1,600&display=swap"
-      rel="stylesheet"
-    />
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Roboto+Mono:ital,wght@0,100;0,300;0,600;1,400;1,600&display=swap"
+        rel="stylesheet" />
     <script src="js/bootstrap.bundle.min.js"></script>
     <script src="js/all.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
+    <script type="text/javascript">
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+    </script>
+
+
+
 </head>
+
 <body>
+
     {{-- start navbar --}}
     @include('layout.header')
-     {{-- end navbar --}}
+    {{-- end navbar --}}
 
-     @yield('content')
-      @section('content')   {{--override this function in all pages to show the content of the pages --}}
-         show your content
-     @endsection
+    @yield('content')
+    @section('content')
+        {{-- override this function in all pages to show the content of the pages --}}
+        show your content
+    @endsection
 
-     @include('layout.footer')
+    @include('layout.footer')
 </body>
+
 </html>

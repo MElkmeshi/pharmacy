@@ -40,34 +40,68 @@ $.ajaxSetup({
                 }
             });
         }
-    </script>
+     </script>
+ 
 </head>
 <body>
-<h1>User's Cart</h1>
+    @extends('layout.master')
+ 
+    @section('title', 'cart')
+    @section('content')
+    
+
+
+
 
 @if ($productsInCart->isEmpty())
-    <p>The cart is empty.</p>
+    <h2 class="text-primary">The cart is empty.</h2>
 @else
     <ul>
+        <h3 class="text-primary">Cart Items</h3>
         @foreach ($productsInCart as $item)
-            <li>
-                Product Name: {{ $item['product']->name }}
-                <br>
-                Description: {{ $item['product']->description }}
-                <br>
-                Price: ${{ $item['product']->price }}
-                <br>
-                <img src="{{Storage::url($item['product']->image)}}" width="80" alt="Product Image">
-                <br>
-                Amount: <span id="amount-{{ $item['product']->id }}">{{ $item['amount'] }}</span>
-                <button type="button" onclick="incrementCart({{ $item['product']->id }})">+</button>
-                <button type="button" onclick="decrementCart({{ $item['product']->id }})">-</button>
-
-                <br>
-               <a href="{{ route('deletecart', ['id' => $item['cart_id']]) }}"><button>Delete</button></a>
-            </li>
+           
+<div class="container mt-4">
+    <div class="card">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-2">
+                    <img src="{{Storage::url($item['product']->image)}}" width="200" height="200" class="img-fluid" alt="Product Image">
+                </div>
+                <div class="col-4">
+                    <h5 class="card-title">Product Name : {{ $item['product']->name }}</h5>
+                    <p class="card-text">Product Description : {{ $item['product']->desciption }}</p>
+                </div>
+                <div class="col-2">
+                    <p class="card-text"> Price: {{ $item['product']->price }}EGP</p>
+                </div>
+                <div class="col-2">
+                    <div class="input-group">
+                        <span class="input-group-btn">
+                            <button type="button" class="btn btn-danger" id="decrement" onclick="decrementCart({{ $item['product']->id }})">
+                                <i class="fa fa-minus"></i>
+                            </button>
+                        </span>
+                        <span type="text" class="form-control text-center" id="amount-{{ $item['product']->id }}">{{ $item['amount'] }}</span>
+                        <span class="input-group-btn">
+                            <button type="button" class="btn btn-success" id="increment" onclick="incrementCart({{ $item['product']->id }})">
+                                <i class="fa fa-plus"></i>
+                            </button>
+                        </span>
+                    </div>
+                </div>
+                <div class="col-2">
+                    <a href="{{ route('deletecart', ['id' => $item['cart_id']]) }}"><button type="button" class="btn btn-danger" id="delete"> <i class="fa fa-trash"></i> Delete
+                    </button></a>
+                        
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
         @endforeach
     </ul>
 @endif
+@endsection
 </body>
+
 </html>

@@ -74,24 +74,20 @@
                             <li>
                                 <a class="dropdown-item" href="{{ route('logout') }}">Logout</a>
                             </li>
-
-                    </li>
-                @else
-                    <div class="m-3">
-                        <a class="btn btn-primary rounded-bill main-btn" href="{{ route('loginform') }}">Login</a>
-                    </div>
-
-
-                    <div class="m-3"><a class="btn btn-primary rounded-bill main-btn"
-                            href="{{ route('signupform') }}">SignUp</a>
-                    </div>
+                        </ul>
+                    @else
+                        <div class="m-3">
+                            <a class="btn btn-primary rounded-bill main-btn" href="{{ route('loginform') }}">Login</a>
+                        </div>
+                        <div class="m-3"><a class="btn btn-primary rounded-bill main-btn"
+                                href="{{ route('signupform') }}">SignUp</a>
                 @endif
             </ul>
-            {{-- <div class="icons ps-3 pe-3 d-none d-lg-block">
+            <div class="icons ps-3 pe-3 d-none d-lg-block">
                 <i class="fa-solid fa-magnifying-glass"></i>
-                <i class="fa-solid fa-cart-shopping"></i>
+                <a href="{{ route('displaycart') }}"><i class="fa-solid fa-cart-shopping"></i></a>
                 <i class="fa-regular fa-heart"></i>
-            </div> --}}
+            </div>
         </div>
     </div>
 </nav>
