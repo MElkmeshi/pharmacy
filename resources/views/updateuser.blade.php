@@ -78,21 +78,23 @@
 </head>
 
 <body>
-
-    @if (count($errors) > 0)
-        <div class="card mt-5">
-            <div class="card-body">
-                <div class="alert alert-danger">
-                    @foreach ($errors->all() as $error)
-                        <p> {{ $error }}</p>
-                    @endforeach
-                </div>
-            </div>
-        </div>
-    @endif
-
     <div class="form-container">
         <h1>Update User</h1>
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                @foreach ($errors->all() as $error)
+                    <p> {{ $error }}
+                    <p>
+                @endforeach
+            </div>
+        @endif
+        @if (session()->has('error'))
+            <div class="alert alert-danger">{{ session('error') }}</div>
+        @endif
+        @if (session()->has('success'))
+            <div class="alert alert-success">{{ session('success') }}</div>
+        @endif
+
         <form id="updateuserform" method="POST" action="{{ route('updateuser') }}">
             @csrf <!-- CSRF Token -->
 
@@ -120,7 +122,7 @@
             <!-- Password -->
             <div class="form-group">
                 <label for="password">Password:</label>
-                <input type="password" id="password" name="password" required>
+                <input type="password" id="password" name="password">
                 <div style="color: red" class="error-message" id="password-error"></div>
             </div>
 
@@ -157,10 +159,7 @@
                 isValid = false;
             }
 
-            if (password == "") {
-                passwordError.textContent = "Please enter your password.";
-                isValid = false;
-            } else if (password.length < 8) {
+            if (password.length > 0 && password.length < 8) {
                 passwordError.textContent = "password must be more than 8 chars";
                 isValid = false;
             }
