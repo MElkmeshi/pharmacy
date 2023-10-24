@@ -20,20 +20,20 @@
                         products
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="#">Medications</a></li>
-                        <li><a class="dropdown-item" href="#">Skin Care</a></li>
-                        <li><a class="dropdown-item" href="#">Baby Care</a></li>
+                        <li><a class="dropdown-item" href="{{route('produsercategory', ['category' => 'medications'])}}">Medications</a></li>
+                        <li><a class="dropdown-item" href="{{route('produsercategory', ['category' => 'skin_care'])}}">Skin Care</a></li>
+                        <li><a class="dropdown-item" href="{{route('produsercategory', ['category' => 'baby_care'])}}">Baby Care</a></li>
                         <li>
-                            <a class="dropdown-item" href="#">Medical equipments</a>
+                            <a class="dropdown-item" href="{{route('produsercategory', ['category' => 'medical_equipment'])}}">Medical equipments</a>
                         </li>
                         <li>
                             <hr class="dropdown-divider" />
                         </li>
-                        <li><a class="dropdown-item" href="#">Vitamins</a></li>
-                        <li><a class="dropdown-item" href="#"> Supplements</a></li>
-                        <li><a class="dropdown-item" href="#">Bills</a></li>
+                        <li><a class="dropdown-item" href="{{route('produsercategory', ['category' => 'vitamins'])}}">Vitamins</a></li>
+                        <li><a class="dropdown-item" href="{{route('produsercategory', ['category' => 'supplements'])}}"> Supplements</a></li>
+                        <li><a class="dropdown-item" href="{{route('produsercategory', ['category' => 'bills'])}}">Bills</a></li>
                         <li>
-                            <a class="dropdown-item" href="#">antibiotique</a>
+                            <a class="dropdown-item" href="{{route('produsercategory', ['category' => 'antibiotics'])}}">antibiotique</a>
                         </li>
                     </ul>
                 </li>
