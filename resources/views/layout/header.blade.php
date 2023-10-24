@@ -45,16 +45,10 @@
                 <li class="nav-item">
                     <a class="nav-link p-2 p-lg-3" href="{{ route('about-us') }}"> About us</a>
                 </li>
-            </ul>
-            <div class="icons ps-3 pe-3 d-none d-lg-block">
-                <i class="fa-solid fa-magnifying-glass"></i>
-                <i class="fa-solid fa-cart-shopping"></i>
-                <i class="fa-regular fa-heart"></i>
-            </div>
-            @if (session()->has('user_name'))
-                <div class="m-3">
+
+                @if (session()->has('user_name'))
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle align-top" href="#" id="basic-nav-dropdown"
+                        <a class="nav-link dropdown-toggle p-2 p-lg-3" href="#" id="basic-nav-dropdown"
                             role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: white">
                             {{ session('user_name') }}
                         </a>
@@ -82,17 +76,22 @@
                             </li>
 
                     </li>
-                </div>
-            @else
-                <div class="m-3">
-                    <a class="btn btn-primary rounded-bill main-btn" href="{{ route('loginform') }}">Login</a>
-                </div>
+                @else
+                    <div class="m-3">
+                        <a class="btn btn-primary rounded-bill main-btn" href="{{ route('loginform') }}">Login</a>
+                    </div>
 
 
-                <div class="m-1"><a class="btn btn-primary rounded-bill main-btn"
-                        href="{{ route('signupform') }}">SignUp</a>
-                </div>
-            @endif
+                    <div class="m-3"><a class="btn btn-primary rounded-bill main-btn"
+                            href="{{ route('signupform') }}">SignUp</a>
+                    </div>
+                @endif
+            </ul>
+            {{-- <div class="icons ps-3 pe-3 d-none d-lg-block">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <i class="fa-solid fa-cart-shopping"></i>
+                <i class="fa-regular fa-heart"></i>
+            </div> --}}
         </div>
     </div>
 </nav>
