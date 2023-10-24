@@ -32,6 +32,8 @@ Route::get('/disproduct', [App\Http\Controllers\prod_cont::class, 'displayproduc
 Route::get('/signup', function () {
     return view('signup');
 })->name('signupform');
+Route::get('/logout', [App\Http\Controllers\user_cont::class, 'logout'])->name('logout');
+
 Route::get('/loginform', function () {
     return view('login');
 })->name('loginform');

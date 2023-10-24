@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,7 +18,7 @@
         }
 
         .form-container {
-            background-color:#000039 ;
+            background-color: #000039;
             padding: 40px;
             border-radius: 10px;
             box-shadow: 10px 10px 20px 7px rgb(10, 10, 10);
@@ -29,7 +30,8 @@
             margin-bottom: 30px;
             color: #fff;
         }
-        .form-container h1:hover{
+
+        .form-container h1:hover {
             color: #f4ec07;
         }
 
@@ -43,7 +45,8 @@
             font-weight: bold;
             margin-bottom: 10px;
         }
-        .form-group label:hover{
+
+        .form-group label:hover {
             color: #f4ec07;
         }
 
@@ -73,25 +76,28 @@
         }
     </style>
 </head>
+
 <body>
-
-    @if (count($errors) > 0)
-    <div class="card mt-5">
-        <div class="card-body">
-            <div class="alert alert-danger">
-                @foreach ($errors->all() as $error)
-                   <p> {{ $error }}</p>
-                @endforeach
-            </div>
-        </div>
-    </div>
-    @endif
-
     <div class="form-container">
         <h1>Update User</h1>
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                @foreach ($errors->all() as $error)
+                    <p> {{ $error }}
+                    <p>
+                @endforeach
+            </div>
+        @endif
+        @if (session()->has('error'))
+            <div class="alert alert-danger">{{ session('error') }}</div>
+        @endif
+        @if (session()->has('success'))
+            <div class="alert alert-success">{{ session('success') }}</div>
+        @endif
+
         <form id="updateuserform" method="POST" action="{{ route('updateuser') }}">
             @csrf <!-- CSRF Token -->
-            
+
             <!-- Name -->
             <div class="form-group">
                 <label for="name">Name:</label>
@@ -102,21 +108,21 @@
             <!-- Address -->
             <div class="form-group">
                 <label for="address">Address:</label>
-                <input type="text" id="address" name="address" value="{{$userAddress}}" required>
+                <input type="text" id="address" name="address" value="{{ $userAddress }}" required>
                 <div style="color: red" class="error-message" id="address-error"></div>
             </div>
 
             <!-- Age -->
             <div class="form-group">
                 <label for="age">Age:</label>
-                <input type="text" id="age" name="age" value="{{$userAge}}" required>
+                <input type="text" id="age" name="age" value="{{ $userAge }}" required>
                 <div style="color: red" class="error-message" id="age-error"></div>
             </div>
 
             <!-- Password -->
             <div class="form-group">
                 <label for="password">Password:</label>
-                <input type="password" id="password" name="password" value="{{$userPassword}}" required>
+                <input type="password" id="password" name="password">
                 <div style="color: red" class="error-message" id="password-error"></div>
             </div>
 
@@ -148,25 +154,22 @@
 
             let isValid = true;
 
-            if (name=="") {
+            if (name == "") {
                 nameError.textContent = "Please enter your name.";
                 isValid = false;
             }
 
-            if (password=="") {
-                passwordError.textContent = "Please enter your password.";
-                isValid = false;
-            }else if(password.length<8){
+            if (password.length > 0 && password.length < 8) {
                 passwordError.textContent = "password must be more than 8 chars";
                 isValid = false;
             }
 
-            if (address=="") {
+            if (address == "") {
                 addressError.textContent = "Please enter your address.";
                 isValid = false;
             }
 
-            if (age=="") {
+            if (age == "") {
                 ageError.textContent = "Please enter a valid age.";
                 isValid = false;
             }
@@ -177,4 +180,5 @@
         });
     });
 </script>
+
 </html>
