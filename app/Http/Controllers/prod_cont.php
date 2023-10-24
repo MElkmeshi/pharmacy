@@ -19,7 +19,7 @@ class prod_cont extends Controller
             'desciption' => $request->description,
             'price' => $request->price,
             'image' => $path,
-            //'category' => $request->category
+            'category' => $request->category
 
         ]);
         return redirect('/');

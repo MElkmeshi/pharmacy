@@ -115,6 +115,22 @@
                         <input type="file" class="input form-control" id="image" name="image" required="">
                         <div style="color: red" class="error-message" id="image-error"></div>
                     </div>
+                    <div class="form-group">
+                       
+                        <label for="category">Category:</label>
+                        
+                        <select class="form-control" name="category" id="category">
+                            <option value="baby_care">Baby Care</option>
+                            <option value="skin_care">Skin Care</option>
+                            <option value="medications">Medications</option>
+                            <option value="vitamins">Vitamins</option>
+                            <option value="supplements">Supplements</option>
+                            <option value="medical_equipment">Medical Equipment</option>
+                            <option value="bills">Bills</option>
+                            <option value="antibiotics">Antibiotics</option>
+                        </select>
+                    </div>
+                
                     <div class="input-field">
                         <input type="submit" class="submit" value="Add">
                     </div>
