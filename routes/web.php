@@ -46,6 +46,8 @@ Route::get('/about-us', function () {
 
 Route::get('/allprod', [App\Http\Controllers\prod_cont::class, 'displayproductuser'])->name("produser");
 
+Route::get('/allprod/{category}', [App\Http\Controllers\prod_cont::class, 'displayproductuserByCategory'])->name("produsercategory");
+
 
 Route::get('/dis_users', [App\Http\Controllers\user_cont::class, 'disusers'])->name('dis_users');
 
@@ -55,7 +57,7 @@ Route::get('/dis_users', [App\Http\Controllers\user_cont::class, 'disusers'])->n
 
 Route::post('/register', [App\Http\Controllers\user_cont::class, 'store'])->name('reg');
 Route::post('/login', [App\Http\Controllers\user_cont::class, 'login'])->name('login');
-Route::get('/updateuserform', [App\Http\Controllers\user_cont::class, 'show_updateuser_form'])->name('updateuserform');
+Route::get('/updateuserform/{id}', [App\Http\Controllers\user_cont::class, 'show_updateuser_form'])->name('updateuserform');
 Route::post('/updateuser', [App\Http\Controllers\user_cont::class, 'updateuser'])->name('updateuser');
 Route::post('/deleteuser', [App\Http\Controllers\user_cont::class, 'deleteuser'])->name('deleteuser');
 

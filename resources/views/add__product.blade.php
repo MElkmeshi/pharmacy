@@ -119,7 +119,7 @@
                        
                         <label for="category">Category:</label>
                         
-                        <select class="form-control" name="category" id="category">
+                        <select class="form-control" name="category" id="category" required="">
                             <option value="baby_care">Baby Care</option>
                             <option value="skin_care">Skin Care</option>
                             <option value="medications">Medications</option>

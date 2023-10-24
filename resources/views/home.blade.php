@@ -38,7 +38,7 @@
             </div>
             <div class="row">
 
-                <a href="#" class="col-sm-6 col-md-4 col-lg-3">
+                <a href="{{route('produsercategory', ['category' => 'baby_care'])}}" class="col-sm-6 col-md-4 col-lg-3">
                     <div>
                         <div class="box mb-3 bg-white" data-work="Baby care">
                             <img class="img-fluid" src="images/BabyCare.png" alt="" />
@@ -47,16 +47,16 @@
                     </div>
                 </a>
 
-                <a href="#" class="col-sm-6 col-md-4 col-lg-3">
-                    <div>
+                <a href="{{route('produsercategory', ['category' => 'skin_care'])}}" class="col-sm-6 col-md-4 col-lg-3">
+                   <div>
                         <div class="box mb-3 bg-white" data-work="Skin care">
                             <img class="img-fluid" src="images/FACE-CARE_1.jpg" alt="" />
                         </div>
-                    </div>
+                    </div> 
                 </a>
 
 
-                <a href="#" class="col-sm-6 col-md-4 col-lg-3">
+                <a href="{{route('produsercategory', ['category' => 'medications'])}}" class="col-sm-6 col-md-4 col-lg-3">
                     <div>
                         <div class="box mb-3 bg-white" data-work="Medications">
                             <img class="img-fluid" src="images/Medications.png" alt="" />
@@ -64,7 +64,7 @@
                     </div>
                 </a>
 
-                <a href="#" class="col-sm-6 col-md-4 col-lg-3">
+                <a href="{{route('produsercategory', ['category' => 'vitamins'])}}" class="col-sm-6 col-md-4 col-lg-3">
                     <div>
                         <div class="box mb-3 bg-white" data-work="Vitamins">
                             <img class="img-fluid" src="images/Vitamins-and-Minerals_1.png" alt="" />
@@ -73,7 +73,7 @@
                 </a>
 
 
-                <a href="#" class="col-sm-6 col-md-4 col-lg-3">
+                <a href="{{route('produsercategory', ['category' => 'supplements'])}}" class="col-sm-6 col-md-4 col-lg-3">
                     <div>
                         <div class="box mb-3 bg-white" data-work="Supplements">
                             <img class="img-fluid" src="images/Supplements.jpg" alt="" />
@@ -82,15 +82,15 @@
                     </div>
                 </a>
 
-                <a href="#" class="col-sm-6 col-md-4 col-lg-3">
-                    <div>
+                <a href="{{route('produsercategory', ['category' => 'medical_equipment'])}}" class="col-sm-6 col-md-4 col-lg-3">
+                   <div>
                         <div class="box mb-3 bg-white" data-work="medical equipments">
                             <img class="img-fluid" src="images/Medicalequipments.png" alt="" />
                         </div>
                     </div>
                 </a>
 
-                <a href="#" class="col-sm-6 col-md-4 col-lg-3">
+                <a href="{{route('produsercategory', ['category' => 'bills'])}}" class="col-sm-6 col-md-4 col-lg-3">
                     <div>
                         <div class="box mb-3 bg-white" data-work="bills">
                             <img class="img-fluid" src="images/Bills.png" alt="" />
@@ -100,7 +100,7 @@
 
 
 
-                <a href="about-us.html" class="col-sm-6 col-md-4 col-lg-3">
+               <a href="{{route('produsercategory', ['category' => 'antibiotics'])}}" class="col-sm-6 col-md-4 col-lg-3">
                     <div>
                         <div class="box mb-3 bg-white" data-work="antibiotique">
 

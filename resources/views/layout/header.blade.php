@@ -61,14 +61,14 @@
                         <ul class="dropdown-menu" aria-labelledby="basic-nav-dropdown">
                             @if (session('user_role') == 'admin')
                                 <li>
-                                    <a class="dropdown-item" href="{{ route('updateuserform') }}">Admin Profile</a>
+                                    {{-- <a class="dropdown-item" href="{{ route('updateuserform', ['id' => session('user_id')]) }}">Admin Profile</a> --}}
                                 </li>
                                 <li>
                                     <a class="dropdown-item" href="{{ route('dash') }}">Admin Dashboard</a>
                                 </li>
                             @else
                                 <li>
-                                    <a class="dropdown-item" href="{{ route('updateuserform') }}">User Profile</a>
+                                    {{-- <a class="dropdown-item" href="{{ route('updateuserform, ['id' => session('user_id')]') }}">User Profile</a> --}}
                                 </li>
                                 <li>
                                     <a class="dropdown-item" href="{{ route('displaycart') }}">Cart</a>
