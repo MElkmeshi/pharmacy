@@ -2,7 +2,7 @@
 <nav class="navbar navbar-expand-lg sticky-top">
     <div class="container">
         <a class="navbar-brand" href="{{ route('home') }}">
-            <img src="images/logo.png" alt="logo" />
+            <img src="/images/logo.png" alt="logo" />
 
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main" aria-controls="main"
@@ -20,20 +20,20 @@
                         products
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="#">Medications</a></li>
-                        <li><a class="dropdown-item" href="#">Skin Care</a></li>
-                        <li><a class="dropdown-item" href="#">Baby Care</a></li>
+                        <li><a class="dropdown-item" href="{{route('produsercategory', ['category' => 'medications'])}}">Medications</a></li>
+                        <li><a class="dropdown-item" href="{{route('produsercategory', ['category' => 'skin_care'])}}">Skin Care</a></li>
+                        <li><a class="dropdown-item" href="{{route('produsercategory', ['category' => 'baby_care'])}}">Baby Care</a></li>
                         <li>
-                            <a class="dropdown-item" href="#">Medical equipments</a>
+                            <a class="dropdown-item" href="{{route('produsercategory', ['category' => 'medical_equipment'])}}">Medical equipments</a>
                         </li>
                         <li>
                             <hr class="dropdown-divider" />
                         </li>
-                        <li><a class="dropdown-item" href="#">Vitamins</a></li>
-                        <li><a class="dropdown-item" href="#"> Supplements</a></li>
-                        <li><a class="dropdown-item" href="#">Bills</a></li>
+                        <li><a class="dropdown-item" href="{{route('produsercategory', ['category' => 'vitamins'])}}">Vitamins</a></li>
+                        <li><a class="dropdown-item" href="{{route('produsercategory', ['category' => 'supplements'])}}"> Supplements</a></li>
+                        <li><a class="dropdown-item" href="{{route('produsercategory', ['category' => 'bills'])}}">Bills</a></li>
                         <li>
-                            <a class="dropdown-item" href="#">antibiotique</a>
+                            <a class="dropdown-item" href="{{route('produsercategory', ['category' => 'antibiotics'])}}">antibiotique</a>
                         </li>
                     </ul>
                 </li>
@@ -55,7 +55,7 @@
                         <ul class="dropdown-menu" aria-labelledby="basic-nav-dropdown">
                             @if (session('user_role') == 'admin')
                                 <li>
-                                    <a class="dropdown-item" href="{{ route('updateuserform') }}">Admin Profile</a>
+                                    {{-- <a class="dropdown-item" href="{{ route('updateuserform', ['id' => session('user_id')]) }}">Admin Profile</a> --}}
                                 </li>
                                 <li>
                                     <a class="dropdown-item" href="{{ route('dash') }}">Admin Dashboard</a>

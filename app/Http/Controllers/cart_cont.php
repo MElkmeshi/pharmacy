@@ -75,11 +75,18 @@ public function updateCart(Request $request, $productId)
     } elseif ($request->has('decrement')) {
         $user->carts()->where('product_id', $productId)->decrement('amount', $request->decrement);
     }
+    $updatedData = $user->carts()
+    ->where('product_id', $productId)
+    ->select('amount', 'product_id')
+    ->with('product:id,price')
+    ->first();
 
     // Retrieve the updated amount and return it as JSON
-    $updatedAmount = $user->carts()->where('product_id', $productId)->value('amount');
+    //$updatedAmount = $user->carts()->where('product_id', $productId)->value('amount');
     
-    return response()->json(['amount' => $updatedAmount]);
+    //return response()->json(['amount' => $updatedAmount]);
+    $totalPrice = $updatedData->amount * $updatedData->product->price;
+    return response()->json(['amount' => $updatedData->amount, 'price' => $updatedData->product->price, 'total_price' => $totalPrice]);
 }
 
 

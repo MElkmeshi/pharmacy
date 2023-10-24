@@ -62,6 +62,20 @@ class prod_cont extends Controller
         return view('products', compact('products'));
         // ['products' => $products]
     }
+    public function displayproductuserByCategory($category)
+    {
+        // Query products based on the selected category
+        $products = prod::where('category', $category)->get();
+        if ($products->isEmpty()) {
+            // No products found for the selected category
+            $message = "No products found for the selected category.";
+            return view('products', compact('products', 'message'));
+        }else{
+    
+        // Pass the filtered data to the view
+        return view('products', compact('products'));
+        }
+    }
     public function deleteprod($id)
     {
 

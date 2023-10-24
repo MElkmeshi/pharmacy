@@ -65,6 +65,40 @@
             transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
         }
 
+
+        .form-control {
+  width: 100%; /* Set the width as needed */
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #fff;
+  color: #333;
+ 
+}
+
+/* Style the select element when focused */
+.form-control:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+#category{
+    margin-bottom: 20px;
+}
+/* Style the options */
+#category option {
+  font-size: 14px;
+  background-color: #fff;
+  color: #333;
+}
+
+/* Style the options when hovered */
+#category option:hover {
+  background-color: #007bff;
+  color: #fff;
+}
+
         /* Additional styling for form elements can be added as needed */
     </Style>
 @endsection
@@ -119,7 +153,7 @@
                        
                         <label for="category">Category:</label>
                         
-                        <select class="form-control" name="category" id="category">
+                        <select class="form-control" name="category" id="category" required="">
                             <option value="baby_care">Baby Care</option>
                             <option value="skin_care">Skin Care</option>
                             <option value="medications">Medications</option>

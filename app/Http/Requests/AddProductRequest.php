@@ -18,6 +18,7 @@ class AddProductRequest extends FormRequest
             'description' => 'required|string|min:3|max:500',
             'price' => 'required|numeric|min:0',
             'image' => 'required|image|mimes:jpeg,png,jpg|max:2048', // Adjust the mime types and max file size as needed
+            'category' => 'required',
         ];
     }
 }

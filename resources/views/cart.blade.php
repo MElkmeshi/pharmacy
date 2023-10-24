@@ -20,6 +20,8 @@ $.ajaxSetup({
                 data: { increment: 1 },
                 success: function(data) {
                     $('#amount-' + productId).text(data.amount);
+                    $('#totalprice').text(data.total_price+ ' EGP' );
+                    
                     console.log('Incrementing cart for product ID:', productId);
                 },
                 error: function(xhr, status, error) {
@@ -35,6 +37,7 @@ $.ajaxSetup({
                 data: { decrement: 1 },
                 success: function(data) {
                     $('#amount-' + productId).text(data.amount);
+                    $('#totalprice').text(data.total_price+ ' EGP' );
                 },
                 error: function(xhr, status, error) {
                 }
@@ -72,7 +75,12 @@ $.ajaxSetup({
                     <p class="card-text">Product Description : {{ $item['product']->desciption }}</p>
                 </div>
                 <div class="col-2">
-                    <p class="card-text"> Price: {{ $item['product']->price }}EGP</p>
+                    @php
+                        $totalPrice = $item['product']->price * $item['amount'];
+                        //$item['product']->total_price
+                    @endphp
+                    <p class="card-text" > Total_Price:</p><P id="totalprice">{{ $totalPrice }}EGP</P>
+                   
                 </div>
                 <div class="col-2">
                     <div class="input-group">
