@@ -91,6 +91,7 @@
         .input-field {
             width: 500px;
             display: flex;
+            color: #000;
             padding-left: 50px;
             flex-direction: column;
             position: relative;
@@ -105,7 +106,7 @@
             border-bottom: 1px solid rgba(0, 0, 0, 0.2);
             outline: none;
             margin-bottom: 20px;
-            color: #fff;
+            color: #000;
         }
 
         .input-box .input-field label {
