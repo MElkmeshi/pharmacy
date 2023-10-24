@@ -1,5 +1,5 @@
  <!-- start of footer -->
- <div class="subscribe pt-5 pb-5   text-center text-md-start">
+ <div class="subscribe pt-3 pb-3   text-center text-md-start">
     <div class="container">
       <form class="row align-items-center">
         <div class="col-md-6 col-lg-3">
@@ -15,7 +15,7 @@
     </div>
   </div>
 
-  <div class="footer pt-5 pb-5 text-white-50 text-center text-md-start">
+  <div class="footer pt-3 pb-3 text-white-50 text-center text-md-start">
     <div class="container">
       <div class="row">
         <div class="col-md-6 col-lg-4">

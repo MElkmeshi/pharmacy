@@ -105,7 +105,6 @@ public function updateuser(UpdateUserRequest $request){
     $name = $request->input('name');
     $address = $request->input('address');
     $age = $request->input('age');
-
     $password = $request->input('password');
     $userId = $request->session()->get('user_id');
 
