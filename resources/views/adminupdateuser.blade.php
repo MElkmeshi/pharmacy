@@ -1,14 +1,13 @@
-
 @extends('aside_bar')
 
 
 @section('name')
-<Style>
-    /* Apply a CSS reset to remove default browser styles */
+    <Style>
+        /* Apply a CSS reset to remove default browser styles */
 
 
-    /* Global styles for your form */
-  
+        /* Global styles for your form */
+
         /* Style form inputs */
         input[type="text"],
         input[type="file"],
@@ -41,197 +40,186 @@
             border-radius: 3px;
             cursor: pointer;
         }
-     
-        
-        
+
+
+
         .form-control {
-  width: 100%; /* Set the width as needed */
-  padding: 10px;
-  font-size: 16px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  background-color: #fff;
-  color: #333;
- 
-}
-        
-/* Style the select element when focused */
-.form-control:focus {
-  border-color: #007bff;
-  outline: none;
-}
+            width: 100%;
+            /* Set the width as needed */
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #fff;
+            color: #333;
 
-#category{
-    margin-bottom: 20px;
-}
-/* Style the options */
-#category option {
-  font-size: 14px;
-  background-color: #fff;
-  color: #333;
-}
+        }
 
-/* Style the options when hovered */
-#category option:hover {
-  background-color: #007bff;
-  color: #fff;
-}
+        /* Style the select element when focused */
+        .form-control:focus {
+            border-color: #007bff;
+            outline: none;
+        }
 
-    /* Additional styling for form elements can be added as needed */
-</Style>
-<link rel="stylesheet" href="/css/addproduct.css">
+        #category {
+            margin-bottom: 20px;
+        }
+
+        /* Style the options */
+        #category option {
+            font-size: 14px;
+            background-color: #fff;
+            color: #333;
+        }
+
+        /* Style the options when hovered */
+        #category option:hover {
+            background-color: #007bff;
+            color: #fff;
+        }
+
+        /* Additional styling for form elements can be added as needed */
+    </Style>
+    <link rel="stylesheet" href="/css/addproduct.css">
 @endsection
 
 
 
 @section('card')
-<div class="cardBox">
-    <div class="card">
-        <div>
+    <div class="cardBox">
+        <div class="card">
+            <div>
 
-    @if (count($errors) > 0)
-    <div class="card mt-5">
-        <div class="card-body">
-            <div class="alert alert-danger">
-                @foreach ($errors->all() as $error)
-                   <p> {{ $error }}</p>
-                @endforeach
+                @if (count($errors) > 0)
+                    <div class="card mt-5">
+                        <div class="card-body">
+                            <div class="alert alert-danger">
+                                @foreach ($errors->all() as $error)
+                                    <p> {{ $error }}</p>
+                                @endforeach
+                            </div>
+                        </div>
+                    </div>
+                @endif
+
+                <div class="recentOrders">
+                    <div class="cardHeader">
+                        <h2>Update User</h2>
+                    </div>
+                </div>
+
+
+
+
+
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        @foreach ($errors->all() as $error)
+                            <p> {{ $error }}
+                            <p>
+                        @endforeach
+                    </div>
+                @endif
+                @if (session()->has('error'))
+                    <div class="alert alert-danger">{{ session('error') }}</div>
+                @endif
+                @if (session()->has('success'))
+                    <div class="alert alert-success">{{ session('success') }}</div>
+                @endif
+
+                <form id="updateuserform" method="POST">
+                    @csrf <!-- CSRF Token -->
+                    <!-- Name -->
+                    <div class="form-group">
+                        <label for="name">Name:</label>
+                        <input type="text" id="name" name="name" value="{{ $user->name }}" required>
+                        <div style="color: red" class="error-message" id="name-error"></div>
+                    </div>
+
+                    <!-- Address -->
+                    <div class="form-group">
+                        <label for="address">Address:</label>
+                        <input type="text" id="address" name="address" value="{{ $user->address }}" required>
+                        <div style="color: red" class="error-message" id="address-error"></div>
+                    </div>
+
+                    <!-- Age -->
+                    <div class="form-group">
+                        <label for="age">Age:</label>
+                        <input type="text" id="age" name="age" value="{{ $user->age }}" required>
+                        <div style="color: red" class="error-message" id="age-error"></div>
+                    </div>
+
+                    <div class="form-group">
+
+                        <label for="category">Type of user</label>
+
+                        <select class="form-control" name="user_role" id="user_role" required="">
+                            <option value="user">User </option>
+                            <option value="admin">Admin </option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <button type="submit">Update</button>
+                    </div>
+                </form>
+
+
+
+
+
+
             </div>
         </div>
     </div>
-    @endif
-    
-    <div class="recentOrders">
-        <div class="cardHeader">
-            <h2>Update User</h2>
-        </div>
-    </div>
-    
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const form = document.getElementById("updateuserform");
 
+            form.addEventListener("submit", function(event) {
+                const name = document.getElementById("name").value;
+                const password = document.getElementById("password").value;
+                const address = document.getElementById("address").value;
+                const age = document.getElementById("age").value;
 
+                const nameError = document.getElementById("name-error");
+                const passwordError = document.getElementById("password-error");
+                const addressError = document.getElementById("address-error");
+                const ageError = document.getElementById("age-error");
 
-    
-    @if ($errors->any())
-        <div class="alert alert-danger">
-            @foreach ($errors->all() as $error)
-                <p> {{ $error }}
-                <p>
-            @endforeach
-        </div>
-    @endif
-    @if (session()->has('error'))
-        <div class="alert alert-danger">{{ session('error') }}</div>
-    @endif
-    @if (session()->has('success'))
-        <div class="alert alert-success">{{ session('success') }}</div>
-    @endif
+                nameError.textContent = "";
+                passwordError.textContent = "";
+                addressError.textContent = "";
+                ageError.textContent = "";
 
-    <form id="updateuserform" method="POST" action="{{ route('updateuser') }}">
-        @csrf <!-- CSRF Token -->
+                let isValid = true;
 
-        <!-- Name -->
-        <div class="form-group">
-            <label for="name">Name:</label>
-            <input type="text" id="name" name="name" value="{{ $user->name }}" required>
-            <div style="color: red" class="error-message" id="name-error"></div>
-        </div>
+                if (name == "") {
+                    nameError.textContent = "Please enter your name.";
+                    isValid = false;
+                }
 
-        <!-- Address -->
-        <div class="form-group">
-            <label for="address">Address:</label>
-            <input type="text" id="address" name="address" value="{{ $user->address }}" required>
-            <div style="color: red" class="error-message" id="address-error"></div>
-        </div>
+                if (password.length > 0 && password.length < 8) {
+                    passwordError.textContent = "password must be more than 8 chars";
+                    isValid = false;
+                }
 
-        <!-- Age -->
-        <div class="form-group">
-            <label for="age">Age:</label>
-            <input type="text" id="age" name="age" value="{{ $user->age }}" required>
-            <div style="color: red" class="error-message" id="age-error"></div>
-        </div>
+                if (address == "") {
+                    addressError.textContent = "Please enter your address.";
+                    isValid = false;
+                }
 
-        <!-- Password -->
-        <div class="form-group">
-            <label for="password">Password:</label>
-            <input type="password" id="password" name="password">
-            <div style="color: red" class="error-message" id="password-error"></div>
-        </div>
-        
-        <div class="form-group">
-                       
-            <label for="category">Type of user</label>
-            
-            <select class="form-control" name="category" id="category" required="">
-                <option value="user">User </option>
-                <option value="admin">Admin </option>
-            </select>
-        </div>
+                if (age == "") {
+                    ageError.textContent = "Please enter a valid age.";
+                    isValid = false;
+                }
 
-        <div class="form-group">
-            <button type="submit">Update</button>
-        </div>
-    </form>
-
-
-
-
-
-
-        </div></div></div>   
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        const form = document.getElementById("updateuserform");
-
-        form.addEventListener("submit", function(event) {
-            const name = document.getElementById("name").value;
-            const password = document.getElementById("password").value;
-            const address = document.getElementById("address").value;
-            const age = document.getElementById("age").value;
-
-            const nameError = document.getElementById("name-error");
-            const passwordError = document.getElementById("password-error");
-            const addressError = document.getElementById("address-error");
-            const ageError = document.getElementById("age-error");
-
-            nameError.textContent = "";
-            passwordError.textContent = "";
-            addressError.textContent = "";
-            ageError.textContent = "";
-
-            let isValid = true;
-
-            if (name == "") {
-                nameError.textContent = "Please enter your name.";
-                isValid = false;
-            }
-
-            if (password.length > 0 && password.length < 8) {
-                passwordError.textContent = "password must be more than 8 chars";
-                isValid = false;
-            }
-
-            if (address == "") {
-                addressError.textContent = "Please enter your address.";
-                isValid = false;
-            }
-
-            if (age == "") {
-                ageError.textContent = "Please enter a valid age.";
-                isValid = false;
-            }
-
-            if (!isValid) {
-                event.preventDefault();
-            }
+                if (!isValid) {
+                    event.preventDefault();
+                }
+            });
         });
-    });
-</script>
+    </script>
 
 @endsection
-
-
-
-
-
-
-       

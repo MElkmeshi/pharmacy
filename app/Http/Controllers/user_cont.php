@@ -56,7 +56,7 @@ class user_cont extends Controller
     $request->session()->put('user_email', $user->email);
     $request->session()->put('user_address', $user->address);
     $request->session()->put('user_age', $user->age);
-        $request->session()->put('user_role', $user->role);
+    $request->session()->put('user_role', $user->role);
 
 
        return redirect(route('home'));
@@ -99,27 +99,34 @@ public function admin_show_updateuser_form(Request $request,$id){
     return view('adminupdateuser', compact('user'));
 
 }
+public function admin_updateuser(Request $request, $id){
+    $name = $request->input('name');
+    $address = $request->input('address');
+    $age = $request->input('age');
+    $role = $request->input('user_role');
+    $user = user::find( $id );
+    $user->name = $name;
+    $user->address = $address;
+    $user->age = $age;
+    $user->role = $role;
+    $user->save();
+    $userId = $request->session()->get('user_id');
+    if( $user->id == $userId ){
+        $request->session()->put('user_name', $user->name);
+        $request->session()->put('user_email', $user->email);
+        $request->session()->put('user_address', $user->address);
+        $request->session()->put('user_age', $user->age);
+        $request->session()->put('user_role', $user->role);
+    }
+    return redirect(route('dash'));
 
+}
 public function isUniqueEmail(Request $request,$email){
 
     $user = user::where('email',urldecode($email) )->get();
     return $user->count() == 0 ? 'true' : 'false';
 }
-// public function show_updateuser_form(Request $request){
 
-//     $userEmail = $request->session()->get('user_email');
-//     $userAddress = $request->session()->get('user_address');
-//     $userAge = $request->session()->get('user_age');
-//     $username = $request->session()->get('user_name');
-
-//     return view('updateuser', [
-//         'userEmail' => $userEmail,
-//         'userAddress' => $userAddress,
-//         'userAge' => $userAge,
-//         'userName' => $username,
-//     ]);
-
-// }
 
 
 public function updateuser(UpdateUserRequest $request){
@@ -128,14 +135,8 @@ public function updateuser(UpdateUserRequest $request){
     $age = $request->input('age');
     $password = $request->input('password');
     $userId = $request->session()->get('user_id');
-
-
     $user = user::find($userId);
-
-
     $user->name = $name;
-
-
     if (!empty($password)) {
         if (Hash::needsRehash($password)) {
             $user->password = Hash::make($password);
@@ -143,13 +144,14 @@ public function updateuser(UpdateUserRequest $request){
             $user->password = $password;
         }
     }
-
     $user->address = $address;
     $user->age = $age;
-
-
     $user->save();
-
+    $request->session()->put('user_name', $user->name);
+    $request->session()->put('user_email', $user->email);
+    $request->session()->put('user_address', $user->address);
+    $request->session()->put('user_age', $user->age);
+    $request->session()->put('user_role', $user->role);
     return redirect('/');
 }
 
@@ -167,7 +169,7 @@ public function deleteuser(Request $request){
     if ($userToDelete) {
 
         $userToDelete->delete();
-        return redirect('/');
+        return redirect(route('dash'));
     } else {
 
         return redirect('/deleteuserform')->with('error', 'User not found');
