@@ -1,23 +1,36 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/all.min.css" />
+    <link rel="stylesheet" href="css/homepage.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <title>product details</title>
     <style>
-        body {
+                * {
+    font-family: 'Poppins', sans-serif;
+}
+    body {
     margin: 0;
     padding: 0;
     font-family: Arial, sans-serif;
     background-color: #000039;
-    display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
 }
+.big{
+    padding-left: 200px;
+    padding-bottom: 20px;
+    padding-top: 20px;
+    justify-content: center;
 
-.product-details {
+}
+
+.prodetails {
     background-color: #ffffff;
     border-radius: 10px;
     box-shadow: 10px 10px 20px 7px rgb(10, 10, 10);
@@ -26,39 +39,39 @@
     width: 80%;
 }
 
-.product-image {
+.proimage {
     flex: 1;
 }
 
-.product-image img {
+.proimage img {
     width: 100%;
     height: auto;
 }
 
-.product-info {
+.proinfo {
     flex: 1;
     padding: 20px;
 }
 
-.product-info h1 {
+.proinfo h1 {
     font-size: 24px;
     margin-bottom: 10px;
     color: #333333;
 }
 
-.product-info .description {
+.proinfo .desc {
     font-size: 16px;
     color: #555555;
     margin-bottom: 20px;
 }
 
-.product-info .price {
+.proinfo .pri {
     font-size: 20px;
     color: #ff5733;
     margin-bottom: 20px;
 }
 
-.buy-button {
+.buy-btn {
     background-color: #1c1cf0;
     color: white;
     border: none;
@@ -76,16 +89,23 @@
     </style>
 </head>
 <body>
-        <div class="product-details">
-            <div class="product-image">
+    @include('layout.header')
+    <div class="big">
+        <div class="prodetails">
+            <div class="proimage">
                 <img src="{{ Storage::url($product->image) }}" alt="{{ $product->name  }}">
             </div>
-            <div class="product-info">
+            <div class="proinfo">
                 <h1>{{  $product->name }}</h1>
-                <p class="description">{{ $product->desciption }}</p>
-                <p class="price">$ {{ $product->price }}</p>
-                <button class="buy-button">Buy Now</button>
+                <p class="desc">{{ $product->desciption }}</p>
+                <p class="pri">$ {{ $product->price }}</p>
+                <button class="buy-btn">Buy Now</button>
             </div>
         </div>
+    </div>
+    @include('layout.footer')
 </body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
+</script>
 </html>
