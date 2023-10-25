@@ -120,7 +120,7 @@
             <!-- Password -->
             <div class="form-group">
                 <label for="password">Password:</label>
-                <input type="password" id="password" name="password" value="{{ $userPassword }}" required>
+                <input type="password" id="password" name="password" value="{{ $userPassword }}">
                 <div style="color: red" class="error-message" id="password-error"></div>
             </div>
 
