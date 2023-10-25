@@ -29,12 +29,79 @@
     font-weight: 600;
     color: var(--blue);
   }
-  label {
+  .label {
     display: block;
     margin-bottom: 10px;
     font-size: 20px;
     font-weight: 500;
 }
+ /* Style form inputs */
+ .input {
+     width: 100%;
+     padding: 10px;
+     margin-bottom: 15px;
+     border: 1px solid #ccc;
+     border-radius: 3px;
+ }
+
+ /* Style the image container */
+ .image-container {
+     margin-bottom: 15px;
+ }
+
+ /* Style the image */
+ img {
+     max-width: 80px;
+     border: 1px solid #ccc;
+     border-radius: 5px;
+ }
+
+ /* Style the submit button */
+ button[type="submit"] {
+     background-color: #007bff;
+     color: #fff;
+     padding: 10px 20px;
+     border: none;
+     border-radius: 3px;
+     cursor: pointer;
+ }
+
+
+
+ .form-control {
+     width: 100%;
+     /* Set the width as needed */
+     padding: 10px;
+     font-size: 16px;
+     border: 1px solid #ccc;
+     border-radius: 5px;
+     background-color: #fff;
+     color: #333;
+
+ }
+
+ /* Style the select element when focused */
+ .form-control:focus {
+     border-color: #007bff;
+     outline: none;
+ }
+
+ #category, #user_role {
+     margin-bottom: 20px;
+ }
+
+ /* Style the options */
+ #category option {
+     font-size: 14px;
+     background-color: #fff;
+     color: #333;
+ }
+
+ /* Style the options when hovered */
+ #category option:hover {
+     background-color: #007bff;
+     color: #fff;
+ }
   
   
   /* ================== recently List ============== */

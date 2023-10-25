@@ -2,84 +2,10 @@
 
 
 @section('name')
-    <Style>
-        /* Apply a CSS reset to remove default browser styles */
 
-
-        /* Global styles for your form */
-
-        /* Style form inputs */
-        input[type="text"],
-        input[type="file"],
-        input[type="password"] {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 15px;
-            border: 1px solid #ccc;
-            border-radius: 3px;
-        }
-
-        /* Style the image container */
-        .image-container {
-            margin-bottom: 15px;
-        }
-
-        /* Style the image */
-        img {
-            max-width: 80px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
-
-        /* Style the submit button */
-        button[type="submit"] {
-            background-color: #007bff;
-            color: #fff;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 3px;
-            cursor: pointer;
-        }
-
-
-
-        .form-control {
-            width: 100%;
-            /* Set the width as needed */
-            padding: 10px;
-            font-size: 16px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            background-color: #fff;
-            color: #333;
-
-        }
-
-        /* Style the select element when focused */
-        .form-control:focus {
-            border-color: #007bff;
-            outline: none;
-        }
-
-        #category {
-            margin-bottom: 20px;
-        }
-
-        /* Style the options */
-        #category option {
-            font-size: 14px;
-            background-color: #fff;
-            color: #333;
-        }
-
-        /* Style the options when hovered */
-        #category option:hover {
-            background-color: #007bff;
-            color: #fff;
-        }
-
-        /* Additional styling for form elements can be added as needed */
-    </Style>
+<title>
+    Update user
+   </title>
     <link rel="stylesheet" href="/css/addproduct.css">
 @endsection
 
@@ -131,28 +57,28 @@
                     @csrf <!-- CSRF Token -->
                     <!-- Name -->
                     <div class="form-group">
-                        <label for="name">Name:</label>
-                        <input type="text" id="name" name="name" value="{{ $user->name }}" required>
+                        <label class="label" for="name">Name:</label>
+                        <input class="input" type="text" id="name" name="name" value="{{ $user->name }}" required>
                         <div style="color: red" class="error-message" id="name-error"></div>
                     </div>
 
                     <!-- Address -->
                     <div class="form-group">
-                        <label for="address">Address:</label>
-                        <input type="text" id="address" name="address" value="{{ $user->address }}" required>
+                        <label class="label" for="address">Address:</label>
+                        <input class="input" type="text" id="address" name="address" value="{{ $user->address }}" required>
                         <div style="color: red" class="error-message" id="address-error"></div>
                     </div>
 
                     <!-- Age -->
                     <div class="form-group">
-                        <label for="age">Age:</label>
-                        <input type="text" id="age" name="age" value="{{ $user->age }}" required>
+                        <label class="label" for="age">Age:</label>
+                        <input class="input" type="text" id="age" name="age" value="{{ $user->age }}" required>
                         <div style="color: red" class="error-message" id="age-error"></div>
                     </div>
 
                     <div class="form-group">
 
-                        <label for="category">Type of user</label>
+                        <label class="label" for="category">Type of user</label>
 
                         <select class="form-control" name="user_role" id="user_role" required="">
                             <option value="user">User </option>

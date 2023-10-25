@@ -2,105 +2,8 @@
 
 
 @section('name')
+  <title>Add Product</title>
     <link rel="stylesheet" href="/css/addproduct.css">
-   
-    <Style>
-        /* Apply a CSS reset to remove default browser styles */
-
-
-        /* Global styles for your form */
-
-
-        /* Input field styling */
-        .input-field {
-            margin-bottom: 20px;
-        }
-
-        form {
-            width: 100%
-        }
-
-        .input {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ced4da;
-            border-radius: 4px;
-            background-color: #fff;
-            transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-        }
-
-        .input:focus {
-            border-color: #007bff;
-            box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
-        }
-
-        /* Label styling */
-        
-
-        /* Error message styling */
-        .error-message {
-            margin-top: 5px;
-        }
-
-        /* Submit button styling */
-        .submit {
-            background-color: #007bff;
-            color: #fff;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-
-        .submit:hover {
-            background-color: #0056b3;
-        }
-
-        /* Customize the file input field */
-        .input[type="file"] {
-            border: 1px solid #ced4da;
-            padding: 10px;
-            border-radius: 4px;
-            background-color: #fff;
-            transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-        }
-
-
-        .form-control {
-  width: 100%; /* Set the width as needed */
-  padding: 10px;
-  font-size: 16px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  background-color: #fff;
-  color: #333;
- 
-}
-
-/* Style the select element when focused */
-.form-control:focus {
-  border-color: #007bff;
-  outline: none;
-}
-
-#category{
-    margin-bottom: 20px;
-}
-/* Style the options */
-#category option {
-  font-size: 14px;
-  background-color: #fff;
-  color: #333;
-}
-
-/* Style the options when hovered */
-#category option:hover {
-  background-color: #007bff;
-  color: #fff;
-}
-
-        /* Additional styling for form elements can be added as needed */
-    </Style>
 @endsection
 @section('card')
     <div class="cardBox">
@@ -126,32 +29,32 @@
                 <form id="adpordform" method="POST" action="{{ route('addprod') }}" enctype="multipart/form-data">
                     @csrf
                     <div class="input-field">
-                        <label for="name">Product Name</label>
-                        <input type="text" class="input form-control" name="name" id="name" required="">
+                        <label class="label" for="name">Product Name</label>
+                        <input class="input" type="text" class="input form-control" name="name" id="name" required="">
 
                         <div style="color: red" class="error-message" id="name-error"></div>
                     </div>
                     <div class="input-field">
-                        <label for="description">Product Description</label>
-                        <input type="text" class="input form-control" id="description" name="description" required="">
+                        <label class="label" for="description">Product Description</label>
+                        <input class="input" type="text" class="input form-control" id="description" name="description" required="">
 
                         <div style="color: red" class="error-message" id="description-error"></div>
 
                     </div>
                     <div class="input-field">
-                        <label for="price">Price</label>
-                        <input type="text" class="input form-control" name="price" id="price" required="">
+                        <label class="label" for="price">Price</label>
+                        <input class="input" type="text" class="input form-control" name="price" id="price" required="">
 
                         <div style="color: red" class="error-message" id="price-error"></div>
                     </div>
                     <div class="input-field">
-                        <label for="image">Image</label>
-                        <input type="file" class="input form-control" id="image" name="image" required="">
+                        <label class="label" for="image">Image</label>
+                        <input class="input" type="file" class="input form-control" id="image" name="image" required="">
                         <div style="color: red" class="error-message" id="image-error"></div>
                     </div>
                     <div class="form-group">
                        
-                        <label for="category">Category:</label>
+                        <label class="label" for="category">Category:</label>
                         
                         <select class="form-control" name="category" id="category" required="">
                             <option value="baby_care">Baby Care</option>
@@ -166,7 +69,7 @@
                     </div>
                 
                     <div class="input-field">
-                        <input type="submit" class="submit" value="Add">
+                        <button type="submit" class="submit" value="Add">Add</button>  
                     </div>
             </div>
             </form>

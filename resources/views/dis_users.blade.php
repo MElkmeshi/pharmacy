@@ -3,6 +3,7 @@
 
 @section('name')
     <link rel="stylesheet" href="css/disproduct.css">
+    <title>Display all user</title>
 @endsection
 @section('card')
     <div class="details">

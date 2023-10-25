@@ -2,6 +2,7 @@
 
 @extends('aside_bar')
 @section('name')
+    <title>Dashboard</title>
     <link rel="stylesheet" href="css/dashboard.css">
 @endsection
 @section('card')
