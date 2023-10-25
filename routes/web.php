@@ -34,11 +34,8 @@ Route::get('/contact', function () {
 Route::get('/about-us', function () {
     return view('about-us');
 })->name('about-us');
-
 Route::get('/allprod', [App\Http\Controllers\prod_cont::class, 'displayproductuser'])->name("produser");
-
 Route::get('/allprod/{category}', [App\Http\Controllers\prod_cont::class, 'displayproductuserByCategory'])->name("produsercategory");
-
 Route::group(['middleware' => 'isloggedin'],function () {
 
     Route::get('/updateuserform', [App\Http\Controllers\user_cont::class, 'show_updateuser_form'])->name('updateuserform');
