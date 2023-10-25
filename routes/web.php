@@ -41,6 +41,8 @@ Route::get('/allprod/{category}', [App\Http\Controllers\prod_cont::class, 'displ
 Route::group(['middleware' => 'isloggedin'],function () {
 
     Route::get('/updateuserform', [App\Http\Controllers\user_cont::class, 'show_updateuser_form'])->name('updateuserform');
+    Route::post('/updateuser', [App\Http\Controllers\user_cont::class, 'updateuser'])->name('updateuser');
+
     Route::get('/AddToCart/{id}', [App\Http\Controllers\cart_cont::class, 'addtocart'])->name('addtocart');
     Route::get('/displayCart', [App\Http\Controllers\cart_cont::class, 'showUserCart'])->name('displaycart');
     Route::get('/deleteCart/{id}', [App\Http\Controllers\cart_cont::class, 'deletecart'])->name('deletecart');
@@ -62,7 +64,6 @@ Route::group(['middleware' => 'isadmin'],function () {
     Route::get('/dis_users', [App\Http\Controllers\user_cont::class, 'disusers'])->name('dis_users');
     Route::get('/updateuserform/{id}', [App\Http\Controllers\user_cont::class, 'admin_show_updateuser_form'])->name('adminupdateuserform');
     Route::post('/updateuserform/{id}', [App\Http\Controllers\user_cont::class, 'admin_updateuser'])->name('adminupdateuser');
-    Route::post('/updateuser', [App\Http\Controllers\user_cont::class, 'updateuser'])->name('updateuser');
     Route::post('/deleteuser', [App\Http\Controllers\user_cont::class, 'deleteuser'])->name('deleteuser');
     Route::post('/addprod', [App\Http\Controllers\prod_cont::class, 'addprod'])->name('addprod');
     Route::get('/displayprod', [App\Http\Controllers\prod_cont::class, 'displayproducts'])->name('displayproducts');

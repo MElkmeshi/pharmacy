@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="/css/all.min.css" />
-    <link rel="stylesheet" href="/css/homepage.css" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<link rel="stylesheet" href="/css/bootstrap.min.css" />
+<link rel="stylesheet" href="/css/all.min.css" />
+<link rel="stylesheet" href="/css/homepage.css" />
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 
 <head>
     <meta charset="UTF-8">
@@ -16,88 +16,90 @@
     <title>Update Form</title>
     <style>
         * {
-    font-family: 'Poppins', sans-serif;
-}
-    body {
-    font-family: Arial, sans-serif;
-    background-color: #000039;
-    display: flex;
+            font-family: 'Poppins', sans-serif;
+        }
 
-    height: 100vh;
-    margin: 0;
-}
-.big{
-    padding-bottom: 20px;
-    padding-top: 20px;
-    justify-content: center;
-    padding-left: 450px;
-}
-.containo {
-    background-color: #ffffff;
-    box-shadow: 10px 10px 20px 7px rgb(10, 10, 10);
-    border-radius: 10px;
-    padding: 40px;
-    width: 400px;
-    text-align: center;
-}
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #000039;
+            display: flex;
 
-#userh {
-    color: #333;
-    margin-bottom: 20px;
-}
+            height: 100vh;
+            margin: 0;
+        }
 
-#updateuserform {
-    display: flex;
-    flex-direction: column;
-}
+        .big {
+            padding-bottom: 20px;
+            padding-top: 20px;
+            justify-content: center;
+            padding-left: 450px;
+        }
 
-#userlb {
-    color: #555;
-    margin-bottom: 5px;
-    text-align: left;
-}
+        .containo {
+            background-color: #ffffff;
+            box-shadow: 10px 10px 20px 7px rgb(10, 10, 10);
+            border-radius: 10px;
+            padding: 40px;
+            width: 400px;
+            text-align: center;
+        }
 
-#inp[type="text"],
-#inp[type="password"] {
-    width: calc(100% - 20px);
-    padding: 10px;
-    margin-bottom: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 16px;
-    transition: border-color 0.3s ease-in-out;
-}
+        #userh {
+            color: #333;
+            margin-bottom: 20px;
+        }
 
-#inp[type="text"]:focus,
-#inp[type="password"]:focus {
-    border-color: #4caf50;
-}
+        #updateuserform {
+            display: flex;
+            flex-direction: column;
+        }
 
-.error-message {
-    margin-top: -15px;
-    margin-bottom: 20px;
-}
+        #userlb {
+            color: #555;
+            margin-bottom: 5px;
+            text-align: left;
+        }
 
-#upbtn {
-    background-color: #1c1cf0;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    padding: 12px 20px;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background-color 0.3s ease-in-out;
-}
+        #inp[type="text"],
+        #inp[type="password"] {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: border-color 0.3s ease-in-out;
+        }
 
-#upbtn:hover {
-    background-color: #0000cd;
-}
+        #inp[type="text"]:focus,
+        #inp[type="password"]:focus {
+            border-color: #4caf50;
+        }
 
+        .error-message {
+            margin-top: -15px;
+            margin-bottom: 20px;
+        }
+
+        #upbtn {
+            background-color: #1c1cf0;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 12px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        #upbtn:hover {
+            background-color: #0000cd;
+        }
     </style>
 </head>
 
 <body>
-@include('layout.header')
+    @include('layout.header')
     @if (count($errors) > 0)
         <div class="card mt-5">
             <div class="card-body">
@@ -109,44 +111,47 @@
             </div>
         </div>
     @endif
-<div class="big">
-    <div class="containo" >
-        <h1 id="userh">Update User</h1>
-        <form id="updateuserform" method="POST" action="{{ route('updateuser') }}">
-            @csrf <!-- CSRF Token -->
+    <div class="big">
+        <div class="containo">
+            <h1 id="userh">Update User</h1>
+            <form id="updateuserform" method="POST" action="{{ route('updateuser') }}">
+                @csrf <!-- CSRF Token -->
 
-            <!-- Name -->
-            <div class="inpfield" >
-                <label id="userlb" id="userlb" for="name">Name:</label>
-                <input id="inp" type="text" id="name" name="name" value="{{ $userName }}" required>
-                <div style="color: red" class="error-message" id="name-error"></div>
-            </div>
+                <!-- Name -->
+                <div class="inpfield">
+                    <label id="userlb" id="userlb" for="name">Name:</label>
+                    <input id="inp" type="text" id="name" name="name" value="{{ $userName }}"
+                        required>
+                    <div style="color: red" class="error-message" id="name-error"></div>
+                </div>
 
-            <!-- Address -->
-            <div class="inpfield" >
-                <label id="userlb"  for="address">Address:</label>
-                <input id="inp" type="text" id="address" name="address" value="{{ $userAddress }}" required>
-                <div style="color: red" class="error-message" id="address-error"></div>
-            </div>
+                <!-- Address -->
+                <div class="inpfield">
+                    <label id="userlb" for="address">Address:</label>
+                    <input id="inp" type="text" id="address" name="address" value="{{ $userAddress }}"
+                        required>
+                    <div style="color: red" class="error-message" id="address-error"></div>
+                </div>
 
-            <!-- Age -->
-            <div class="inpfield" >
-                <label id="userlb"  for="age">Age:</label>
-                <input id="inp" type="text" id="age" name="age" value="{{ $userAge }}" required>
-                <div style="color: red" class="error-message" id="age-error"></div>
-            </div>
+                <!-- Age -->
+                <div class="inpfield">
+                    <label id="userlb" for="age">Age:</label>
+                    <input id="inp" type="text" id="age" name="age" value="{{ $userAge }}"
+                        required>
+                    <div style="color: red" class="error-message" id="age-error"></div>
+                </div>
 
-            <!-- Password -->
-            <div class="inpfield">
-                <label id="userlb"  for="password">Password:</label>
-                <input id="inp" type="password" id="password" name="password" value="{{ $userPassword }}" required>
-            </div>
-            <div class="inpfield" >
-                <button id="upbtn" type="submit">Update</button>
-            </div>
-        </form>
+                <!-- Password -->
+                <div class="inpfield">
+                    <label id="userlb" for="password">Password:</label>
+                    <input id="inp" type="password" id="password" name="password">
+                </div>
+                <div class="inpfield">
+                    <button id="upbtn" type="submit">Update</button>
+                </div>
+            </form>
+        </div>
     </div>
-</div>
     @include('layout.footer')
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
