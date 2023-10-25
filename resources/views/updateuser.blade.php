@@ -137,18 +137,10 @@
             </div>
 
             <!-- Password -->
-<<<<<<< HEAD
             <div class="inpfield">
                 <label id="userlb"  for="password">Password:</label>
                 <input id="inp" type="password" id="password" name="password" value="{{ $userPassword }}" required>
-=======
-            <div class="form-group">
-                <label for="password">Password:</label>
-                <input type="password" id="password" name="password" value="{{ $userPassword }}">
->>>>>>> c9b23504261a762a0e0938eb8bb46988261c139f
-                <div style="color: red" class="error-message" id="password-error"></div>
             </div>
-
             <div class="inpfield" >
                 <button id="upbtn" type="submit">Update</button>
             </div>
