@@ -140,6 +140,8 @@
                 <img src="{{ Storage::url($product->image) }}" width="80" alt="Product Image">
                 <a href="{{ route('addtocart', ['id' => $product->id]) }}"><button class="sbt">Add to
                         cart</button></a>
+                <a href="{{ route('productdetails', ['id' => $product->id]) }}"><button
+                        class="sbt">Details</button></a>
             </div>
         @endforeach
     </div>

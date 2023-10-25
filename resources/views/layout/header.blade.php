@@ -104,5 +104,3 @@
         </div>
     </div>
 </nav>
-
-<!-- end of navbar -->

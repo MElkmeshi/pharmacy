@@ -28,12 +28,14 @@ Route::get('/loginform', function () {
 Route::get('/displayprods', [App\Http\Controllers\prod_cont::class, 'displayproductuser'])->name('displayproducts');
 Route::get('/logout', [App\Http\Controllers\user_cont::class, 'logout'])->name('logout');
 Route::get('/disproduct', [App\Http\Controllers\prod_cont::class, 'displayproduct'])->name('disproduct');
+Route::get('/product/{id}', [App\Http\Controllers\prod_cont::class, 'productDetails'])->name('productdetails');
 Route::get('/contact', function () {
     return view('contact');
 })->name('contact');
 Route::get('/about-us', function () {
     return view('about-us');
 })->name('about-us');
+
 Route::get('/allprod', [App\Http\Controllers\prod_cont::class, 'displayproductuser'])->name("produser");
 Route::get('/allprod/{category}', [App\Http\Controllers\prod_cont::class, 'displayproductuserByCategory'])->name("produsercategory");
 Route::group(['middleware' => 'isloggedin'],function () {
