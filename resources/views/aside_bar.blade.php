@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>rfgfg</title>
     <link rel="stylesheet"  href="/css/asidebar.css">
+    <link rel="icon" type="image/x-icon" href="/images/about-medicine.png">
     @yield('name')
     
     
@@ -18,7 +18,7 @@
         <div class="navigation">
             <ul>
                 <li>
-                    <a href="{{ route('home') }}">
+                    <a  href="/">
                         <span class="icon">
                             <img src="/images/logo.png" alt="logo" width="70px"/>
                         </span>
@@ -101,7 +101,7 @@
 
                 <!-- insert here name of admin -->
                 <div class="user">
-                    <h6>hi,admin</h6>
+                    <span class="title">Mohamed</span>
                 </div>
             </div>
             {{-- add here the main of pages --}}

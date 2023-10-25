@@ -1,5 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/css/all.min.css" />
+    <link rel="stylesheet" href="/css/homepage.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 
 <head>
     <meta charset="UTF-8">
@@ -7,78 +15,89 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Update Form</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #838392f8;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-        }
+        * {
+    font-family: 'Poppins', sans-serif;
+}
+    body {
+    font-family: Arial, sans-serif;
+    background-color: #000039;
+    display: flex;
 
-        .form-container {
-            background-color: #000039;
-            padding: 40px;
-            border-radius: 10px;
-            box-shadow: 10px 10px 20px 7px rgb(10, 10, 10);
-            width: 300px;
-        }
+    height: 100vh;
+    margin: 0;
+}
+.big{
+    padding-bottom: 20px;
+    padding-top: 20px;
+    justify-content: center;
+    padding-left: 450px;
+}
+.containo {
+    background-color: #ffffff;
+    box-shadow: 10px 10px 20px 7px rgb(10, 10, 10);
+    border-radius: 10px;
+    padding: 40px;
+    width: 400px;
+    text-align: center;
+}
 
-        .form-container h1 {
-            text-align: center;
-            margin-bottom: 30px;
-            color: #fff;
-        }
+#userh {
+    color: #333;
+    margin-bottom: 20px;
+}
 
-        .form-container h1:hover {
-            color: #f4ec07;
-        }
+#updateuserform {
+    display: flex;
+    flex-direction: column;
+}
 
-        .form-group {
-            margin-bottom: 20px;
-        }
+#userlb {
+    color: #555;
+    margin-bottom: 5px;
+    text-align: left;
+}
 
-        .form-group label {
-            color: #fff;
-            display: block;
-            font-weight: bold;
-            margin-bottom: 10px;
-        }
+#inp[type="text"],
+#inp[type="password"] {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: border-color 0.3s ease-in-out;
+}
 
-        .form-group label:hover {
-            color: #f4ec07;
-        }
+#inp[type="text"]:focus,
+#inp[type="password"]:focus {
+    border-color: #4caf50;
+}
 
-        .form-group input[type="text"],
-        .form-group input[type="password"] {
-            width: calc(100% - 22px);
-            padding: 10px;
-            font-size: 16px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
+.error-message {
+    margin-top: -15px;
+    margin-bottom: 20px;
+}
 
-        .form-group button {
-            width: 100%;
-            background-color: #1c1cf0;
-            color: #fff;
-            border: none;
-            padding: 12px 20px;
-            font-size: 16px;
-            cursor: pointer;
-            border-radius: 5px;
-            transition: background-color 0.3s ease;
-        }
+#upbtn {
+    background-color: #1c1cf0;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 12px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+}
 
-        .form-group button:hover {
-            background-color: #0000cd;
-        }
+#upbtn:hover {
+    background-color: #0000cd;
+}
+
     </style>
 </head>
 
 <body>
-
+@include('layout.header')
     @if (count($errors) > 0)
         <div class="card mt-5">
             <div class="card-body">
@@ -90,46 +109,49 @@
             </div>
         </div>
     @endif
-
-    <div class="form-container">
-        <h1>Update User</h1>
+<div class="big">
+    <div class="containo" >
+        <h1 id="userh">Update User</h1>
         <form id="updateuserform" method="POST" action="{{ route('updateuser') }}">
             @csrf <!-- CSRF Token -->
 
             <!-- Name -->
-            <div class="form-group">
-                <label for="name">Name:</label>
-                <input type="text" id="name" name="name" value="{{ $userName }}" required>
+            <div class="inpfield" >
+                <label id="userlb" id="userlb" for="name">Name:</label>
+                <input id="inp" type="text" id="name" name="name" value="{{ $userName }}" required>
                 <div style="color: red" class="error-message" id="name-error"></div>
             </div>
 
             <!-- Address -->
-            <div class="form-group">
-                <label for="address">Address:</label>
-                <input type="text" id="address" name="address" value="{{ $userAddress }}" required>
+            <div class="inpfield" >
+                <label id="userlb"  for="address">Address:</label>
+                <input id="inp" type="text" id="address" name="address" value="{{ $userAddress }}" required>
                 <div style="color: red" class="error-message" id="address-error"></div>
             </div>
 
             <!-- Age -->
-            <div class="form-group">
-                <label for="age">Age:</label>
-                <input type="text" id="age" name="age" value="{{ $userAge }}" required>
+            <div class="inpfield" >
+                <label id="userlb"  for="age">Age:</label>
+                <input id="inp" type="text" id="age" name="age" value="{{ $userAge }}" required>
                 <div style="color: red" class="error-message" id="age-error"></div>
             </div>
 
             <!-- Password -->
-            <div class="form-group">
-                <label for="password">Password:</label>
-                <input type="password" id="password" name="password" value="{{ $userPassword }}">
-                <div style="color: red" class="error-message" id="password-error"></div>
+            <div class="inpfield">
+                <label id="userlb"  for="password">Password:</label>
+                <input id="inp" type="password" id="password" name="password" value="{{ $userPassword }}" required>
             </div>
-
-            <div class="form-group">
-                <button type="submit">Update</button>
+            <div class="inpfield" >
+                <button id="upbtn" type="submit">Update</button>
             </div>
         </form>
     </div>
+</div>
+    @include('layout.footer')
 </body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
+</script>
 <script>
     document.addEventListener("DOMContentLoaded", function() {
         const form = document.getElementById("updateuserform");
