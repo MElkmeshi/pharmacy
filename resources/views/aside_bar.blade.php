@@ -5,11 +5,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet"  href="/css/asidebar.css">
+    <link rel="stylesheet" href="/css/asidebar.css">
     <link rel="icon" type="image/x-icon" href="/images/about-medicine.png">
     @yield('name')
-    
-    
+
+
 </head>
 
 <body>
@@ -17,14 +17,14 @@
     <div class="containerr">
         <div class="navigation">
             <ul>
-                <li>
-                    <a  href="/">
+                <a href="/" style="text-decoration: none;color:black">
+                    <li>
                         <span class="icon">
-                            <img src="/images/logo.png" alt="logo" width="70px"/>
+                            <img src="/images/logo.png" alt="logo" width="70px" />
                         </span>
                         <span class="title">Dr Mohamed</span>
-                    </a>
-                </li>
+                    </li>
+                </a>
 
                 <li>
                     <a href="{{ route('dash') }}">
@@ -72,7 +72,7 @@
                     </a>
                 </li>
 
-                
+
 
                 <li>
                     <a href="#">
@@ -105,11 +105,11 @@
                 </div>
             </div>
             {{-- add here the main of pages --}}
-               @yield('card')
+            @yield('card')
         </div>
     </div>
 
-   
+
     <!-- =========== Scripts =========  -->
     <script src="/js/dashboard.js"></script>
 
