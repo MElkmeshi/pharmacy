@@ -71,7 +71,7 @@
     margin-bottom: 20px;
 }
 
-.buy-btn {
+.cart-btn {
     background-color: #1c1cf0;
     color: white;
     border: none;
@@ -82,7 +82,7 @@
     transition: background-color 0.3s ease;
 }
 
-.buy-button:hover {
+.cart-btn:hover {
     background-color: #0000cd;
 }
 
@@ -99,7 +99,8 @@
                 <h1>{{  $product->name }}</h1>
                 <p class="desc">{{ $product->desciption }}</p>
                 <p class="pri">$ {{ $product->price }}</p>
-                <button class="buy-btn">Buy Now</button>
+                <a href="{{ route('addtocart', ['id' => $product->id]) }}"><button class="cart-btn">Add to
+                    cart</button></a>
             </div>
         </div>
     </div>
