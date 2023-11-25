@@ -46,8 +46,6 @@ Route::group(['middleware' => 'isloggedin'],function () {
     Route::get('/AddToCart/{id}', [App\Http\Controllers\cart_cont::class, 'addtocart'])->name('addtocart');
     Route::get('/displayCart', [App\Http\Controllers\cart_cont::class, 'showUserCart'])->name('displaycart');
     Route::get('/deleteCart/{id}', [App\Http\Controllers\cart_cont::class, 'deletecart'])->name('deletecart');
-    Route::get('/makeorder/{id}', [App\Http\Controllers\order_cont::class, 'makeorder'])->name('order');
-    Route::get('/confirmorder/{product_id}', [App\Http\Controllers\order_cont::class, 'createorder'])->name('confirm_order');
     Route::get('/deleteuserform', function () {
         return view('deleteuser');
     })->name('deleteuserform');
@@ -75,3 +73,7 @@ Route::group(['middleware' => 'isadmin'],function () {
     Route::post('/update-cart/{product}', [App\Http\Controllers\cart_cont::class, 'updateCart'])->name('update.cart');
 
 });
+
+Route::get('/makeorder/{id}', [App\Http\Controllers\order_cont::class, 'makeorder'])->name('order');
+Route::get('/confirmorder/{product_id}', [App\Http\Controllers\order_cont::class, 'createorder'])->name('confirm_order');
+Route::get('/displayOrders', [App\Http\Controllers\order_cont::class, 'getUserOrders'])->name('displayorders');

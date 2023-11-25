@@ -51,6 +51,21 @@ class order_cont extends Controller
     }
 
 
+    public function getUserOrders(Request $request)
+{
+   
+    $userId = $request->session()->get('user_id');
+
+    // retrieve all orders with order items for the  user (de mazbota)
+    $orders = Order::with('orderItems.product')
+        ->where('user_id', $userId)
+        ->get();
+
+    
+    return view('view_user_orders', compact('orders'));
+}
+
+
    
 
 

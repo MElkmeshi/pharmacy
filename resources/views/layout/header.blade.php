@@ -81,6 +81,9 @@
                                     <a class="dropdown-item" href="{{ route('displaycart') }}">Cart</a>
                                 </li>
                                 <li>
+                                    <a class="dropdown-item" href="{{ route('displayorders') }}">My Orders</a>
+                                </li>
+                                <li>
                                     <a class="dropdown-item" href="{{-- route('displaycart') --}}">Order History</a>
                                 </li>
                             @endif
