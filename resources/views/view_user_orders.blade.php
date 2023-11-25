@@ -46,8 +46,13 @@
             <img src="{{Storage::url($orderItem->product->image)}}" width="200" height="200" class="img-fluid" alt="Product Image">
         @endforeach
     </ul>
+    @if ($order->status == 'processing' || $order->status == 'shipped')
+    <a href="{{route("cancelorder",['order_id'=>$order->id ])}}"><button type="button" >Cancel The Order</button></a>
+    @endif
+  
 
     <hr>
+   
 @endforeach
 
 

@@ -77,3 +77,4 @@ Route::group(['middleware' => 'isadmin'],function () {
 Route::get('/makeorder/{id}', [App\Http\Controllers\order_cont::class, 'makeorder'])->name('order');
 Route::get('/confirmorder/{product_id}', [App\Http\Controllers\order_cont::class, 'createorder'])->name('confirm_order');
 Route::get('/displayOrders', [App\Http\Controllers\order_cont::class, 'getUserOrders'])->name('displayorders');
+Route::get('/cancelorder/{order_id}', [App\Http\Controllers\order_cont::class, 'UserCancelOrder'])->name('cancelorder');

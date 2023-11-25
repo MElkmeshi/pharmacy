@@ -65,7 +65,23 @@ class order_cont extends Controller
     return view('view_user_orders', compact('orders'));
 }
 
+ public function UserCancelOrder($id){
 
+
+    $order = Order::find($id);
+
+
+    if (!$order) {
+    return redirect()->route('home')->with('error', 'Order not found.');
+    }
+
+
+     $order->update(['status' => 'cancelled']);
+
+
+    return redirect()->route('home');
+
+}
    
 
 
