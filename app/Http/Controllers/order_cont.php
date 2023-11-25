@@ -6,20 +6,21 @@ use App\Models\Order;
 use Illuminate\Http\Request;
 use App\Models\user;
 use App\Models\Prod;
+use App\Models\Cart;
 use App\Models\OrderItem;
 
 class order_cont extends Controller
 {
-    public function makeorder(Request $request,$id)
+    public function makeorder(Request $request,$id,$cartid)
     {
       
         $userAddress = $request->session()->get('user_address');
 
-        return view('making_order', ['id' => $id, 'userAddress' => $userAddress]);
+        return view('making_order', ['id' => $id, 'userAddress' => $userAddress , 'cartid'=>$cartid]);
     
     }
 
-  public function createorder(Request $request,$id)
+  public function createorder(Request $request,$id,$cartid)
     {
       
          $userId = $request->session()->get('user_id');
@@ -29,12 +30,19 @@ class order_cont extends Controller
 
     $newAddress = $request->input('new_address');
 
+    $productPrice = Prod::find($id)->price;
+
+    
+    $productQuantity = Cart::find($cartid)->amount;
+
+    $totalamount=$productPrice*$productQuantity;
+
     // Use the new address if provided, otherwise fallback to the user's session address
     $address = $newAddress ? $newAddress : $userAddress;
    
     $order = Order::create([
         'user_id' => $userId,
-        'total_amount' => 1, 
+        'total_amount' => $totalamount, 
         'status' => 'processing',
         'address' => $address,
     ]);

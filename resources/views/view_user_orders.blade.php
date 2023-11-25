@@ -39,7 +39,6 @@
                 <p>Product Name: {{ $orderItem->product->name }}</p>
                <p> Desrciption:{{ $orderItem->product->desciption }}</p>
                <p>Price for the piece:{{ $orderItem->product->price }}</p> 
-                <p>Total Price:{{($orderItem->product->price*$order->total_amount)}}</p>
                 {{-- Quantity: {{ $orderItem->quantity }} --}}
                 
             </li>

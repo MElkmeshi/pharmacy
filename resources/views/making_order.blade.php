@@ -28,7 +28,7 @@
    
 
     
-<form action="{{ route('confirm_order', ['product_id' => $id ]) }}">
+<form action="{{ route('confirm_order', ['product_id' => $id ,'cart_id'=>$cartid ]) }}">
     @csrf
 
     <label for="new_address">your current address:</label>

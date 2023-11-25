@@ -105,7 +105,7 @@ $.ajaxSetup({
                         
                 </div>
                 <div class="col-2">
-                    <a href="{{ route('order', ['id' => $item['product']->id ]) }}"><button type="button" class="btn btn-danger" id="delete"> <i class="fa fa-trash"></i> Order
+                    <a href="{{ route('order', ['id' => $item['product']->id, 'cart_id' => $item['cart_id']]) }}"><button type="button" class="btn btn-danger" id="delete"> <i class="fa fa-trash"></i> Order
                     </button></a>
                         
                 </div>
