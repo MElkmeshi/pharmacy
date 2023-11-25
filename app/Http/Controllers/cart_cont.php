@@ -65,6 +65,8 @@ class cart_cont extends Controller
 
 public function updateCart(Request $request, $productId)
 {
+    //return redirect('/');
+
     $userId = $request->session()->get('user_id');
     $user = User::find($userId);
 
@@ -84,6 +86,7 @@ public function updateCart(Request $request, $productId)
 
     //return response()->json(['amount' => $updatedAmount]);
     $totalPrice = $updatedData->amount * $updatedData->product->price;
+    
     return response()->json(['amount' => $updatedData->amount, 'price' => $updatedData->product->price, 'total_price' => $totalPrice]);
 }
 

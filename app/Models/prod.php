@@ -5,7 +5,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-
+use App\Models\Cart;
+use App\Models\OrderItem;
 
 class Prod extends Model
 {
@@ -33,6 +34,11 @@ class Prod extends Model
     public function carts()
     {
         return $this->hasMany(Cart::class);
+    }
+
+    public function orderItems()
+    {
+        return $this->hasMany(OrderItem::class);
     }
 
   

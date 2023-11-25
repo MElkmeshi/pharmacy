@@ -19,6 +19,7 @@ $.ajaxSetup({
                 url: '/update-cart/' + productId,
                 data: { increment: 1 },
                 success: function(data) {
+                    
                     $('#amount-' + productId).text(data.amount);
                     $('#totalprice').text(data.total_price+ ' EGP' );
                     
@@ -75,6 +76,7 @@ $.ajaxSetup({
                     <p class="card-text">Product Description : {{ $item['product']->desciption }}</p>
                 </div>
                 <div class="col-2">
+                    
                     @php
                         $totalPrice = $item['product']->price * $item['amount'];
                         //$item['product']->total_price
