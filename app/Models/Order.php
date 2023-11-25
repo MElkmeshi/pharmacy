@@ -9,6 +9,12 @@ use App\Models\OrderItem;
 
 class Order extends Model
 {
+
+    protected $table = 'orders';
+    
+    public $timestamps = false; // Disable timestamps
+
+
     protected $fillable = ['user_id', 'total_amount', 'status', 'address'];
 
     public function user()
