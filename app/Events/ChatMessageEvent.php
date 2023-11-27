@@ -19,10 +19,12 @@ class ChatMessageEvent implements ShouldBroadcast
      */
     public $message;
     public $user;
-    public function __construct(string $message, array $user)
+    public $to;
+    public function __construct(string $message, array $user,array $to)
     {
         $this->message = $message;
         $this->user = $user;
+        $this->to = $to;
     }
 
     /**
@@ -48,12 +50,17 @@ class ChatMessageEvent implements ShouldBroadcast
                 'message' => $this->message,
                 'username' => $this->user['username'],
                 'role' => $this->user['role'],
+                'to'=> $this->to,
             ];
         }
         else{
             return [
                 'message' => $this->message,
-                'username' => $this->user['username'],
+                'from' => [
+                    'id' => $this->user['id'],
+                    'name' => $this->user['username'],
+                ],
+                'to'=> $this->to,
             ];
         }
         // return [

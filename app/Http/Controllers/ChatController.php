@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Events\ChatMessageEvent;
 use App\Models\Chat;
+use App\Models\user;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -29,7 +30,8 @@ class ChatController extends Controller
             ]);
             $username = $request->session()->get('user_name');
         }
-        event(new ChatMessageEvent($request->message, ['username' => $username, 'role' => $role]));
+        $touser = ($request->to) ? user::find($request->to) : user::find(1);
+        event(new ChatMessageEvent($request->message, ['id'=> $userID, 'username' => $username, 'role' => $role], ['id'=>$touser->id , 'name'=>$touser->name]  ));
         return view('chat');
     }
     public function chat()
