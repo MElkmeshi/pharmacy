@@ -53,7 +53,8 @@ $.ajaxSetup({
     @section('title', 'cart')
     @section('content')
     
-
+    <a href="{{ route('orderall') }}"><button type="button" class="btn btn-danger" id="delete"> <i class="fa fa-trash"></i> Order All
+    </button></a>
 
 
 

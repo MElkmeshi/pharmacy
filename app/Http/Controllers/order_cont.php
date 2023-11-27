@@ -20,6 +20,16 @@ class order_cont extends Controller
     
     }
 
+    public function makeorderall(Request $request)
+    {
+      
+        $userAddress = $request->session()->get('user_address');
+
+        return view('making_order_all', ['userAddress' => $userAddress ]);
+    
+    }
+    
+
   public function createorder(Request $request,$id,$cartid)
     {
       
@@ -57,6 +67,51 @@ class order_cont extends Controller
     return redirect(route('home'));
     
     }
+
+    
+
+    public function createorderall(Request $request)
+{
+    
+    $userId = $request->session()->get('user_id');
+    $userAddress = $request->session()->get('user_address');
+
+   
+    $newAddress = $request->input('new_address');
+    $address = $newAddress ? $newAddress : $userAddress;
+
+    
+    $cartItems = Cart::where('user_id', $userId)->get();
+
+    
+    $totalAmount = 0;
+
+    
+    $order = Order::create([
+        'user_id' => $userId,
+        'total_amount' => 0, // initial_total_amount (awel mara bs)
+        'status' => 'processing',
+        'address' => $address,
+    ]);
+
+    
+    foreach ($cartItems as $cartItem) {
+        $product = Prod::find($cartItem->product_id);
+        $orderItemTotal = $product->price * $cartItem->amount;
+
+        $totalAmount += $orderItemTotal;
+
+        OrderItem::create([
+            'order_id' => $order->id,
+            'product_id' => $cartItem->product_id,
+        ]);
+    }
+
+    $order->update(['total_amount' => $totalAmount]);
+
+    return redirect(route('home'));
+}
+
 
 
     public function getUserOrders(Request $request)
