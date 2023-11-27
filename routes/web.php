@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ChatController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -12,6 +13,9 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
+
+
 
 Route::get('/', function () {
     return view('home');
@@ -39,7 +43,8 @@ Route::get('/about-us', function () {
 Route::get('/allprod', [App\Http\Controllers\prod_cont::class, 'displayproductuser'])->name("produser");
 Route::get('/allprod/{category}', [App\Http\Controllers\prod_cont::class, 'displayproductuserByCategory'])->name("produsercategory");
 Route::group(['middleware' => 'isloggedin'],function () {
-
+    Route::get('/chat', [ChatController::class, 'chat']);
+    Route::post('/sendmessage', [ChatController::class, 'sendmessage']);
     Route::get('/updateuserform', [App\Http\Controllers\user_cont::class, 'show_updateuser_form'])->name('updateuserform');
     Route::post('/updateuser', [App\Http\Controllers\user_cont::class, 'updateuser'])->name('updateuser');
 
@@ -52,12 +57,11 @@ Route::group(['middleware' => 'isloggedin'],function () {
 });
 
 Route::group(['middleware' => 'isadmin'],function () {
+    Route::get('/chats', [ChatController::class, 'chats']);
+    Route::get('/messages', [ChatController::class, 'messages']);
     Route::get('/addproduct', function () {
         return view('add__product');
     })->name('addproduct');
-    Route::get('/disproduct', function () {
-        return view('dis__product');
-    })->name('disproduct');
     Route::get('/dd', function () {
         return view('dd');
     })->name('dash');
