@@ -1,6 +1,9 @@
 <?php
 
 use App\Http\Controllers\ChatController;
+
+use App\Http\Controllers\PaymobController;
+
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -90,3 +93,10 @@ Route::get('/chat', function () {
 Route::get('/chats', function () {
     return view("chats");
 })->name("chats");
+
+
+
+
+//Paymob Routes
+Route::post('/credit', [PaymobController::class, 'credit'])->name('checkout'); // this route send all functions data to paymob
+Route::get('/callback', [PaymobController::class, 'callback'])->name('callback'); // this route get all reponse data to paymob

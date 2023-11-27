@@ -28,7 +28,7 @@
    
 
     
-<form action="{{ route('confirm_order_all')}}">
+<form action="{{ route('confirm_order_all')}} " method="POST">
     @csrf
 
     <label for="new_address">your current address:</label>
@@ -39,6 +39,11 @@
 
     <!-- Other form fields if needed -->
     <label>choose pay method</label>
+    <select name="payment" id="paymentMethod">
+        <option value="1"> cash on delivery</option>
+        <option value="2"> online payment</option>
+    </select>
+   
 
     <div class="col-2">
         <button type="submit" class="btn btn-danger" >  Create Order
@@ -46,6 +51,23 @@
             
     </div>
 </form>
+<script>
+    document.querySelector('form').addEventListener('submit', function (event) {
+        // Prevent the default form submission behavior
+        event.preventDefault();
+
+        // Check which option is selected in the dropdown
+        var selectedOption = document.getElementById('paymentMethod').value;
+
+        if (selectedOption === '1') {
+            // Redirect to the confirm_order route
+            window.location.href = "{{ route('confirm_order', ['product_id' => $id, 'cart_id' => $cartid ]) }}";
+        } else if (selectedOption === '2') {
+            // Redirect to the about-us route
+            window.location.href = "{{ route('checkout') }}";
+        }
+    });
+</script>
 
 
    
