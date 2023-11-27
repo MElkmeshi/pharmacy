@@ -80,7 +80,7 @@ Route::get('/displayOrders', [App\Http\Controllers\order_cont::class, 'getUserOr
 Route::get('/cancelorder/{order_id}', [App\Http\Controllers\order_cont::class, 'UserCancelOrder'])->name('cancelorder');
 Route::get('/chat', function () {
     return view("chat");
-});
+})->name("chat");
 Route::get('/chats', function () {
     return view("chats");
-});
+})->name("chats");
