@@ -78,3 +78,9 @@ Route::get('/makeorder/{id}/{cart_id}', [App\Http\Controllers\order_cont::class,
 Route::get('/confirmorder/{product_id}/{cart_id}', [App\Http\Controllers\order_cont::class, 'createorder'])->name('confirm_order');
 Route::get('/displayOrders', [App\Http\Controllers\order_cont::class, 'getUserOrders'])->name('displayorders');
 Route::get('/cancelorder/{order_id}', [App\Http\Controllers\order_cont::class, 'UserCancelOrder'])->name('cancelorder');
+Route::get('/chat', function () {
+    return view("chat");
+});
+Route::get('/chats', function () {
+    return view("chats");
+});
