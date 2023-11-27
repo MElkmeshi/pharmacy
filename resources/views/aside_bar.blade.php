@@ -72,6 +72,15 @@
                     </a>
                 </li>
 
+                <li>
+                    <a href="#">
+                        <span class="icon">
+                            <ion-icon name="cart-outline"></ion-icon>
+                        </span>
+                        <span class="title">orders</span>
+                    </a>
+                </li>
+
 
 
                 <li>
