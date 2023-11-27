@@ -33,7 +33,7 @@ class order_cont extends Controller
   public function createorder(Request $request,$id,$cartid)
     {
       
-         $userId = $request->session()->get('user_id');
+    $userId = $request->session()->get('user_id');
 
    
     $userAddress = $request->session()->get('user_address');
