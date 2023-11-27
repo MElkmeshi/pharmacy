@@ -60,6 +60,9 @@
             <h5 class="text-light">Contact Us</h5>
             <p class="lh-lg mt-3 mb-5">Get in touch with us via mail phone.We are waiting for your call or message</p>
             <a class="btn btn-primary rounded-pill main-btn w-100" href="#">miuegypt@gmail.com</a>
+            <div class="pt-2">
+              <a class="btn btn-primary rounded-pill main-btn w-100 " href="{{ route("chat") }}">chat with us</a>
+            </div>
             <ul class="d-flex mt-5 list-unstyled gap-3">
               <li>
                 <a class="d-block text-light" href="#"
