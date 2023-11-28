@@ -73,7 +73,7 @@
                 </li>
 
                 <li>
-                    <a href="#">
+                    <a href="{{ route('orders_admin') }}">
                         <span class="icon">
                             <ion-icon name="cart-outline"></ion-icon>
                         </span>

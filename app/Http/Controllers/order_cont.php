@@ -145,7 +145,13 @@ class order_cont extends Controller
     return redirect()->route('home');
 
 }
-   
+public function getAllOrdersWithUsers()
+{
+    // Retrieve all orders with associated user information
+    $orders = Order::with('user')->get();
+
+    return view('order_admin', compact('orders'));
+}
 
 
 }
