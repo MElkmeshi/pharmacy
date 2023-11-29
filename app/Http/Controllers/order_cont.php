@@ -9,6 +9,7 @@ use App\Models\Prod;
 use App\Models\Cart;
 use App\Models\OrderItem;
 
+
 class order_cont extends Controller
 {
     public function makeorder(Request $request,$id,$cartid)
@@ -145,12 +146,16 @@ class order_cont extends Controller
     return redirect()->route('home');
 
 }
-public function getAllOrdersWithUsers()
+public function getAllOrdersWithUsers(Request $request)
 {
     // Retrieve all orders with associated user information
-    $orders = Order::with('user')->get();
+    $statusFilter = $request->input('status', 'all');
 
-    return view('order_admin', compact('orders'));
+    $orders = Order::when($statusFilter !== 'all', function ($query) use ($statusFilter) {
+        return $query->where('status', $statusFilter);
+    })->get();
+
+    return view('order_admin', compact('orders','statusFilter'));
 }
 
 

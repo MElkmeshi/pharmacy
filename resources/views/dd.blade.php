@@ -58,7 +58,7 @@
                 <div class="recentOrders">
                     <div class="cardHeader">
                         <h2>Recent Orders</h2>
-                        <a href="#" class="btn">View All</a>
+                        <a href="{{ route('orders_admin') }}" class="btn">View All</a>
                     </div>
 
                     <table>
