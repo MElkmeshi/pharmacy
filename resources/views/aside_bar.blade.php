@@ -110,7 +110,7 @@
 
                 <!-- insert here name of admin -->
                 <div class="user">
-                    <span class="title">Mohamed</span>
+                    <span class="title">{{ session('user_name') }}</span>
                 </div>
             </div>
             {{-- add here the main of pages --}}

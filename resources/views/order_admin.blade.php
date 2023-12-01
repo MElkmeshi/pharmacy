@@ -67,7 +67,7 @@
   font-size: 14px;
   font-weight: 500;
 }
-label {
+label .order {
     margin-right: 15px;
 }
 
@@ -99,7 +99,7 @@ button:hover {
                 <h2> Orders</h2>     
             </div>
             <form action="{{ route('orders_admin') }}" method="GET">
-              <label for="status">Filter by Status:</label>
+              <label class="order" for="status">Filter by Status:</label>
               <select name="status" id="status">
                   <option value="all" {{ $statusFilter === 'all' ? 'selected' : '' }}>All</option>
                   <option value="pending" {{ $statusFilter === 'pending' ? 'selected' : '' }}>Pending</option>
