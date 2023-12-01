@@ -42,12 +42,10 @@ class order_cont extends Controller
 
     $productPrice = Prod::find($id)->price;
 
-    
     $productQuantity = Cart::find($cartid)->amount;
 
     $totalamount=$productPrice*$productQuantity;
 
-    // Use the new address if provided, otherwise fallback to the user's session address
     $address = $newAddress ? $newAddress : $userAddress;
    
     $order = Order::create([
