@@ -39,7 +39,7 @@
                 <p>Product Name: {{ $orderItem->product->name }}</p>
                <p> Desrciption:{{ $orderItem->product->desciption }}</p>
                <p>Price for the piece:{{ $orderItem->product->price }}</p> 
-                {{-- Quantity: {{ $orderItem->quantity }} --}}
+               <p> Quantity: {{ $orderItem->quantity }}</p>
                 
             </li>
             <img src="{{Storage::url($orderItem->product->image)}}" width="200" height="200" class="img-fluid" alt="Product Image">

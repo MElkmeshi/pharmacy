@@ -10,13 +10,12 @@ use App\Models\Prod;
 
 class OrderItem extends Model
 {
-    //'quantity'
-
+    
     protected $table = 'order_items';
     
-    public $timestamps = false; // Disable timestamps
+    public $timestamps = false; 
 
-    protected $fillable = ['order_id', 'product_id'];
+    protected $fillable = ['order_id', 'product_id','quantity'];
 
     public function order()
     {
