@@ -157,5 +157,24 @@ public function getAllOrdersWithUsers(Request $request)
     return view('order_admin', compact('orders','statusFilter'));
 }
 
+public function changeOrderStatus($order_id, $button_name)
+    {
+        $order = Order::find($order_id);
+
+        switch ($button_name) {
+            case 'cancelled':
+                $order->update(['status' => 'cancelled']);
+                break;
+            case 'delivered':
+                $order->update(['status' => 'delivered']);
+                break;
+            case 'processing':
+                $order->update(['status' => 'processing']);
+                break;
+        }
+
+        return redirect()->route('dash');
+    }
+
 
 }

@@ -127,20 +127,24 @@ button:hover {
                         <td>{{ $order->status }}</td>
                         <td>{{ $order->address }}</td>
                         <td>
-                            <!-- Add any actions or buttons here -->
-                            <a href="{{ route('order.details', ['order_id' => $order->id]) }}">View Details</a>
-                            <!-- Add other actions as needed -->
+                           
+                            <a href="{{ route('order.action', ['order_id' => $order->id,'button_name' => 'cancelled']) }}"><button>Cancelled</button></a>
+                            <a href="{{ route('order.action', ['order_id' => $order->id,'button_name' => 'delivered']) }}"><button>Delivered</button></a>
+                            <a href="{{ route('order.action', ['order_id' => $order->id,'button_name' => 'processing']) }}"><button>Processing</button></a>
+                            
                         </td>
                     </tr>
                     <tr>
                         <td colspan="5">
-                            <h2>Order Items</h2>
+                            <h3>Order Items</h3>
                             <ul>
                                 @foreach ($order->orderItems as $orderItem)
                                     <li>
-                                        Product: {{ $orderItem->product->name }}
+                                        Product Name: {{ $orderItem->product->name }}
+                                        <br>
                                         Quantity: {{ $orderItem->quantity }}
-                                       
+                                       <br>
+                                       <br>
                                     </li>
                                 @endforeach
                             </ul>
