@@ -102,40 +102,57 @@ button:hover {
               <label for="status">Filter by Status:</label>
               <select name="status" id="status">
                   <option value="all" {{ $statusFilter === 'all' ? 'selected' : '' }}>All</option>
-                  <option value="pending" {{ $statusFilter === 'pending' ? 'selected' : '' }}>Pending</option>
+                  <option value="cancelled" {{ $statusFilter === 'cancelled' ? 'selected' : '' }}>Cancelled</option>
                   <option value="delivered" {{ $statusFilter === 'delivered' ? 'selected' : '' }}>Delivered</option>
-                  <option value="inprogress" {{ $statusFilter === 'inprogress' ? 'selected' : '' }}>In Progress</option>
+                  <option value="processing" {{ $statusFilter === 'processing' ? 'selected' : '' }}>Processing</option>
               </select>
               <button type="submit">Filter</button>
           </form>
            
-            <table>
-                <thead>
+          <table>
+            <thead>
+                <tr>
+                    <th>Customer Name</th>
+                    <th>Total Amount</th>
+                    <th>Status</th>
+                    <th>Address</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($orders as $order)
                     <tr>
-                        <td>id</td>
-                        <td>Name</td>
-                        <td>Price</td>
-                        <td>Address</td>
-                        <td>Status</td>
-                        <td>Action</td>
-                    </tr>
-                </thead>
-
-                <tbody>
-                    
-                    @foreach ($orders as $order)
-                    <tr>
-                        <td>{{ $order->user_id }}</td>
-                        <td>namee</td>
+                        <td>{{ $order->user->name }}</td>
                         <td>{{ $order->total_amount }}</td>
+                        <td>{{ $order->status }}</td>
                         <td>{{ $order->address }}</td>
-                        <td><span class="status {{ $order->status }}">{{ $order->status }}</span></td>
-                        <td>change state</td>
+                        <td>
+                            <!-- Add any actions or buttons here -->
+                            <a href="{{ route('order.details', ['order_id' => $order->id]) }}">View Details</a>
+                            <!-- Add other actions as needed -->
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="5">
+                            <h2>Order Items</h2>
+                            <ul>
+                                @foreach ($order->orderItems as $orderItem)
+                                    <li>
+                                        Product: {{ $orderItem->product->name }}
+                                        Quantity: {{ $orderItem->quantity }}
+                                       
+                                    </li>
+                                @endforeach
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="5"><hr></td>
                     </tr>
                 @endforeach
-
-                </tbody>
-            </table>
+            </tbody>
+        </table>
+        
         </div>
         </div>
     @endsection
