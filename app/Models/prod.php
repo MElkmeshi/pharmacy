@@ -19,7 +19,7 @@ class Prod extends Model
      */
 
     protected $table = 'products';
-    
+
     public $timestamps = false; // Disable timestamps
 
     protected $fillable = [
@@ -35,11 +35,21 @@ class Prod extends Model
     {
         return $this->hasMany(Cart::class);
     }
+    public function froms()
+    {
+        return $this->hasMany(Chat::class);
+    }
+
+    public function tos()
+    {
+        return $this->hasMany(Chat::class);
+    }
+
 
     public function orderItems()
     {
         return $this->hasMany(OrderItem::class);
     }
 
-  
+
 }

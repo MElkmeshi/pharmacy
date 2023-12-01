@@ -18,6 +18,8 @@ class CheckUserSession
         if($request->session()->has("user_id") ){
             return $next($request);
         }
-        return redirect()->route("home");
+        //return 304 UNAUTHORIZED
+        return response("Unauthorized", 401);
+        // return redirect()->route("home");
     }
 }
