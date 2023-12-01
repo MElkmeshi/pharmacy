@@ -55,7 +55,7 @@ class prod_cont extends Controller
     public function displayproductuser()
     {
 
-        $products = prod::get();
+        $products = prod::select("*")->orderby("id","ASC")->paginate(3);
         //\App\Models\prod::select('id', 'name', 'desciption', 'price','image')->get();
 
         // Pass the retrieved data to the "home" view

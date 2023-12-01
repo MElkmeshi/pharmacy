@@ -100,7 +100,7 @@
                 @endif
             </ul>
             <div class="icons ps-3 pe-3 d-none d-lg-block">
-                <i class="fa-solid fa-magnifying-glass"></i>
+                <a href="{{ route("produser") }}"> <i class="fa-solid fa-magnifying-glass"></i></a>
                 <a href="{{ route('displaycart') }}"><i class="fa-solid fa-cart-shopping"></i></a>
                 <i class="fa-regular fa-heart"></i>
             </div>
