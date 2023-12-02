@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 
+Route::get('/test', [App\Http\Controllers\ChatController::class, 'test']);
 
 
 Route::get('/', function () {
@@ -43,7 +44,7 @@ Route::get('/about-us', function () {
 Route::get('/allprod', [App\Http\Controllers\prod_cont::class, 'displayproductuser'])->name("produser");
 Route::get('/allprod/{category}', [App\Http\Controllers\prod_cont::class, 'displayproductuserByCategory'])->name("produsercategory");
 Route::group(['middleware' => 'isloggedin'],function () {
-    Route::get('/chat', [ChatController::class, 'chat']);
+    Route::get('/chat', [ChatController::class, 'chat'])->name('chat');
     Route::post('/sendmessage', [ChatController::class, 'sendmessage']);
     Route::get('/updateuserform', [App\Http\Controllers\user_cont::class, 'show_updateuser_form'])->name('updateuserform');
     Route::post('/updateuser', [App\Http\Controllers\user_cont::class, 'updateuser'])->name('updateuser');
@@ -57,6 +58,8 @@ Route::group(['middleware' => 'isloggedin'],function () {
 });
 
 Route::group(['middleware' => 'isadmin'],function () {
+Route::get('/test/test/test', [App\Http\Controllers\ChatController::class, 'test']);
+
     Route::get('/chats', [ChatController::class, 'chats']);
     Route::get('/messages', [ChatController::class, 'messages']);
     Route::get('/addproduct', function () {
@@ -84,9 +87,3 @@ Route::get('/displayOrders', [App\Http\Controllers\order_cont::class, 'getUserOr
 Route::get('/cancelorder/{order_id}', [App\Http\Controllers\order_cont::class, 'UserCancelOrder'])->name('cancelorder');
 Route::get('/makeorderAll', [App\Http\Controllers\order_cont::class, 'makeorderall'])->name('orderall');
 Route::get('/confirmorderAll', [App\Http\Controllers\order_cont::class, 'createorderall'])->name('confirm_order_all');
-Route::get('/chat', function () {
-    return view("chat");
-})->name("chat");
-Route::get('/chats', function () {
-    return view("chats");
-})->name("chats");

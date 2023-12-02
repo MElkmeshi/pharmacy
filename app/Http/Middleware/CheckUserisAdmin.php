@@ -15,6 +15,8 @@ class CheckUserisAdmin
      */
     public function handle(Request $request, Closure $next): Response
     {
+        error_log("CheckUserisAdmin");
+        error_log($request->path());
         if(strtolower($request->session()->get("user_role")) == 'admin') {
             return $next($request);
         }

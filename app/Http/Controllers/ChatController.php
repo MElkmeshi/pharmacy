@@ -7,6 +7,8 @@ use App\Models\Chat;
 use App\Models\user;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use thiagoalessio\TesseractOCR\TesseractOCR;
+
 
 class ChatController extends Controller
 {
@@ -54,6 +56,7 @@ class ChatController extends Controller
             ->join('users as toUser', 'c1.to', '=', 'toUser.id')
             ->where('c1.to', '1')
             ->get();
+            error_log($chats);
         return view('chats', compact('chats'));
     }
     public function messages(Request $request)
@@ -65,6 +68,11 @@ class ChatController extends Controller
         ->with(['fromUserDatabase', 'fromUserDatabase'])
         ->get();
         return json_encode($messages);
+    }
+    public function test()
+    {
+        echo (new TesseractOCR('C:\\Users\\melkmeshi\\Documents\\Projects\\Laravel\\pharmacy\\test.jpg'))
+        ->run();
     }
 
 }
