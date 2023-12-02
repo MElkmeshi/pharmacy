@@ -136,4 +136,11 @@ class prod_cont extends Controller
         $product = prod::find($id);
         return view('productdetails', compact('product'));
     }
+    public function search(request $request){
+        if ($request->ajax()) {
+        $search=$request->search;
+        $data=prod::where("name","like","%{$search}%")->orderby("id","ASC")->get();
+        return view("search",["data"=>$data]);
+        }
+    }
 }

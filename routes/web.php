@@ -3,7 +3,7 @@
 use App\Http\Controllers\ChatController;
 
 use App\Http\Controllers\PaymobController;
-
+use App\Http\Controllers\prod_cont;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -102,3 +102,4 @@ Route::get('/chats', function () {
 //Paymob Routes
 Route::post('/credit', [PaymobController::class, 'credit'])->name('checkout'); // this route send all functions data to paymob
 Route::get('/callback', [PaymobController::class, 'callback'])->name('callback'); // this route get all reponse data to paymob
+Route::post('/ajaxsearch', [prod_cont::class,"search"])->name('ajaxsearch');

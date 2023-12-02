@@ -131,6 +131,10 @@
 
 <body>
     @include('layout.header')
+    <div  class="col-md-12 w-100"> 
+        <input class="col-md-12 w-100 form-control shadow-lg p-3 mb-5 bg-white rounded" type="text" name="search" id="search" placeholder="search products">
+        </div>
+        <div id="searchresult">
     <div class="big row">
         @foreach ($products as $product)
             <div class="disp col-3">
@@ -145,6 +149,7 @@
             </div>
         @endforeach
     </div>
+        </div>
     <div style=" display: flex;
     justify-content: center;
     align-items: center;
@@ -155,7 +160,27 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
     </script>
+    <script src="{{ asset("js/jquery-3.7.1.min.js") }}"></script>
+    <script>
+        $(document).ready(function(){
+            $(document).on("input","#search",function(){
+                var search=$(this).val();
+                jQuery.ajax({
+          url:"{{ route("ajaxsearch") }}",
+          type:'post',
+          datatype:'html',
+          cache:false,
+          data:{search:search,'_token':"{{ csrf_token() }}"},
+          success:function(data){
+            $("#searchresult").html(data);
+          },
+          error:function(){
 
+          }
+        });
+            });
+    });
+    </script>
 </body>
 
 </html>
