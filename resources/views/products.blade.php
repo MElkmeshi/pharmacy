@@ -117,7 +117,6 @@
         .big {
             display: flex;
             flex-direction: row;
-            margin-left: 150px;
         }
 
         /* Responsive design */
