@@ -11,17 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('users', function (Blueprint $table) {
-            $table->id('id',true);
-            $table->string('name'); // Add 'true' to make it auto-increment
-            $table->string('email')->unique();
-            $table->string('password');
-            $table->string('address');
-            $table->integer('age');
-            $table->string('role');
+        Schema::create('role_pages', function (Blueprint $table) {
+            $table->id('RolePageID');
             $table->unsignedBigInteger('RoleID');
+            $table->unsignedBigInteger('PageID');
             $table->foreign('RoleID')->references('RoleID')->on('roles');
-
+            $table->foreign('PageID')->references('PageID')->on('pages');
             //$table->timestamps();
         });
     }
@@ -31,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('role_pages');
     }
 };

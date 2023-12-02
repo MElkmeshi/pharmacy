@@ -72,6 +72,15 @@
                     </a>
                 </li>
 
+                <li>
+                    <a href="{{ route('orders_admin') }}">
+                        <span class="icon">
+                            <ion-icon name="cart-outline"></ion-icon>
+                        </span>
+                        <span class="title">orders</span>
+                    </a>
+                </li>
+
 
 
                 <li>
@@ -101,7 +110,7 @@
 
                 <!-- insert here name of admin -->
                 <div class="user">
-                    <span class="title">Mohamed</span>
+                    <span class="title">{{ session('user_name') }}</span>
                 </div>
             </div>
             {{-- add here the main of pages --}}

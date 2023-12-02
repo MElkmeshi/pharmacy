@@ -55,7 +55,7 @@ class prod_cont extends Controller
     public function displayproductuser()
     {
 
-        $products = prod::get();
+        $products = prod::select("*")->orderby("id","ASC")->paginate(9);
         //\App\Models\prod::select('id', 'name', 'desciption', 'price','image')->get();
 
         // Pass the retrieved data to the "home" view
@@ -135,5 +135,12 @@ class prod_cont extends Controller
     {
         $product = prod::find($id);
         return view('productdetails', compact('product'));
+    }
+    public function search(request $request){
+        if ($request->ajax()) {
+        $search=$request->search;
+        $data=prod::where("name","like","%{$search}%")->orderby("id","ASC")->get();
+        return view("search",["data"=>$data]);
+        }
     }
 }

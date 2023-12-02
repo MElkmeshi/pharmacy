@@ -1,6 +1,9 @@
 <?php
 
 use App\Http\Controllers\ChatController;
+
+use App\Http\Controllers\PaymobController;
+use App\Http\Controllers\prod_cont;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -78,7 +81,7 @@ Route::get('/test/test/test', [App\Http\Controllers\ChatController::class, 'test
     Route::get('/edit/{id}', [App\Http\Controllers\prod_cont::class, 'editprodform'])->name('editprodform');
     Route::post('/editproduct/{id}', [App\Http\Controllers\prod_cont::class, 'update'])->name('editprod');
     Route::post('/update-cart/{product}', [App\Http\Controllers\cart_cont::class, 'updateCart'])->name('update.cart');
-
+    Route::get('/orders',[App\Http\Controllers\order_cont::class, 'getAllOrdersWithUsers'])->name('orders_admin');
 });
 
 Route::get('/makeorder/{id}/{cart_id}', [App\Http\Controllers\order_cont::class, 'makeorder'])->name('order');
@@ -87,3 +90,19 @@ Route::get('/displayOrders', [App\Http\Controllers\order_cont::class, 'getUserOr
 Route::get('/cancelorder/{order_id}', [App\Http\Controllers\order_cont::class, 'UserCancelOrder'])->name('cancelorder');
 Route::get('/makeorderAll', [App\Http\Controllers\order_cont::class, 'makeorderall'])->name('orderall');
 Route::get('/confirmorderAll', [App\Http\Controllers\order_cont::class, 'createorderall'])->name('confirm_order_all');
+Route::get('/changestatus/{order_id}/{button_name}', [App\Http\Controllers\order_cont::class, 'changeOrderStatus'])->name('order.action');
+
+Route::get('/chat', function () {
+    return view("chat");
+})->name("chat");
+Route::get('/chats', function () {
+    return view("chats");
+})->name("chats");
+
+
+
+
+//Paymob Routes
+Route::post('/credit', [PaymobController::class, 'credit'])->name('checkout'); // this route send all functions data to paymob
+Route::get('/callback', [PaymobController::class, 'callback'])->name('callback'); // this route get all reponse data to paymob
+Route::post('/ajaxsearch', [prod_cont::class,"search"])->name('ajaxsearch');

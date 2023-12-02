@@ -9371,7 +9371,7 @@
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
-        "php": "^8.1"
+        "php": "^8.2.4"
     },
     "platform-dev": [],
     "plugin-api-version": "2.6.0"

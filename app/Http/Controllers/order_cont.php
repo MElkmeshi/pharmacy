@@ -9,6 +9,7 @@ use App\Models\Prod;
 use App\Models\Cart;
 use App\Models\OrderItem;
 
+
 class order_cont extends Controller
 {
     public function makeorder(Request $request,$id,$cartid)
@@ -33,7 +34,7 @@ class order_cont extends Controller
   public function createorder(Request $request,$id,$cartid)
     {
       
-         $userId = $request->session()->get('user_id');
+    $userId = $request->session()->get('user_id');
 
    
     $userAddress = $request->session()->get('user_address');
@@ -42,12 +43,10 @@ class order_cont extends Controller
 
     $productPrice = Prod::find($id)->price;
 
-    
     $productQuantity = Cart::find($cartid)->amount;
 
     $totalamount=$productPrice*$productQuantity;
 
-    // Use the new address if provided, otherwise fallback to the user's session address
     $address = $newAddress ? $newAddress : $userAddress;
    
     $order = Order::create([
@@ -60,6 +59,7 @@ class order_cont extends Controller
     OrderItem::create([
         'order_id' => $order->id,
         'product_id' => $id,
+        'quantity' => $productQuantity,
     ]);
 
 
@@ -100,10 +100,10 @@ class order_cont extends Controller
         $orderItemTotal = $product->price * $cartItem->amount;
 
         $totalAmount += $orderItemTotal;
-
         OrderItem::create([
             'order_id' => $order->id,
             'product_id' => $cartItem->product_id,
+            'quantity' => $cartItem->amount,
         ]);
     }
 
@@ -113,20 +113,19 @@ class order_cont extends Controller
 }
 
 
-
-    public function getUserOrders(Request $request)
+public function getUserOrders(Request $request)
 {
-   
     $userId = $request->session()->get('user_id');
 
-    // retrieve all orders with order items for the  user (de mazbota)
-    $orders = Order::with('orderItems.product')
-        ->where('user_id', $userId)
-        ->get();
+    $orders = Order::with(['orderItems.product' => function ($query) {
+        $query->select('products.*');
+    }])
+    ->where('user_id', $userId)
+    ->get();
 
-    
     return view('view_user_orders', compact('orders'));
 }
+
 
  public function UserCancelOrder($id){
 
@@ -145,7 +144,37 @@ class order_cont extends Controller
     return redirect()->route('home');
 
 }
-   
+public function getAllOrdersWithUsers(Request $request)
+{
+
+    $statusFilter = $request->input('status', 'all');
+    $orders = Order::with('user')->when($statusFilter !== 'all', function ($query) use ($statusFilter) {
+            return $query->where('status', $statusFilter);
+        })
+        ->get();
+
+
+    return view('order_admin', compact('orders','statusFilter'));
+}
+
+public function changeOrderStatus($order_id, $button_name)
+    {
+        $order = Order::find($order_id);
+
+        switch ($button_name) {
+            case 'cancelled':
+                $order->update(['status' => 'cancelled']);
+                break;
+            case 'delivered':
+                $order->update(['status' => 'delivered']);
+                break;
+            case 'processing':
+                $order->update(['status' => 'processing']);
+                break;
+        }
+
+        return redirect()->route('dash');
+    }
 
 
 }

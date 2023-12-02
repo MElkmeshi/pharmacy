@@ -14,7 +14,7 @@ use App\Models\Order;
 
 
 
-class user extends Model
+class Pages extends Model
 {
    // use HasApiTokens, HasFactory, Notifiable;
 
@@ -24,32 +24,17 @@ class user extends Model
      * @var array<int, string>
      */
 
-    protected $table = 'users';
+    protected $table = 'pages';
     public $timestamps = false; // Disable timestamps
 
     protected $fillable = [
-        'name',
-        'email',
-        'password',
-        'address',
-        'age',
-        'role',
-        'RoleID',
+        'PageName',
+        'PageLink',
     ];
-
-    public function carts()
+    
+    public function roles()
     {
-        return $this->hasMany(Cart::class);
-    }
-
-    public function orders()
-    {
-        return $this->hasMany(Order::class);
-    }
-
-
-    public function role() {
-        return $this->belongsTo(Role::class, 'RoleID');
+        return $this->belongsToMany(Role::class, 'role_pages', 'PageID', 'RoleID');
     }
 
 
