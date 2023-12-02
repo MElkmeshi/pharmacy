@@ -8,7 +8,8 @@ use App\Models\user;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use thiagoalessio\TesseractOCR\TesseractOCR;
-
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
 
 class ChatController extends Controller
 {
@@ -71,8 +72,16 @@ class ChatController extends Controller
     }
     public function test()
     {
-        echo (new TesseractOCR('C:\\Users\\melkmeshi\\Documents\\Projects\\Laravel\\pharmacy\\test.jpg'))
-        ->run();
+        // echo (new TesseractOCR('C:\\Users\\melkmeshi\\Documents\\Projects\\Laravel\\pharmacy\\test.jpg'))
+        // ->run();
+        // $role = Role::create(['name' => 'admin']);
+        // error_log($role);
+        // $permission = Permission::create(['name' => 'delete articles']);
+        // error_log($permission);
+        // return $role;
+        $adminRole = Role::create(['name' => 'admin3']);
+        $adminRole->givePermissionTo('delete articles');
+        return $adminRole;
     }
 
 }

@@ -19,8 +19,8 @@ return new class extends Migration
             $table->string('address');
             $table->integer('age');
             $table->string('role');
-            $table->unsignedBigInteger('RoleID');
-            $table->foreign('RoleID')->references('RoleID')->on('roles');
+            // $table->unsignedBigInteger('RoleID');
+            // $table->foreign('RoleID')->references('RoleID')->on('roles');
 
             //$table->timestamps();
         });

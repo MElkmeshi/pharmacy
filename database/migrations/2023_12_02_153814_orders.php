@@ -14,7 +14,6 @@ return new class extends Migration
             $table->decimal('total_amount', 10, 2);
             $table->string('status');
             $table->string('address')->nullable();
-
             $table->foreign('user_id')->references('id')->on('users');
         });
     }

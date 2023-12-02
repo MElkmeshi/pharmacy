@@ -10,13 +10,13 @@ use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Cart;
 use App\Models\Order;
-
-
-
+use Illuminate\Database\Eloquent\SoftDeletes;
+use Spatie\Permission\Traits\HasRoles;
 
 class user extends Model
 {
-   // use HasApiTokens, HasFactory, Notifiable;
+    // use HasFactory, SoftDeletes;
+    use HasRoles;
 
     /**
      * The attributes that are mass assignable.
@@ -47,9 +47,14 @@ class user extends Model
         return $this->hasMany(Order::class);
     }
 
+    public function roles()
+    {
+        return $this->belongsToMany(Role::class);
+    }
 
-    public function role() {
-        return $this->belongsTo(Role::class, 'RoleID');
+    public function permissions()
+    {
+        return $this->belongsToMany(Permission::class);
     }
 
 

@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash; // Import the Hash facade
 use App\Http\Requests\CreateUserRequest;
 use App\Http\Requests\UpdateUserRequest;
+use Spatie\Permission\Contracts\Role;
 
 class user_cont extends Controller
 {
@@ -14,16 +15,15 @@ class user_cont extends Controller
 
     public function store(CreateUserRequest $request)
     {
-        user::create([
+        $newuser = user::create([
             'name' => $request->username,
             'email' => $request->email,
             'password' => Hash::make($request->password), // Hash the password
             'address'=>$request->address,
             'age'=>$request->age,
-            'role'=>$request->role,
-
-
         ]);
+        $role = Role::findById(4, 'web');
+        $newuser->assignRole($role);
         return redirect('/');
     }
     public function logout(Request $request,)

@@ -58,29 +58,27 @@ Route::group(['middleware' => 'isloggedin'],function () {
     Route::get('/deleteuserform', function () {
         return view('deleteuser');
     })->name('deleteuserform');
+    Route::post('/update-cart/{product}', [App\Http\Controllers\cart_cont::class, 'updateCart'])->name('update.cart');
 });
-
 Route::group(['middleware' => 'isadmin'],function () {
-Route::get('/test/test/test', [App\Http\Controllers\ChatController::class, 'test']);
-
-    Route::get('/chats', [ChatController::class, 'chats']);
+    Route::get('/displayprod', [App\Http\Controllers\prod_cont::class, 'displayproducts'])->name('displayproducts');
     Route::get('/messages', [ChatController::class, 'messages']);
-    Route::get('/addproduct', function () {
-        return view('add__product');
-    })->name('addproduct');
-    Route::get('/dd', function () {
+    Route::get('/dashboard', function () {
         return view('dd');
     })->name('dash');
-    Route::get('/dis_users', [App\Http\Controllers\user_cont::class, 'disusers'])->name('dis_users');
+    Route::get('/test/test/test', [App\Http\Controllers\ChatController::class, 'test']);
+    Route::get('/chats', [ChatController::class, 'chats']);
+    Route::post('/addprod', [App\Http\Controllers\prod_cont::class, 'addprod'])->name('addprod');
+    Route::get('/addprod', function () {
+        return view('add__product');
+    })->name('addproduct');
     Route::get('/updateuserform/{id}', [App\Http\Controllers\user_cont::class, 'admin_show_updateuser_form'])->name('adminupdateuserform');
     Route::post('/updateuserform/{id}', [App\Http\Controllers\user_cont::class, 'admin_updateuser'])->name('adminupdateuser');
-    Route::post('/deleteuser', [App\Http\Controllers\user_cont::class, 'deleteuser'])->name('deleteuser');
-    Route::post('/addprod', [App\Http\Controllers\prod_cont::class, 'addprod'])->name('addprod');
-    Route::get('/displayprod', [App\Http\Controllers\prod_cont::class, 'displayproducts'])->name('displayproducts');
     Route::get('/delete/{id}', [App\Http\Controllers\prod_cont::class, 'deleteprod'])->name('deleteprod');
     Route::get('/edit/{id}', [App\Http\Controllers\prod_cont::class, 'editprodform'])->name('editprodform');
     Route::post('/editproduct/{id}', [App\Http\Controllers\prod_cont::class, 'update'])->name('editprod');
-    Route::post('/update-cart/{product}', [App\Http\Controllers\cart_cont::class, 'updateCart'])->name('update.cart');
+    Route::get('/dis_users', [App\Http\Controllers\user_cont::class, 'disusers'])->name('dis_users');
+    Route::post('/deleteuser', [App\Http\Controllers\user_cont::class, 'deleteuser'])->name('deleteuser');
     Route::get('/orders',[App\Http\Controllers\order_cont::class, 'getAllOrdersWithUsers'])->name('orders_admin');
 });
 
