@@ -123,32 +123,37 @@ Route::post('/ajaxsearch', [prod_cont::class,"search"])->name('ajaxsearch');
 
 
 
-// Route::post('/admin/roles', [AdminRolePermissionController::class, 'createRole'])->name('admin.createRole');
-
-// Route::get('/admin/roless', [AdminRolePermissionController::class, 'viewcreateRole'])->name('createee');
-
-// Route::post('/admin/roles/{role}/assign-role', [AdminRolePermissionController::class, 'assignRoleToUser'])->name('admin.assignRoleToUser');
-// Route::post('/admin/permissions', [AdminRolePermissionController::class, 'createPermission'])->name('admin.createperm');
-// Route::post('/admin/roles/{role}/assign-permissions', [AdminRolePermissionController::class, 'assignPermissionToRole'])->name('admin.roles_permissions.assign_permissions');
-// Route::post('/redirect-to-admin/{userId}', [AdminRolePermissionController::class, 'redirectToAdminDashboard'])->name('redirect.to.admin');
-
 
 // Route::get('/admin/roles-permissions', [AdminRolePermissionController::class, 'index']);
 Route::post('/admin/roles', [AdminRolePermissionController::class, 'assignPermissionToRole'])->name('admin.roles');
-// Route::get('/admin/roles/{roleName}/edit', [AdminRolePermissionController::class, 'editRole'])->name('admin.roles.edit');
-// Route::put('/admin/roles/{roleName}', [AdminRolePermissionController::class, 'updateRole']);
-// Route::post('/admin/roles/{roleName}/assign-permissions', [AdminRolePermissionController::class, 'assignPermissionToRole']);
-// Route::delete('/admin/roles/{roleName}', [AdminRolePermissionController::class, 'deleteRole']);
+
 Route::get('/admin/create-role', [AdminRolePermissionController::class, 'viewCreateRole'])->name('admin.create.role');
 Route::get('/admin/Assign-role', [AdminRolePermissionController::class, 'viewAssign_role_to_user'])->name('admin.Assign.role.user');
 Route::post('/admin/assign-role-to-user', [AdminRolePermissionController::class, 'assignRoleToUser'])
     ->name('admin.assignRoleToUser');
 
-Route::get('/admin/edit-role', [AdminRolePermissionController::class, 'vieweditrole'])->name('admin.edit.role');
+// Route::get('/admin/edit-role', [AdminRolePermissionController::class, 'vieweditrole'])->name('admin.edit.role');
 
-Route::post('roles/edit-name', [AdminRolePermissionController::class, 'editRoleName'])->name('admin.roles.editName');
+// Route::post('roles/edit-name', [AdminRolePermissionController::class, 'editRoleName'])->name('admin.roles.editName');
 
 Route::get('/admin/delete-role', [AdminRolePermissionController::class, 'viewdeleterole'])->name('admin.delete.role');
 Route::delete('roles/delete', [AdminRolePermissionController::class, 'deleteRole'])->name('admin.roles.delete');
+
+
+
+// Route::middleware(['checkPermission:Add_Product'])->group(function ()  {
+//     Route::post('/addprod', [App\Http\Controllers\prod_cont::class, 'addprod'])->name('addprod');
+//     Route::get('/addprod', function () {
+//         return view('add__product');
+//     })->name('addproduct');
+// });
+
+
+Route::middleware(['checkPermission:Add_Product'])->group(function ()  {
+       
+Route::get('/admin/edit-role', [AdminRolePermissionController::class, 'vieweditrole'])->name('admin.edit.role');
+
+Route::post('roles/edit-name', [AdminRolePermissionController::class, 'editRoleName'])->name('admin.roles.editName');
+    });
     
 

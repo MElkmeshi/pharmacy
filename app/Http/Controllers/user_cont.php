@@ -56,6 +56,7 @@ class user_cont extends Controller
     $request->session()->put('user_age', $user->age);
     $request->session()->put('user_role', $user->role);
 
+   // $user->assignRole('user');
 
        return redirect(route('home'));
     }
