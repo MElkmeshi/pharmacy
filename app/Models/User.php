@@ -12,11 +12,13 @@ use App\Models\Cart;
 use App\Models\Order;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\Permission\Traits\HasRoles;
+use App\Models\Role;
 
-class user extends Model
+
+class user extends Authenticatable
 {
     // use HasFactory, SoftDeletes;
-    use HasRoles;
+    use HasFactory, Notifiable, HasRoles;
 
     /**
      * The attributes that are mass assignable.
@@ -33,8 +35,7 @@ class user extends Model
         'password',
         'address',
         'age',
-        'role',
-        'RoleID',
+      
     ];
 
     public function carts()
@@ -50,11 +51,6 @@ class user extends Model
     public function roles()
     {
         return $this->belongsToMany(Role::class);
-    }
-
-    public function permissions()
-    {
-        return $this->belongsToMany(Permission::class);
     }
 
 

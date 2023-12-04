@@ -5,6 +5,7 @@ use App\Http\Controllers\ChatController;
 use App\Http\Controllers\PaymobController;
 use App\Http\Controllers\prod_cont;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AdminRolePermissionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -80,6 +81,21 @@ Route::group(['middleware' => 'isadmin'],function () {
     Route::get('/dis_users', [App\Http\Controllers\user_cont::class, 'disusers'])->name('dis_users');
     Route::post('/deleteuser', [App\Http\Controllers\user_cont::class, 'deleteuser'])->name('deleteuser');
     Route::get('/orders',[App\Http\Controllers\order_cont::class, 'getAllOrdersWithUsers'])->name('orders_admin');
+
+
+   
+    //     Route::get('/admin/roles-permissions', [AdminRolePermissionController::class, 'index']);
+    //     Route::post('/admin/roles', [AdminRolePermissionController::class, 'createRole'])->name('admin.createRole');
+    //     Route::post('/admin/permissions', [AdminRolePermissionController::class, 'createPermission']);
+
+        
+
+    // Route::get('/admin/roles/{role}/edit', [AdminRolePermissionController::class, 'editRole'])->name('admin.roles_permissions.edit_role');
+    // Route::post('/admin/roles/{role}/update', [AdminRolePermissionController::class, 'updateRole'])->name('admin.roles_permissions.update_role');
+    // Route::get('/admin/roles/{role}/assign-permissions', [AdminRolePermissionController::class, 'assignPermissionToRole'])->name('admin.roles_permissions.assign_permissions');
+    // Route::get('/admin/roles/{role}/assign-role', [AdminRolePermissionController::class, 'assignRoleToUser'])->name('admin.roles_assign_user');
+
+   
 });
 
 Route::get('/makeorder/{id}/{cart_id}', [App\Http\Controllers\order_cont::class, 'makeorder'])->name('order');
@@ -104,3 +120,35 @@ Route::get('/chats', function () {
 Route::post('/credit', [PaymobController::class, 'credit'])->name('checkout'); // this route send all functions data to paymob
 Route::get('/callback', [PaymobController::class, 'callback'])->name('callback'); // this route get all reponse data to paymob
 Route::post('/ajaxsearch', [prod_cont::class,"search"])->name('ajaxsearch');
+
+
+
+// Route::post('/admin/roles', [AdminRolePermissionController::class, 'createRole'])->name('admin.createRole');
+
+// Route::get('/admin/roless', [AdminRolePermissionController::class, 'viewcreateRole'])->name('createee');
+
+// Route::post('/admin/roles/{role}/assign-role', [AdminRolePermissionController::class, 'assignRoleToUser'])->name('admin.assignRoleToUser');
+// Route::post('/admin/permissions', [AdminRolePermissionController::class, 'createPermission'])->name('admin.createperm');
+// Route::post('/admin/roles/{role}/assign-permissions', [AdminRolePermissionController::class, 'assignPermissionToRole'])->name('admin.roles_permissions.assign_permissions');
+// Route::post('/redirect-to-admin/{userId}', [AdminRolePermissionController::class, 'redirectToAdminDashboard'])->name('redirect.to.admin');
+
+
+// Route::get('/admin/roles-permissions', [AdminRolePermissionController::class, 'index']);
+Route::post('/admin/roles', [AdminRolePermissionController::class, 'assignPermissionToRole'])->name('admin.roles');
+// Route::get('/admin/roles/{roleName}/edit', [AdminRolePermissionController::class, 'editRole'])->name('admin.roles.edit');
+// Route::put('/admin/roles/{roleName}', [AdminRolePermissionController::class, 'updateRole']);
+// Route::post('/admin/roles/{roleName}/assign-permissions', [AdminRolePermissionController::class, 'assignPermissionToRole']);
+// Route::delete('/admin/roles/{roleName}', [AdminRolePermissionController::class, 'deleteRole']);
+Route::get('/admin/create-role', [AdminRolePermissionController::class, 'viewCreateRole'])->name('admin.create.role');
+Route::get('/admin/Assign-role', [AdminRolePermissionController::class, 'viewAssign_role_to_user'])->name('admin.Assign.role.user');
+Route::post('/admin/assign-role-to-user', [AdminRolePermissionController::class, 'assignRoleToUser'])
+    ->name('admin.assignRoleToUser');
+
+Route::get('/admin/edit-role', [AdminRolePermissionController::class, 'vieweditrole'])->name('admin.edit.role');
+
+Route::post('roles/edit-name', [AdminRolePermissionController::class, 'editRoleName'])->name('admin.roles.editName');
+
+Route::get('/admin/delete-role', [AdminRolePermissionController::class, 'viewdeleterole'])->name('admin.delete.role');
+Route::delete('roles/delete', [AdminRolePermissionController::class, 'deleteRole'])->name('admin.roles.delete');
+    
+
