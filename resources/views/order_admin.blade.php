@@ -177,13 +177,12 @@ this is style for pagination
                         <td >
                           <ul>
                               @foreach ($order->orderItems as $orderItem)
-                                  <li>
+                                 
                                       Product Name: {{ $orderItem->product->name }}
                                       <br>
                                       Quantity: {{ $orderItem->quantity }}
-                                     <br>
-                                     <br>
-                                  </li>
+                                      <br><br>
+
                               @endforeach
                           </ul>
                       </td>

@@ -74,23 +74,11 @@
                         <tbody>
                             @foreach ($orders as $order)
                             <tr>
-                                
-                                <td>$ htmlspecialchars({{ $order->total_amount }})</td>
-                                <td ><span class="status {{$order->status}}">{{ $order->status }}</span></td>
+                                <td>{{$order->name}}</td>
+                                <td>${{ $order->total_amount }}</td>
                                 <td>{{ $order->address }}</td>
-                                <td >
-                                  <ul>
-                                      @foreach ($order->orderItems as $orderItem)
-                                          <li>
-                                              Product Name: {{ $orderItem->product->name }}
-                                              <br>
-                                              Quantity: {{ $orderItem->quantity }}
-                                             <br>
-                                             <br>
-                                          </li>
-                                      @endforeach
-                                  </ul>
-                              </td>
+                                <td ><span class="status {{$order->status}}">{{ $order->status }}</span></td>
+                                
                             </tr>
                         @endforeach 
                         </tbody>
