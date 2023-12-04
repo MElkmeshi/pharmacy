@@ -22,8 +22,6 @@ class user_cont extends Controller
             'address'=>$request->address,
             'age'=>$request->age,
         ]);
-        $role = Role::findById(4, 'web');
-        $newuser->assignRole($role);
         return redirect('/');
     }
     public function logout(Request $request,)
