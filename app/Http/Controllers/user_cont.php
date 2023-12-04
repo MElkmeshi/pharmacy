@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\user;
+use App\Models\Order;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash; // Import the Hash facade
 use App\Http\Requests\CreateUserRequest;
@@ -174,6 +175,14 @@ public function deleteuser(Request $request){
         return redirect('/deleteuserform')->with('error', 'User not found');
     }
 }
+
+public static function getLast8Orders()
+    {
+       
+        $orders = Order::get()->take(8);
+
+            return view('dashboard', compact('orders'));
+    }
 
 
 public function disusers(){

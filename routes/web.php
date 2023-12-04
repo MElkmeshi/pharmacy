@@ -64,9 +64,7 @@ Route::group(['middleware' => 'isloggedin'],function () {
 Route::group(['middleware' => 'isadmin'],function () {
     Route::get('/displayprod', [App\Http\Controllers\prod_cont::class, 'displayproducts'])->name('displayproducts');
     Route::get('/messages', [ChatController::class, 'messages']);
-    Route::get('/dashboard', function () {
-        return view('dd');
-    })->name('dash');
+    
     Route::get('/test/test/test', [App\Http\Controllers\ChatController::class, 'test']);
     Route::get('/chats', [ChatController::class, 'chats']);
     Route::post('/addprod', [App\Http\Controllers\prod_cont::class, 'addprod'])->name('addprod');
@@ -80,6 +78,7 @@ Route::group(['middleware' => 'isadmin'],function () {
     Route::post('/editproduct/{id}', [App\Http\Controllers\prod_cont::class, 'update'])->name('editprod');
     Route::get('/dis_users', [App\Http\Controllers\user_cont::class, 'disusers'])->name('dis_users');
     Route::post('/deleteuser', [App\Http\Controllers\user_cont::class, 'deleteuser'])->name('deleteuser');
+    Route::get('/dashboard', [App\Http\Controllers\user_cont::class, 'getLast8Orders'])->name('dash');
     Route::get('/orders',[App\Http\Controllers\order_cont::class, 'getAllOrdersWithUsers'])->name('orders_admin');
 
 
