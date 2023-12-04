@@ -2,7 +2,7 @@
 
 
 @section('name')
-    <link rel="stylesheet" href="css/disproduct.css">
+    <link rel="stylesheet" href="/css/disproduct.css">
     <style>
         .details table {
   width: 100%;
@@ -38,7 +38,7 @@
 .status.Delivered,
 .status.delivered {
   padding: 2px 4px;
-  background: #8de02c;
+  background: #aaea61;
   color: var(--white);
   border-radius: 4px;
   font-size: 14px;
@@ -52,7 +52,7 @@
 .status.Cancelled,
 .status.cancelled {
   padding: 2px 4px;
-  background: #f00;
+  background: rgb(240, 92, 92);
   color: var(--white);
   border-radius: 4px;
   font-size: 14px;
@@ -64,7 +64,7 @@
 .status.Processing,
 .status.processing {
   padding: 2px 4px;
-  background: #1795ce;
+  background: #49b7ea;
   color: var(--white);
   border-radius: 4px;
   font-size: 14px;
@@ -153,7 +153,7 @@ this is style for pagination
             <thead>
                 <tr>
                     <th>Customer Name</th>
-                    <th>Total Amount</th>
+                    <th>Price</th>
                     <th>Status</th>
                     <th>Address</th>
                     <th>Actions</th>
@@ -164,7 +164,7 @@ this is style for pagination
                 @foreach ($orders as $order)
                     <tr>
                         <td>{{ $order->name }}</td>
-                        <td>{{ $order->total_amount }}</td>
+                        <td>${{ $order->total_amount }}</td>
                         <td ><span class="status {{$order->status}}">{{ $order->status }}</span></td>
                         <td>{{ $order->address }}</td>
                         <td>
