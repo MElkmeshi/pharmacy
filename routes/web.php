@@ -67,7 +67,7 @@ Route::group(['middleware' => 'isadmin'],function () {
     Route::get('/messages', [ChatController::class, 'messages']);
     
     Route::get('/test/test/test', [App\Http\Controllers\ChatController::class, 'test']);
-    Route::get('/chats', [ChatController::class, 'chats']);
+    Route::get('/chats', [ChatController::class, 'chats'])->name("chats");
     Route::post('/addprod', [App\Http\Controllers\prod_cont::class, 'addprod'])->name('addprod');
     Route::get('/addprod', function () {
         return view('add__product');

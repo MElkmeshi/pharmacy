@@ -22,7 +22,7 @@
                         <span class="icon">
                             <img src="/images/logo.png" alt="logo" width="70px" />
                         </span>
-                        <span class="title">Dr Mohamed</span>
+                        <span class="title">Dr Elsayed</span>
                     </li>
                 </a>
 
@@ -64,7 +64,7 @@
                 </li>
 
                 <li>
-                    <a href="#">
+                    <a href="{{ route("chats") }}">
                         <span class="icon">
                             <ion-icon name="chatbubble-outline"></ion-icon>
                         </span>
