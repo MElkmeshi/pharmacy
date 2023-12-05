@@ -143,4 +143,11 @@ class prod_cont extends Controller
         return view("search",["data"=>$data]);
         }
     }
+    public function searchadmin(request $request){
+        if ($request->ajax()) {
+        $searchadmin=$request->searchadmin;
+        $data=prod::where("name","like","%{$searchadmin}%")->orderby("id","ASC")->get();
+        return view("searchadmin",["data"=>$data]);
+        }
+    }
 }

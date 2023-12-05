@@ -7,11 +7,17 @@
 @endsection
 @section('card')
     <div class="details">
+        <div class="search">
+            <label>
+                <input type="text" name="searchadmin" id="searchadmin" placeholder="Search here">
+                <ion-icon name="search-outline"></ion-icon>
+            </label>
+        </div>
         <div class="recentOrders">
             <div class="cardHeader">
                 <h2>Products</h2>
             </div>
-
+            <div id="searchresult">
             <table>
                 <thead>
                     <tr>
@@ -49,5 +55,28 @@
 
                 </tbody>
             </table>
+            </div>
         </div>
     @endsection
+    @section("script")
+    <script>
+      $(document).ready(function(){
+        $(document).on("input","#searchadmin",function(){
+        var searchadmin=$(this).val();
+        jQuery.ajax({
+          url:"{{ route("ajaxsearchadmin") }}",
+          type:'post',
+          datatype:'html',
+          cache:false,
+          data:{searchadmin:searchadmin,'_token':"{{ csrf_token() }}"},
+          success:function(data){
+            $("#searchresult").html(data);
+          },
+          error:function(){
+
+          }
+        });
+      });
+      });
+    </script>
+  @endsection

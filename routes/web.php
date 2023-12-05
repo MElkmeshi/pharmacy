@@ -114,7 +114,7 @@ Route::get('/changestatus/{order_id}/{button_name}', [App\Http\Controllers\order
 Route::post('/credit', [PaymobController::class, 'credit'])->name('checkout'); // this route send all functions data to paymob
 Route::get('/callback', [PaymobController::class, 'callback'])->name('callback'); // this route get all reponse data to paymob
 Route::post('/ajaxsearch', [prod_cont::class,"search"])->name('ajaxsearch');
-
+Route::post('/ajaxsearchadmin', [prod_cont::class,"searchadmin"])->name('ajaxsearchadmin');
 
 
 
@@ -149,5 +149,3 @@ Route::get('/admin/edit-role', [AdminRolePermissionController::class, 'vieweditr
 
 Route::post('roles/edit-name', [AdminRolePermissionController::class, 'editRoleName'])->name('admin.roles.editName');
     });
-    
-
