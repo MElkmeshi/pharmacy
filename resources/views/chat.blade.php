@@ -1,52 +1,3 @@
-{{-- <!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-
-<body>
-    <h1>User View</h1>
-    <ul id="ul">
-
-    </ul>
-    <form method="POST" id="form">
-        @csrf
-        <input type="text" id="input-message" name="message">
-        <input type="submit" value="Send">
-    </form>
-    <script>
-        const inputMessage = document.getElementById("input-message");
-        setTimeout(() => {
-            window.Echo.channel('public.chat.1').listen('.chat-message', (e) => {
-                let ul = document.getElementById('ul');
-                let li = document.createElement('li');
-                li.innerHTML = e.username + " " + e.message;
-                ul.appendChild(li);
-            });
-        }, 200);
-        const form = document.getElementById("form");
-        form.addEventListener("submit", (e) => {
-            e.preventDefault();
-            // let ul = document.getElementById('ul');
-            // let li = document.createElement('li');
-            // li.innerHTML = inputMessage.value;
-            // ul.appendChild(li);
-            axios.post("/sendmessage", {
-                message: inputMessage.value,
-                to: 1
-            });
-        });
-    </script>
-    @vite('resources/js/app.js')
-</body>
-
-</html> --}}
-
-
 <!DOCTYPE html>
 <html>
 
@@ -298,7 +249,9 @@
                         </div>
                         <div class="card-footer">
                             <div class="input-group">
-                                <div class="input-group-append">
+                                <input type="file" style="display: none" id="fileInput"
+                                    accept="image/png, image/gif, image/jpeg">
+                                <div class="input-group-append" id="customFileInput">
                                     <span class="input-group-text attach_btn"><i class="fas fa-paperclip"></i></span>
                                 </div>
                                 <textarea name="" class="form-control type_msg" placeholder="Type your message..."></textarea>
@@ -319,6 +272,19 @@
         $(document).ready(function() {
             const id = Number('{{ session('user_id') }}');
             const username = '{{ session('user_name') }}';
+            $('#customFileInput').on('click', function() {
+                $('#fileInput').click();
+            });
+            $('#fileInput').on('change', async function() {
+                let formData = new FormData();
+                formData.append('image', $('#fileInput')[0].files[0]);
+                const res = await axios.post("/sendimage", formData, {
+                    headers: {
+                        'Content-Type': 'multipart/form-data'
+                    }
+                });
+                appendMessage(username, res.data, getCurrentTime(), true);
+            });
             window.Echo.channel('public.chat.1').listen('.chat-message', (data) => {
                 // if not sent by admin dont append
                 if (data.to.id != id) {
@@ -327,30 +293,6 @@
                 appendMessage(data.username, data.message, getCurrentTime(), false);
             });
 
-            // Connect to the Socket.io server
-            // const socket = io.connect('http://localhost:3000'); // Change the URL to your Socket.io server
-
-            // // Emit a 'join' event when a user opens the chat
-            // socket.emit('join', {
-            //     username: 'YourUsername'
-            // });
-
-            // // Listen for 'chat message' events from the server
-            // socket.on('chat message', function(data) {
-            //     appendMessage(data.username, data.message, data.time, false);
-            // });
-
-            // // Listen for 'user joined' events from the server
-            // socket.on('user joined', function(data) {
-            //     appendMessage(data.username, 'joined the chat', data.time, true);
-            // });
-
-            // // Listen for 'user left' events from the server
-            // socket.on('user left', function(data) {
-            //     appendMessage(data.username, 'left the chat', data.time, true);
-            // });
-
-            // Send messages to the server and append them to the chat window
             function sendMessage(message) {
 
                 axios.post("/sendmessage", {
@@ -363,7 +305,8 @@
             // Append messages to the chat window
             function appendMessage(username, message, time, isNotification) {
                 const chatBody = $('.msg_card_body');
-                const msgContainer = $('<div class="d-flex justify-content-end mb-4"></div>');
+                const msgContainer = $(
+                    `<div class="d-flex ${isNotification ? "justify-content-end":""} mb-4"></div>`);
 
                 if (!isNotification) {
                     // If it's not a notification, it's a received message

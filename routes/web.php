@@ -49,6 +49,7 @@ Route::get('/allprod/{category}', [App\Http\Controllers\prod_cont::class, 'displ
 Route::group(['middleware' => 'isloggedin'],function () {
     Route::get('/chat', [ChatController::class, 'chat'])->name('chat');
     Route::post('/sendmessage', [ChatController::class, 'sendmessage']);
+    Route::post('/sendimage', [ChatController::class, 'image']);
     Route::get('/updateuserform', [App\Http\Controllers\user_cont::class, 'show_updateuser_form'])->name('updateuserform');
     Route::post('/updateuser', [App\Http\Controllers\user_cont::class, 'updateuser'])->name('updateuser');
 
@@ -90,12 +91,6 @@ Route::get('/makeorderAll', [App\Http\Controllers\order_cont::class, 'makeordera
 Route::get('/confirmorderAll', [App\Http\Controllers\order_cont::class, 'createorderall'])->name('confirm_order_all');
 Route::get('/changestatus/{order_id}/{button_name}', [App\Http\Controllers\order_cont::class, 'changeOrderStatus'])->name('order.action');
 
-Route::get('/chat', function () {
-    return view("chat");
-})->name("chat");
-Route::get('/chats', function () {
-    return view("chats");
-})->name("chats");
 
 
 
