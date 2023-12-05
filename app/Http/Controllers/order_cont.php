@@ -150,8 +150,7 @@ public function getAllOrdersWithUsers(Request $request)
     $statusFilter = $request->input('status', 'all');
     $orders = Order::with('user')->when($statusFilter !== 'all', function ($query) use ($statusFilter) {
             return $query->where('status', $statusFilter);
-        })
-        ->get();
+        })->paginate(12)->appends(['status' => $statusFilter]);
 
 
     return view('order_admin', compact('orders','statusFilter'));
@@ -173,7 +172,7 @@ public function changeOrderStatus($order_id, $button_name)
                 break;
         }
 
-        return redirect()->route('dash');
+        return back();
     }
 
 

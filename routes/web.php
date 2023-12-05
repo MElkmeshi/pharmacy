@@ -5,6 +5,7 @@ use App\Http\Controllers\ChatController;
 use App\Http\Controllers\PaymobController;
 use App\Http\Controllers\prod_cont;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AdminRolePermissionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -64,9 +65,7 @@ Route::group(['middleware' => 'isloggedin'],function () {
 Route::group(['middleware' => 'isadmin'],function () {
     Route::get('/displayprod', [App\Http\Controllers\prod_cont::class, 'displayproducts'])->name('displayproducts');
     Route::get('/messages', [ChatController::class, 'messages']);
-    Route::get('/dashboard', function () {
-        return view('dd');
-    })->name('dash');
+    
     Route::get('/test/test/test', [App\Http\Controllers\ChatController::class, 'test']);
     Route::get('/chats', [ChatController::class, 'chats']);
     Route::post('/addprod', [App\Http\Controllers\prod_cont::class, 'addprod'])->name('addprod');
@@ -80,7 +79,23 @@ Route::group(['middleware' => 'isadmin'],function () {
     Route::post('/editproduct/{id}', [App\Http\Controllers\prod_cont::class, 'update'])->name('editprod');
     Route::get('/dis_users', [App\Http\Controllers\user_cont::class, 'disusers'])->name('dis_users');
     Route::post('/deleteuser', [App\Http\Controllers\user_cont::class, 'deleteuser'])->name('deleteuser');
+    Route::get('/dashboard', [App\Http\Controllers\user_cont::class, 'getLast8Orders'])->name('dash');
     Route::get('/orders',[App\Http\Controllers\order_cont::class, 'getAllOrdersWithUsers'])->name('orders_admin');
+
+
+   
+    //     Route::get('/admin/roles-permissions', [AdminRolePermissionController::class, 'index']);
+    //     Route::post('/admin/roles', [AdminRolePermissionController::class, 'createRole'])->name('admin.createRole');
+    //     Route::post('/admin/permissions', [AdminRolePermissionController::class, 'createPermission']);
+
+        
+
+    // Route::get('/admin/roles/{role}/edit', [AdminRolePermissionController::class, 'editRole'])->name('admin.roles_permissions.edit_role');
+    // Route::post('/admin/roles/{role}/update', [AdminRolePermissionController::class, 'updateRole'])->name('admin.roles_permissions.update_role');
+    // Route::get('/admin/roles/{role}/assign-permissions', [AdminRolePermissionController::class, 'assignPermissionToRole'])->name('admin.roles_permissions.assign_permissions');
+    // Route::get('/admin/roles/{role}/assign-role', [AdminRolePermissionController::class, 'assignRoleToUser'])->name('admin.roles_assign_user');
+
+   
 });
 
 Route::get('/makeorder/{id}/{cart_id}', [App\Http\Controllers\order_cont::class, 'makeorder'])->name('order');
@@ -99,3 +114,40 @@ Route::get('/changestatus/{order_id}/{button_name}', [App\Http\Controllers\order
 Route::post('/credit', [PaymobController::class, 'credit'])->name('checkout'); // this route send all functions data to paymob
 Route::get('/callback', [PaymobController::class, 'callback'])->name('callback'); // this route get all reponse data to paymob
 Route::post('/ajaxsearch', [prod_cont::class,"search"])->name('ajaxsearch');
+
+
+
+
+// Route::get('/admin/roles-permissions', [AdminRolePermissionController::class, 'index']);
+Route::post('/admin/roles', [AdminRolePermissionController::class, 'assignPermissionToRole'])->name('admin.roles');
+
+Route::get('/admin/create-role', [AdminRolePermissionController::class, 'viewCreateRole'])->name('admin.create.role');
+Route::get('/admin/Assign-role', [AdminRolePermissionController::class, 'viewAssign_role_to_user'])->name('admin.Assign.role.user');
+Route::post('/admin/assign-role-to-user', [AdminRolePermissionController::class, 'assignRoleToUser'])
+    ->name('admin.assignRoleToUser');
+
+// Route::get('/admin/edit-role', [AdminRolePermissionController::class, 'vieweditrole'])->name('admin.edit.role');
+
+// Route::post('roles/edit-name', [AdminRolePermissionController::class, 'editRoleName'])->name('admin.roles.editName');
+
+Route::get('/admin/delete-role', [AdminRolePermissionController::class, 'viewdeleterole'])->name('admin.delete.role');
+Route::delete('roles/delete', [AdminRolePermissionController::class, 'deleteRole'])->name('admin.roles.delete');
+
+
+
+// Route::middleware(['checkPermission:Add_Product'])->group(function ()  {
+//     Route::post('/addprod', [App\Http\Controllers\prod_cont::class, 'addprod'])->name('addprod');
+//     Route::get('/addprod', function () {
+//         return view('add__product');
+//     })->name('addproduct');
+// });
+
+
+Route::middleware(['checkPermission:Add_Product'])->group(function ()  {
+       
+Route::get('/admin/edit-role', [AdminRolePermissionController::class, 'vieweditrole'])->name('admin.edit.role');
+
+Route::post('roles/edit-name', [AdminRolePermissionController::class, 'editRoleName'])->name('admin.roles.editName');
+    });
+    
+
