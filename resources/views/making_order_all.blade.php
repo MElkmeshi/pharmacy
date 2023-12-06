@@ -4,7 +4,8 @@
 @section('title',"order")
 
 @section('content')
-    
+
+
 <form action="{{ route('confirm_order_all')}} " method="POST">
     @csrf
 
@@ -25,16 +26,14 @@
     </div>
 </form>
 
-
-<div class="container py-5 text-center">
-    <form action="{{ route('checkout') }}" method="POST">
+<form action="{{ route('checkout') }}" method="POST">
         @csrf
         @method('POST')
-            <button class="btn btn-lg text-light bg-dark text-center"
-                type="submit" >create Online Order
-            </button>
+        <div class="col-2">
+            <button type="submit" class="btn btn-primary">online Order</button>
+        </div>
     </form>
-</div>
+
 
 <script>
     document.querySelector('form').addEventListener('submit', function (event) {

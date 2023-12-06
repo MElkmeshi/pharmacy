@@ -28,6 +28,16 @@
     </div>
 </form>
 
+<div class="container py-5 text-center">
+    <form action="{{ route('checkout') }}" method="POST">
+        @csrf
+        @method('POST')
+            <button class="btn btn-lg text-light bg-dark text-center"
+                type="submit" >create Online Order
+            </button>
+    </form>
+</div>
+
 <script>
     document.querySelector('form').addEventListener('submit', function (event) {
         // Prevent the default form submission behavior
