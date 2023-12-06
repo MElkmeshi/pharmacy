@@ -7,7 +7,7 @@
     
 <!-- Your Blade template -->
 
-<form action="{{ route('confirm_order', ['product_id' => $id, 'cart_id' => $cartid ]) }}" method="GET">
+<form action="{{ route('confirm_order', ['product_id' => $id, 'cart_id' => $cartid ]) }}" method="POST">
     @csrf
 
     <label for="new_address">Your current address:</label>
@@ -24,19 +24,9 @@
     </select>
 
     <div class="col-2">
-        <button type="submit" class="btn btn-danger">Create cash Order</button>
+        <button type="submit" class="btn btn-danger">Create Order</button>
     </div>
 </form>
-
-<div class="container py-5 text-center">
-    <form action="{{ route('checkout') }}" method="POST">
-        @csrf
-        @method('POST')
-            <button class="btn btn-lg text-light bg-dark text-center"
-                type="submit" >create Online Order
-            </button>
-    </form>
-</div>
 
 <script>
     document.querySelector('form').addEventListener('submit', function (event) {
@@ -48,14 +38,13 @@
 
         if (selectedOption === '1') {
             // Redirect to the confirm_order route
-            window.location.href = "{{ route('confirm_order_all') }}";
+            window.location.href = "{{ route('confirm_order', ['product_id' => $id, 'cart_id' => $cartid ]) }}";
         } else if (selectedOption === '2') {
-           
+            // Redirect to the about-us route
             window.location.href = "{{ route('checkout') }}";
         }
     });
 </script>
-
 
 
 
