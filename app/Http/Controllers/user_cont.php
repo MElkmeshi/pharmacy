@@ -196,5 +196,11 @@ public function disusers(){
   // ['products' => $products]
    }
 
-
+public function ajaxadminsearchuser(request $request){
+    if ($request->ajax()) {
+        $adminsearchuser=$request->adminsearchuser;
+        $data=user::where("name","like","%{$adminsearchuser}%")->orderby("id","ASC")->get();
+        return view("adminsearchuser",["data"=>$data]);
+        }
+}
 }
