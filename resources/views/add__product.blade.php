@@ -30,33 +30,33 @@
                     @csrf
                     <div class="input-field">
                         <label class="label" for="name">Product Name</label>
-                        <input class="input" type="text" class="input form-control" name="name" id="name" required="">
+                        <input class="input" type="text" class="input form-control" name="name" id="name"  value="{{ old("name") }}">
 
                         <div style="color: red" class="error-message" id="name-error"></div>
                     </div>
                     <div class="input-field">
                         <label class="label" for="description">Product Description</label>
-                        <input class="input" type="text" class="input form-control" id="description" name="description" required="">
+                        <input class="input" type="text" class="input form-control" id="description" name="description" value="{{ old("description") }}">
 
                         <div style="color: red" class="error-message" id="description-error"></div>
 
                     </div>
                     <div class="input-field">
                         <label class="label" for="price">Price</label>
-                        <input class="input" type="text" class="input form-control" name="price" id="price" required="">
+                        <input class="input" type="text" class="input form-control" name="price" id="price"  value="{{ old("price") }}">
 
                         <div style="color: red" class="error-message" id="price-error"></div>
                     </div>
                     <div class="input-field">
                         <label class="label" for="image">Image</label>
-                        <input class="input" type="file" class="input form-control" id="image" name="image" required="">
+                        <input class="input" type="file" class="input form-control" id="image" name="image" value="{{ old("image") }}">
                         <div style="color: red" class="error-message" id="image-error"></div>
                     </div>
                     <div class="form-group">
                        
                         <label class="label" for="category">Category:</label>
                         
-                        <select class="form-control" name="category" id="category" required="">
+                        <select class="form-control" name="category" id="category" value="{{ old("category") }}">
                             <option value="baby_care">Baby Care</option>
                             <option value="skin_care">Skin Care</option>
                             <option value="medications">Medications</option>

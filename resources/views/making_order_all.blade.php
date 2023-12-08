@@ -4,7 +4,8 @@
 @section('title',"order")
 
 @section('content')
-    
+
+
 <form action="{{ route('confirm_order_all')}} " method="POST">
     @csrf
 
@@ -13,21 +14,27 @@
 
     <label for="new_address">Change address:</label>
     <input type="text" id="new_address" name="new_address" >
-
     <!-- Other form fields if needed -->
-    <label>choose pay method</label>
+    <label>Choose payment method</label>
     <select name="payment" id="paymentMethod">
-        <option value="1"> cash on delivery</option>
-        <option value="2"> online payment</option>
+        <option value="1">Cash on Delivery</option>
+        <option value="2">Online Payment</option>
     </select>
-   
 
     <div class="col-2">
-        <button type="submit" class="btn btn-danger" >  Create Order
-        </button>
-            
+        <button type="submit" class="btn btn-danger">Create Order</button>
     </div>
 </form>
+
+<form action="{{ route('checkout') }}" method="POST">
+        @csrf
+        @method('POST')
+        <div class="col-2">
+            <button type="submit" class="btn btn-primary">online Order</button>
+        </div>
+    </form>
+
+
 <script>
     document.querySelector('form').addEventListener('submit', function (event) {
         // Prevent the default form submission behavior
@@ -40,7 +47,7 @@
             // Redirect to the confirm_order route
             window.location.href = "{{ route('confirm_order_all') }}";
         } else if (selectedOption === '2') {
-            // Redirect to the about-us route
+           
             window.location.href = "{{ route('checkout') }}";
         }
     });

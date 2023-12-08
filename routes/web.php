@@ -4,6 +4,7 @@ use App\Http\Controllers\ChatController;
 
 use App\Http\Controllers\PaymobController;
 use App\Http\Controllers\prod_cont;
+use App\Http\Controllers\user_cont;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminRolePermissionController;
 
@@ -67,7 +68,7 @@ Route::group(['middleware' => 'isadmin'],function () {
     Route::get('/messages', [ChatController::class, 'messages']);
     
     Route::get('/test/test/test', [App\Http\Controllers\ChatController::class, 'test']);
-    Route::get('/chats', [ChatController::class, 'chats']);
+    Route::get('/chats', [ChatController::class, 'chats'])->name("chats");
     Route::post('/addprod', [App\Http\Controllers\prod_cont::class, 'addprod'])->name('addprod');
     Route::get('/addprod', function () {
         return view('add__product');
@@ -114,8 +115,8 @@ Route::get('/changestatus/{order_id}/{button_name}', [App\Http\Controllers\order
 Route::post('/credit', [PaymobController::class, 'credit'])->name('checkout'); // this route send all functions data to paymob
 Route::get('/callback', [PaymobController::class, 'callback'])->name('callback'); // this route get all reponse data to paymob
 Route::post('/ajaxsearch', [prod_cont::class,"search"])->name('ajaxsearch');
-
-
+Route::post('/ajaxsearchadmin', [prod_cont::class,"searchadmin"])->name('ajaxsearchadmin');
+Route::post('/ajaxadminsearchuser', [user_cont::class,"ajaxadminsearchuser"])->name('ajaxadminsearchuser');
 
 
 // Route::get('/admin/roles-permissions', [AdminRolePermissionController::class, 'index']);
@@ -149,5 +150,3 @@ Route::get('/admin/edit-role', [AdminRolePermissionController::class, 'vieweditr
 
 Route::post('roles/edit-name', [AdminRolePermissionController::class, 'editRoleName'])->name('admin.roles.editName');
     });
-    
-

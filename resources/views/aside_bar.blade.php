@@ -22,7 +22,7 @@
                         <span class="icon">
                             <img src="/images/logo.png" alt="logo" width="70px" />
                         </span>
-                        <span class="title">Dr Mohamed</span>
+                        <span class="title">Dr Elsayed</span>
                     </li>
                 </a>
 
@@ -64,7 +64,7 @@
                 </li>
 
                 <li>
-                    <a href="#">
+                    <a href="{{ route("chats") }}">
                         <span class="icon">
                             <ion-icon name="chatbubble-outline"></ion-icon>
                         </span>
@@ -101,13 +101,6 @@
                     <ion-icon name="menu-outline"></ion-icon>
                 </div>
 
-                <div class="search">
-                    <label>
-                        <input type="text" placeholder="Search here">
-                        <ion-icon name="search-outline"></ion-icon>
-                    </label>
-                </div>
-
                 <!-- insert here name of admin -->
                 <div class="user">
                     <span class="title">{{ session('user_name') }}</span>
@@ -125,6 +118,8 @@
     <!-- ====== ionicons ======= -->
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <script src="{{ asset("js/jquery-3.7.1.min.js") }}"></script>
+    @yield('script')
 </body>
 
 </html>

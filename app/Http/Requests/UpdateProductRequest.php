@@ -20,4 +20,12 @@ class UpdateProductRequest extends FormRequest
             'image' => 'image|mimes:jpeg,png,jpg|max:2048', // Adjust the mime types and max file size as needed
         ];
     }
+    public function messages(){
+        return[
+            "name.required|string|min:3|max:255"=>"please enter your name",
+            "description.required|string|min:3|max:500"=>"enter the description",
+            "price.required|numeric|min:0"=>"please enter the price",
+            "image.image|mimes:jpeg,png,jpg|max:2048"=>"enter valid image"
+        ];
+    }
 }
