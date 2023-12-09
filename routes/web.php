@@ -7,6 +7,7 @@ use App\Http\Controllers\prod_cont;
 use App\Http\Controllers\user_cont;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminRolePermissionController;
+use Illuminate\Support\Facades\URL;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,7 +20,9 @@ use App\Http\Controllers\AdminRolePermissionController;
 |
 */
 
-
+if (env('APP_ENV') === 'production') {
+    URL::forceScheme('https');
+}
 Route::get('/test', [App\Http\Controllers\ChatController::class, 'test']);
 
 
@@ -66,7 +69,7 @@ Route::group(['middleware' => 'isloggedin'],function () {
 Route::group(['middleware' => 'isadmin'],function () {
     Route::get('/displayprod', [App\Http\Controllers\prod_cont::class, 'displayproducts'])->name('displayproducts');
     Route::get('/messages', [ChatController::class, 'messages']);
-    
+
     Route::get('/test/test/test', [App\Http\Controllers\ChatController::class, 'test']);
     Route::get('/chats', [ChatController::class, 'chats'])->name("chats");
     Route::post('/addprod', [App\Http\Controllers\prod_cont::class, 'addprod'])->name('addprod');
@@ -84,19 +87,19 @@ Route::group(['middleware' => 'isadmin'],function () {
     Route::get('/orders',[App\Http\Controllers\order_cont::class, 'getAllOrdersWithUsers'])->name('orders_admin');
 
 
-   
+
     //     Route::get('/admin/roles-permissions', [AdminRolePermissionController::class, 'index']);
     //     Route::post('/admin/roles', [AdminRolePermissionController::class, 'createRole'])->name('admin.createRole');
     //     Route::post('/admin/permissions', [AdminRolePermissionController::class, 'createPermission']);
 
-        
+
 
     // Route::get('/admin/roles/{role}/edit', [AdminRolePermissionController::class, 'editRole'])->name('admin.roles_permissions.edit_role');
     // Route::post('/admin/roles/{role}/update', [AdminRolePermissionController::class, 'updateRole'])->name('admin.roles_permissions.update_role');
     // Route::get('/admin/roles/{role}/assign-permissions', [AdminRolePermissionController::class, 'assignPermissionToRole'])->name('admin.roles_permissions.assign_permissions');
     // Route::get('/admin/roles/{role}/assign-role', [AdminRolePermissionController::class, 'assignRoleToUser'])->name('admin.roles_assign_user');
 
-   
+
 });
 
 Route::get('/makeorder/{id}/{cart_id}', [App\Http\Controllers\order_cont::class, 'makeorder'])->name('order');
@@ -145,7 +148,7 @@ Route::delete('roles/delete', [AdminRolePermissionController::class, 'deleteRole
 
 
 Route::middleware(['checkPermission:Add_Product'])->group(function ()  {
-       
+
 Route::get('/admin/edit-role', [AdminRolePermissionController::class, 'vieweditrole'])->name('admin.edit.role');
 
 Route::post('roles/edit-name', [AdminRolePermissionController::class, 'editRoleName'])->name('admin.roles.editName');
