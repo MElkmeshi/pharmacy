@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\user;
+use App\Models\User;
 use App\Models\Order;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash; // Import the Hash facade
@@ -178,7 +178,7 @@ public function deleteuser(Request $request){
 
 public static function getLast8Orders()
     {
-       
+
         $orders = Order::orderBy('id', 'desc')->take(8)->get();
         $users = User::orderBy('id', 'desc')->take(8)->get(['name', 'address']);
 
