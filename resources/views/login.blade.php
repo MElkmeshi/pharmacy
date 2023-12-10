@@ -249,6 +249,11 @@
                                     href="{{ route('signupform') }}">Signup in
                                     here</a></span>
                         </div>
+                        <div class="signin">
+                            <span id="sp">forget your password ? <a id="anc"
+                                    href="">reset password know
+                                    </a></span>
+                        </div>
                 </div>
                 </form>
             </div>
