@@ -264,7 +264,8 @@
                 </div>
             </div>
         </div>
-        @vite('resources/js/app.js')
+        {{-- @vite('resources/js/app.js') --}}
+        <script src="build/assets/app-2ddc0c2d.js"></script>
     </body>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 

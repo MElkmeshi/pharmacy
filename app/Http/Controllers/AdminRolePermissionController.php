@@ -14,7 +14,7 @@ class AdminRolePermissionController extends Controller
     {
         $roles = Role::all();
         //$permissions = Permission::all();
-    
+
         //return view('admin.roles_permissions.index', compact('roles', 'permissions'));
         return view('admin.roles_permissions.index', compact('roles'));
     }
@@ -28,7 +28,7 @@ class AdminRolePermissionController extends Controller
         Role::create(['name' => $request->name]);
 
         //return redirect()->route('admin.roles_permissions.index')->with('success', 'Role created successfully.');
-        return view('home',);
+        return redirect()->route('home');;
     }
 
 
@@ -43,7 +43,7 @@ class AdminRolePermissionController extends Controller
     $role->update(['name' => $request->new_name]);
 
    // return redirect()->route('admin.roles_permissions.index')->with('success', 'Role name updated successfully.');
-   return view('home',);
+   return redirect()->route('home');;
 }
 
 public function deleteRole(Request $request)
@@ -52,7 +52,7 @@ public function deleteRole(Request $request)
     $role->delete();
 
     //return redirect()->route('admin.roles_permissions.index')->with('success', 'Role deleted successfully.');
-    return view('home',);
+    return redirect()->route('home');;
 }
 
 
@@ -65,17 +65,17 @@ public function deleteRole(Request $request)
 
     public function vieweditrole()
     {
-       
+
         return view('editrole');
     }
 
     public function viewdeleterole()
     {
-       
+
         return view('deleterole');
     }
 
-    
+
 
 
     public function assignPermissionToRole(Request $request)
@@ -97,17 +97,17 @@ public function deleteRole(Request $request)
     $role->syncPermissions($permissions);
 
     // Redirect or return a view as needed
-    return view('home');
+    return redirect()->route('home');;
 }
 
 
 
 
 
-   
+
     public function assignRoleToUser(Request $request)
 {
-    
+
     $roleName = $request->input('role');
     $useremail = $request->input('email');
 
@@ -122,7 +122,7 @@ public function deleteRole(Request $request)
 
     // Redirect or return a view as needed
    // return redirect()->route('admin.roles_permissions.index')->with('success', 'Role assigned to user successfully.');
-   return view('home');
+   return redirect()->route('home');;
 }
 
 
@@ -154,7 +154,7 @@ public function deleteRole(Request $request)
 }
 
 
-    
+
 }
 
 
