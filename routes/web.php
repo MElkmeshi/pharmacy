@@ -5,6 +5,7 @@ use App\Http\Controllers\ChatController;
 use App\Http\Controllers\PaymobController;
 use App\Http\Controllers\prod_cont;
 use App\Http\Controllers\user_cont;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminRolePermissionController;
 use Illuminate\Support\Facades\URL;
@@ -157,3 +158,7 @@ Route::post('roles/edit-name', [AdminRolePermissionController::class, 'editRoleN
 Route::get('/receive', [App\Http\Controllers\PusherController::class, 'receive']);
 Route::get('/brodcast', [App\Http\Controllers\PusherController::class, 'brodcast']);
 Route::get('/testtt', [App\Http\Controllers\PusherController::class, 'test']);
+
+Route::get('/linkstorage', function () {
+    Artisan::call('storage:link');
+});
