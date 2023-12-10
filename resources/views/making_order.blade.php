@@ -50,7 +50,7 @@
             // Redirect to the confirm_order route
             window.location.href = "{{ route('confirm_order', ['product_id' => $id, 'cart_id' => $cartid ]) }}";
         } else if (selectedOption === '2') {
-            // Redirect to the about-us route
+            // Redirect to the checkout route
             window.location.href = "{{ route('checkout') }}";
         }
     });
