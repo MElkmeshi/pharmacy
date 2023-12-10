@@ -152,4 +152,8 @@ Route::middleware(['checkPermission:Add_Product'])->group(function ()  {
 Route::get('/admin/edit-role', [AdminRolePermissionController::class, 'vieweditrole'])->name('admin.edit.role');
 
 Route::post('roles/edit-name', [AdminRolePermissionController::class, 'editRoleName'])->name('admin.roles.editName');
-    });
+});
+
+Route::get('/receive', [App\Http\Controllers\PusherController::class, 'receive']);
+Route::get('/brodcast', [App\Http\Controllers\PusherController::class, 'brodcast']);
+Route::get('/testtt', [App\Http\Controllers\PusherController::class, 'test']);
