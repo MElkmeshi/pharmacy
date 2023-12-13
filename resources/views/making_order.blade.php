@@ -28,6 +28,16 @@
     </div>
 </form>
 
+<div class="container py-5 text-center">
+    <form action="{{ route('checkout') }}" method="POST">
+        @csrf
+        @method('POST')
+            <button class="btn btn-lg text-light bg-dark text-center"
+                type="submit" >create Online Order
+            </button>
+    </form>
+</div>
+
 <script>
     document.querySelector('form').addEventListener('submit', function (event) {
         // Prevent the default form submission behavior
@@ -40,7 +50,7 @@
             // Redirect to the confirm_order route
             window.location.href = "{{ route('confirm_order', ['product_id' => $id, 'cart_id' => $cartid ]) }}";
         } else if (selectedOption === '2') {
-            // Redirect to the about-us route
+            // Redirect to the checkout route
             window.location.href = "{{ route('checkout') }}";
         }
     });

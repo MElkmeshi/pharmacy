@@ -145,7 +145,7 @@ class PaymobController extends Controller
                 //here we checked that the success payment is true and we updated the data base and empty the cart and redirct the customer to thankyou page
 
                
-                return redirect('thankyou');
+                return redirect(route('home'));
                 
             }
             else {
