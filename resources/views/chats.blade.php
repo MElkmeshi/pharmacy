@@ -1,78 +1,8 @@
-{{-- <!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-
-<body>
-    <h1>Admin View</h1>
-    <ul id="ul">
-        @foreach ($chats as $chat)
-            <li id="{{ $chat->from }}">{{ $chat->from_name }} {{ $chat->message }}</li>
-        @endforeach
-
-    </ul>
-    <ul id="users">
-    </ul>
-    <form method="POST" id="form">
-        @csrf
-        <input type="text" id="input-message" name="message">
-        <input type="hidden" id="input-to" name="to" value="2">
-        <input type="submit" value="Send">
-    </form>
-    <button id="fathy-button">Fathy</button>
-    <script>
-        const inputMessage = document.getElementById("input-message");
-        setTimeout(() => {
-            window.Echo.channel('public.chat.1').listen('.chat-message', (e) => {
-                let ul = document.getElementById('ul');
-                let li = document.createElement('li');
-                li.innerHTML = e.username + " " + e.message;
-                ul.appendChild(li);
-            });
-        }, 200);
-        const form = document.getElementById("form");
-        const inputTo = document.getElementById("input-to");
-        form.addEventListener("submit", (e) => {
-            e.preventDefault();
-            // let ul = document.getElementById('ul');
-            // let li = document.createElement('li');
-            // li.innerHTML = inputMessage.value;
-            // ul.appendChild(li);
-            axios.post("/sendmessage", {
-                message: inputMessage.value,
-                to: inputTo.value
-            });
-        });
-        const fathyButton = document.getElementById("fathy-button");
-        fathyButton.addEventListener("click", async (e) => {
-            e.preventDefault();
-            const res = await axios.get("/messages?user=2", {
-                message: inputMessage.value,
-                to: inputTo.value
-            });
-            res.data.forEach(element => {
-                let ul = document.getElementById('ul');
-                let li = document.createElement('li');
-                li.innerHTML = element.from_user_database.name + " " + element.message;
-                ul.appendChild(li);
-            });
-        });
-    </script>
-</body>
-
-</html>
-
-
 <!DOCTYPE html>
-<html> --}}
+<html>
 
 <head>
-    <title>Chat</title>
+    <title>Chats</title>
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
     <!-- Font awesome -->
@@ -299,6 +229,7 @@
     }
 
     .msg_cotainer_receive {
+        justify-content: start;
         margin-top: auto;
         margin-bottom: auto;
         margin-right: 10px;
@@ -310,7 +241,6 @@
         -moz-border-radius: 25px;
         -ms-border-radius: 25px;
         -o-border-radius: 25px;
-
     }
 
     .msg_time {
@@ -368,6 +298,7 @@
 </style>
 
 <body>
+
     <div class="container-fluid h-100">
         <div class="row justify-content-center h-100">
             <div class="col-md-4 col-xl-3 chat">
@@ -407,7 +338,9 @@
                     </div>
                     <div class="card-footer">
                         <div class="input-group">
-                            <div class="input-group-append">
+                            <input type="file" style="display: none" id="fileInput"
+                                accept="image/png, image/gif, image/jpeg">
+                            <div class="input-group-append" id="customFileInput">
                                 <span class="input-group-text attach_btn"><i class="fas fa-paperclip"></i></span>
                             </div>
                             <textarea name="" class="form-control type_msg" placeholder="Type your message..."></textarea>
@@ -420,15 +353,20 @@
             </div>
         </div>
     </div>
-    @vite('resources/js/app.js')
+    {{-- @vite('resources/js/app.js')
+     --}}
+    <script src="build/assets/app-2ddc0c2d.js"></script>
+
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
 <script>
     $(document).ready(function() {
         let activeItem = null;
         let activeId = null;
         let activeName = null;
+        $('#customFileInput').on('click', function() {
+            $('#fileInput').click();
+        });
 
         $('.contacts').on('click', 'li', function() {
             const clickedItem = $(this);
@@ -460,6 +398,7 @@
 
         window.Echo.channel('public.chat.1').listen('.chat-message', (data) => {
             console.log(data);
+            console.log("new message");
             if (data.to.id != 1) {
                 return;
             }
@@ -503,7 +442,8 @@
         // Append messages to the chat window
         function appendMessage(username, message, time, isNotification) {
             const chatBody = $('.msg_card_body');
-            const msgContainer = $('<div class="d-flex justify-content-end mb-4"></div>');
+            const msgContainer = $(
+                `<div class="d-flex ${isNotification ? "justify-content-end":""} mb-4"></div>`);
 
             if (!isNotification) {
                 // If it's not a notification, it's a received message

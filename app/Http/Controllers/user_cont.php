@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\user;
+use App\Models\User;
 use App\Models\Order;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash; // Import the Hash facade
@@ -178,10 +178,11 @@ public function deleteuser(Request $request){
 
 public static function getLast8Orders()
     {
-       
-        $orders = Order::get()->take(8);
 
-            return view('dashboard', compact('orders'));
+        $orders = Order::orderBy('id', 'desc')->take(8)->get();
+        $users = User::orderBy('id', 'desc')->take(8)->get(['name', 'address']);
+
+            return view('dashboard', compact('orders','users'));
     }
 
 
@@ -195,5 +196,11 @@ public function disusers(){
   // ['products' => $products]
    }
 
-
+public function ajaxadminsearchuser(request $request){
+    if ($request->ajax()) {
+        $adminsearchuser=$request->adminsearchuser;
+        $data=user::where("name","like","%{$adminsearchuser}%")->orderby("id","ASC")->get();
+        return view("adminsearchuser",["data"=>$data]);
+        }
+}
 }

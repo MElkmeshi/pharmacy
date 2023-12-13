@@ -4,8 +4,11 @@ use App\Http\Controllers\ChatController;
 
 use App\Http\Controllers\PaymobController;
 use App\Http\Controllers\prod_cont;
+use App\Http\Controllers\user_cont;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminRolePermissionController;
+use Illuminate\Support\Facades\URL;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,7 +21,9 @@ use App\Http\Controllers\AdminRolePermissionController;
 |
 */
 
-
+if (env('APP_ENV') === 'production') {
+    URL::forceScheme('https');
+}
 Route::get('/test', [App\Http\Controllers\ChatController::class, 'test']);
 
 
@@ -50,6 +55,7 @@ Route::get('/allprod/{category}', [App\Http\Controllers\prod_cont::class, 'displ
 Route::group(['middleware' => 'isloggedin'],function () {
     Route::get('/chat', [ChatController::class, 'chat'])->name('chat');
     Route::post('/sendmessage', [ChatController::class, 'sendmessage']);
+    Route::post('/sendimage', [ChatController::class, 'image']);
     Route::get('/updateuserform', [App\Http\Controllers\user_cont::class, 'show_updateuser_form'])->name('updateuserform');
     Route::post('/updateuser', [App\Http\Controllers\user_cont::class, 'updateuser'])->name('updateuser');
 
@@ -64,9 +70,9 @@ Route::group(['middleware' => 'isloggedin'],function () {
 Route::group(['middleware' => 'isadmin'],function () {
     Route::get('/displayprod', [App\Http\Controllers\prod_cont::class, 'displayproducts'])->name('displayproducts');
     Route::get('/messages', [ChatController::class, 'messages']);
-    
+
     Route::get('/test/test/test', [App\Http\Controllers\ChatController::class, 'test']);
-    Route::get('/chats', [ChatController::class, 'chats']);
+    Route::get('/chats', [ChatController::class, 'chats'])->name("chats");
     Route::post('/addprod', [App\Http\Controllers\prod_cont::class, 'addprod'])->name('addprod');
     Route::get('/addprod', function () {
         return view('add__product');
@@ -82,19 +88,19 @@ Route::group(['middleware' => 'isadmin'],function () {
     Route::get('/orders',[App\Http\Controllers\order_cont::class, 'getAllOrdersWithUsers'])->name('orders_admin');
 
 
-   
+
     //     Route::get('/admin/roles-permissions', [AdminRolePermissionController::class, 'index']);
     //     Route::post('/admin/roles', [AdminRolePermissionController::class, 'createRole'])->name('admin.createRole');
     //     Route::post('/admin/permissions', [AdminRolePermissionController::class, 'createPermission']);
 
-        
+
 
     // Route::get('/admin/roles/{role}/edit', [AdminRolePermissionController::class, 'editRole'])->name('admin.roles_permissions.edit_role');
     // Route::post('/admin/roles/{role}/update', [AdminRolePermissionController::class, 'updateRole'])->name('admin.roles_permissions.update_role');
     // Route::get('/admin/roles/{role}/assign-permissions', [AdminRolePermissionController::class, 'assignPermissionToRole'])->name('admin.roles_permissions.assign_permissions');
     // Route::get('/admin/roles/{role}/assign-role', [AdminRolePermissionController::class, 'assignRoleToUser'])->name('admin.roles_assign_user');
 
-   
+
 });
 
 Route::get('/makeorder/{id}/{cart_id}', [App\Http\Controllers\order_cont::class, 'makeorder'])->name('order');
@@ -105,12 +111,6 @@ Route::get('/makeorderAll', [App\Http\Controllers\order_cont::class, 'makeordera
 Route::get('/confirmorderAll', [App\Http\Controllers\order_cont::class, 'createorderall'])->name('confirm_order_all');
 Route::get('/changestatus/{order_id}/{button_name}', [App\Http\Controllers\order_cont::class, 'changeOrderStatus'])->name('order.action');
 
-Route::get('/chat', function () {
-    return view("chat");
-})->name("chat");
-Route::get('/chats', function () {
-    return view("chats");
-})->name("chats");
 
 
 
@@ -119,8 +119,8 @@ Route::get('/chats', function () {
 Route::post('/credit', [PaymobController::class, 'credit'])->name('checkout'); // this route send all functions data to paymob
 Route::get('/callback', [PaymobController::class, 'callback'])->name('callback'); // this route get all reponse data to paymob
 Route::post('/ajaxsearch', [prod_cont::class,"search"])->name('ajaxsearch');
-
-
+Route::post('/ajaxsearchadmin', [prod_cont::class,"searchadmin"])->name('ajaxsearchadmin');
+Route::post('/ajaxadminsearchuser', [user_cont::class,"ajaxadminsearchuser"])->name('ajaxadminsearchuser');
 
 
 // Route::get('/admin/roles-permissions', [AdminRolePermissionController::class, 'index']);
@@ -149,10 +149,16 @@ Route::delete('roles/delete', [AdminRolePermissionController::class, 'deleteRole
 
 
 Route::middleware(['checkPermission:Add_Product'])->group(function ()  {
-       
+
 Route::get('/admin/edit-role', [AdminRolePermissionController::class, 'vieweditrole'])->name('admin.edit.role');
 
 Route::post('roles/edit-name', [AdminRolePermissionController::class, 'editRoleName'])->name('admin.roles.editName');
-    });
-    
+});
 
+Route::get('/receive', [App\Http\Controllers\PusherController::class, 'receive']);
+Route::get('/brodcast', [App\Http\Controllers\PusherController::class, 'brodcast']);
+Route::get('/testtt', [App\Http\Controllers\PusherController::class, 'test']);
+
+Route::get('/linkstorage', function () {
+    Artisan::call('storage:link');
+});

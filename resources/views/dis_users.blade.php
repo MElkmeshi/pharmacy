@@ -1,18 +1,24 @@
 @extends('aside_bar')
 
-
+@section($active="displayUsers")
 @section('name')
     <link rel="stylesheet" href="css/disproduct.css">
     <title>Display all user</title>
 @endsection
 @section('card')
     <div class="details">
+        <div class="search">
+            <label>
+                <input type="text" name="adminsearchuser" id="adminsearchuser" placeholder="Search here">
+                <ion-icon name="search-outline"></ion-icon>
+            </label>
+        </div>
         <div class="recentOrders">
             <div class="cardHeader">
                 <h2>Customers</h2>
 
-            </div>
-
+            </div >
+            <div id="usersearchresult">
             <table>
                 <thead>
                     <tr>
@@ -43,4 +49,27 @@
                 </tbody>
             </table>
         </div>
+        </div>
     @endsection
+    @section("script")
+    <script>
+      $(document).ready(function(){
+        $(document).on("input","#adminsearchuser",function(){
+        var adminsearchuser=$(this).val();
+        jQuery.ajax({
+          url:"{{ route("ajaxadminsearchuser") }}",
+          type:'post',
+          datatype:'html',
+          cache:false,
+          data:{adminsearchuser:adminsearchuser,'_token':"{{ csrf_token() }}"},
+          success:function(data){
+            $("#usersearchresult").html(data);
+          },
+          error:function(){
+
+          }
+        });
+      });
+      });
+    </script>
+  @endsection

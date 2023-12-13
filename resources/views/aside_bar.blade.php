@@ -22,11 +22,11 @@
                         <span class="icon">
                             <img src="/images/logo.png" alt="logo" width="70px" />
                         </span>
-                        <span class="title">Dr Mohamed</span>
+                        <span class="title">Dr Elsayed</span>
                     </li>
                 </a>
 
-                <li>
+                <li class="{{$active == "dashboard" ? "hovered" : ""}}">
                     <a href="{{ route('dash') }}">
                         <span class="icon">
                             <ion-icon name="home-outline"></ion-icon>
@@ -35,7 +35,7 @@
                     </a>
                 </li>
 
-                <li>
+                <li class="{{$active == "addProduct" ? "hovered" : ""}}">
                     <a href="{{ route('addproduct') }}">
                         <span class="icon">
                             <ion-icon name="add-outline"></ion-icon>
@@ -45,7 +45,7 @@
                 </li>
 
 
-                <li>
+                <li class="{{$active == "displayProduct" ? "hovered" : ""}}">
                     <a href="{{ route('disproduct') }}">
                         <span class="icon">
                             <ion-icon name="create-outline"></ion-icon>
@@ -54,7 +54,7 @@
                     </a>
                 </li>
 
-                <li>
+                <li class="{{$active == "displayUsers" ? "hovered" : ""}}">
                     <a href="{{ route('dis_users') }}">
                         <span class="icon">
                             <ion-icon name="people-outline"></ion-icon>
@@ -62,9 +62,17 @@
                         <span class="title">Customers</span>
                     </a>
                 </li>
+                <li>
+                    <a href="{{ route("chats") }}">
+                        <span class="icon">
+                            <ion-icon name="shield-outline"></ion-icon>
+                        </span>
+                        <span class="title">Permission </span>
+                    </a>
+                </li>
 
                 <li>
-                    <a href="#">
+                    <a href="{{ route("chats") }}">
                         <span class="icon">
                             <ion-icon name="chatbubble-outline"></ion-icon>
                         </span>
@@ -72,7 +80,7 @@
                     </a>
                 </li>
 
-                <li>
+                <li class="{{$active == "displayOrders" ? "hovered" : ""}}">
                     <a href="{{ route('orders_admin') }}">
                         <span class="icon">
                             <ion-icon name="cart-outline"></ion-icon>
@@ -101,13 +109,6 @@
                     <ion-icon name="menu-outline"></ion-icon>
                 </div>
 
-                <div class="search">
-                    <label>
-                        <input type="text" placeholder="Search here">
-                        <ion-icon name="search-outline"></ion-icon>
-                    </label>
-                </div>
-
                 <!-- insert here name of admin -->
                 <div class="user">
                     <span class="title">{{ session('user_name') }}</span>
@@ -125,6 +126,8 @@
     <!-- ====== ionicons ======= -->
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <script src="{{ asset("js/jquery-3.7.1.min.js") }}"></script>
+    @yield('script')
 </body>
 
 </html>
