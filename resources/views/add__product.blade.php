@@ -1,6 +1,6 @@
 @extends('aside_bar')
 
-
+@section($active="addProduct")
 @section('name')
   <title>Add Product</title>
     <link rel="stylesheet" href="/css/addproduct.css">

@@ -26,7 +26,7 @@
                     </li>
                 </a>
 
-                <li>
+                <li class="{{$active == "dashboard" ? "hovered" : ""}}">
                     <a href="{{ route('dash') }}">
                         <span class="icon">
                             <ion-icon name="home-outline"></ion-icon>
@@ -35,7 +35,7 @@
                     </a>
                 </li>
 
-                <li>
+                <li class="{{$active == "addProduct" ? "hovered" : ""}}">
                     <a href="{{ route('addproduct') }}">
                         <span class="icon">
                             <ion-icon name="add-outline"></ion-icon>
@@ -45,7 +45,7 @@
                 </li>
 
 
-                <li>
+                <li class="{{$active == "displayProduct" ? "hovered" : ""}}">
                     <a href="{{ route('disproduct') }}">
                         <span class="icon">
                             <ion-icon name="create-outline"></ion-icon>
@@ -54,12 +54,20 @@
                     </a>
                 </li>
 
-                <li>
+                <li class="{{$active == "displayUsers" ? "hovered" : ""}}">
                     <a href="{{ route('dis_users') }}">
                         <span class="icon">
                             <ion-icon name="people-outline"></ion-icon>
                         </span>
                         <span class="title">Customers</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route("chats") }}">
+                        <span class="icon">
+                            <ion-icon name="shield-outline"></ion-icon>
+                        </span>
+                        <span class="title">Permission </span>
                     </a>
                 </li>
 
@@ -72,7 +80,7 @@
                     </a>
                 </li>
 
-                <li>
+                <li class="{{$active == "displayOrders" ? "hovered" : ""}}">
                     <a href="{{ route('orders_admin') }}">
                         <span class="icon">
                             <ion-icon name="cart-outline"></ion-icon>
