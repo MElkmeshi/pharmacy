@@ -2,12 +2,6 @@
 
 @section('title', 'home')
 
-<a href="{{ route('admin.create.role') }}">Create OR Assign</a>
-<a href="{{ route('admin.Assign.role.user') }}">Assign role to user</a>
-<a href="{{ route('admin.edit.role') }}">edit role name</a>
-<a href="{{ route('admin.delete.role') }}">delete role</a>
-
-
 @section('content')
     <!-- start slider -->
 

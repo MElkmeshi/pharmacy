@@ -62,8 +62,8 @@
                         <span class="title">Customers</span>
                     </a>
                 </li>
-                <li>
-                    <a href="{{ route("chats") }}">
+                <li class="{{$active == "permission" ? "hovered" : ""}}">
+                    <a href="{{ route("admin.delete.role") }}">
                         <span class="icon">
                             <ion-icon name="shield-outline"></ion-icon>
                         </span>
