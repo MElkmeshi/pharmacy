@@ -1,10 +1,22 @@
 <!-- resources/views/admin/roles_permissions/deleteRole.blade.php -->
-
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
+@extends('aside_bar')
+    @section($active="permission")
+    @section('name')
+        <title>Permission</title>
+        <link rel="stylesheet" href="/css/permission.css">
+    @endsection
+    @section('card')
+        <!-- ======================= Cards ================== -->
+        <div class="cardBox">  
+            <div class="card">
+              <div class="space">
+                <a href="{{ route('admin.create.role') }}" class="link">Create OR Assign</a>
+                <a href="{{ route('admin.Assign.role.user') }}"class="link">Assign role to user</a>
+                <a href="{{ route('admin.edit.role') }}"class="link">edit role name</a>
+                <a href="{{ route('admin.delete.role') }}"class="link">delete role</a>
+                </div>
                 <div class="card">
-                    <div class="card-header">Delete Role</div>
+                    <div class="action">Delete Role</div>
 
                     <div class="card-body">
                         @if (session('success'))
@@ -27,5 +39,4 @@
                 </div>
             </div>
         </div>
-    </div>
-
+     @endsection
