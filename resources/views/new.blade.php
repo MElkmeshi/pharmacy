@@ -165,26 +165,31 @@
 
 
 
-    
+<form action="{{route('hazem')}}" method="GET" >
 <label for="payment"> <h3>choose your prefered payment</h3></label>
 <br>
-<select  class="form-select" aria-label="Disabled select example"  name="payments" id="payment">
-@foreach($paymentMethods as $paymentMethod)
-    
-    <option value="$paymentMethod->id">{{ $paymentMethod->name }}</option>
-@endforeach
 
+<select class="form-select" aria-label="Disabled select example" name="payments" id="payment">
+        @foreach($paymentMethods as $paymentMethod)
+            <option value="{{ $paymentMethod->id }}">{{ $paymentMethod->name }}</option>
+        @endforeach
+    
 </select>
+    
+
+
+
+<div class="col-2" id="another">
+    <button type="submit" class="btn btn-primary">checkout</button>
+</div>
+
+</form> 
 
 <br>
 
 
 
-<form action="{{ route('new') }}" method="GET" id="checkout" >
-    <div class="col-2" id="another">
-        <button type="submit" class="btn btn-primary">checkout</button>
-    </div>
-</form>
+
 
 
 

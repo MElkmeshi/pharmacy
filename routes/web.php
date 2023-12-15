@@ -152,6 +152,7 @@ Route::delete('roles/delete', [AdminRolePermissionController::class, 'deleteRole
 // EAV MODEL ROUTES
 
 Route::get('/new', [App\Http\Controllers\PaymentMethodController::class, 'index'])->name('new');
+Route::get('/specific_payment', [App\Http\Controllers\PaymentMethodController::class, 'handleFormSubmission'])->name('specific_payment');
 
 ////
 Route::middleware(['checkPermission:Add_Product'])->group(function ()  {

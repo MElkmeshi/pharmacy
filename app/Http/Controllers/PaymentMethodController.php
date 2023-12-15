@@ -18,9 +18,22 @@ class PaymentMethodController extends Controller
         $paymentMethods = payment_method::all();
         return view('new', compact('paymentMethods'));
     }
+    
+
+public function handleFormSubmission(Request $request) {
+    $paymentId = (int) $request->input('payments');
+    echo $paymentId;
+    
+    $paymentMethod = payment_method::with('manypayments')->find($paymentId);
+
+    var_dump($paymentId);
+    echo $paymentMethod;
+   
+}
 
     public function create()
     {
+        $payment_method_options=payment_method_options::all();
         $options = options::all();
         return view('new', compact('options'));
     }

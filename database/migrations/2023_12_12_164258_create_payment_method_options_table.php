@@ -13,10 +13,10 @@ return new class extends Migration
     {
         Schema::create('payment_method_options', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('payment_id');
+            $table->unsignedBigInteger('payment_method_id');
             $table->unsignedBigInteger('option_id');
 
-            $table->foreign('payment_id')->references('id')->on('payment_method')->onDelete('cascade');
+            $table->foreign('payment_method_id')->references('id')->on('payment_method')->onDelete('cascade');
             $table->foreign('option_id')->references('id')->on('options')->onDelete('cascade');
             $table->timestamps();
         });
