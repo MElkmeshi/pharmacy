@@ -14,6 +14,10 @@ class payment_method extends Model
         'name',
     ];
 
+    public function manypayments()
+    {
+        return $this->hasMany(payment_method_options::class);
+    }
     
 
 }

@@ -12,4 +12,9 @@ class payment_method_option_value extends Model
     protected $fillable = [
         'value',
     ];
+    public function values(){
+        
+            return $this->belongsToMany(payment_method_option::class);
+        
+    }
 }
