@@ -6,6 +6,8 @@
 @section('content')
 
 
+
+
 <form action="{{ route('confirm_order_all')}} " method="POST">
     @csrf
 
@@ -19,21 +21,39 @@
     <select name="payment" id="paymentMethod">
         <option value="1">Cash on Delivery</option>
         <option value="2">Online Payment</option>
+        <option value="3">another payment</option>
     </select>
 
     <div class="col-2">
-        <button type="submit" class="btn btn-danger">Create Order</button>
+        <button type="submit" class="btn btn-danger"> cash on delivery </button>
     </div>
 </form>
 
 <form action="{{ route('checkout') }}" method="POST">
-        @csrf
-        @method('POST')
-        <div class="col-2">
-            <button type="submit" class="btn btn-primary">online Order</button>
-        </div>
-    </form>
+    @csrf
+    @method('POST')
+    <div class="col-2">
+        <button type="submit" class="btn btn-primary">online payment</button>
+    </div>
+</form>
 
+
+<form action="{{ route('checkout') }}" method="POST">
+    @csrf
+    @method('POST')
+    <div class="col-2">
+        <button type="submit" class="btn btn-primary">online payment</button>
+    </div>
+</form>
+
+
+<form action="{{ route('new') }}" method="GET">
+    @csrf
+    @method('GET')
+    <div class="col-2">
+        <button type="submit" class="btn btn-primary"> need another payment method</button>
+    </div>
+</form>
 
 <script>
     document.querySelector('form').addEventListener('submit', function (event) {
@@ -50,8 +70,16 @@
            
             window.location.href = "{{ route('checkout') }}";
         }
+        else if (selectedOption === '3') {
+           
+           window.location.href = "{{ route('new') }}";
+       }
     });
 </script>
+
+
+
+</select>
 
 
    

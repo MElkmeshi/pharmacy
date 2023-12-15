@@ -16,7 +16,7 @@ class options extends Model
    ];
    public function options() {
    
-     return $this->hasMany(payment_method_options::class);
+      return $this->hasMany(payment_method_options::class);
     
 
    }

@@ -148,6 +148,12 @@ Route::delete('roles/delete', [AdminRolePermissionController::class, 'deleteRole
 // });
 
 
+
+// EAV MODEL ROUTES
+
+Route::get('/new', [App\Http\Controllers\PaymentMethodController::class, 'index'])->name('new');
+
+////
 Route::middleware(['checkPermission:Add_Product'])->group(function ()  {
 
 Route::get('/admin/edit-role', [AdminRolePermissionController::class, 'vieweditrole'])->name('admin.edit.role');
