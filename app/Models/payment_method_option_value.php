@@ -17,4 +17,8 @@ class payment_method_option_value extends Model
             return $this->belongsToMany(payment_method_option::class);
         
     }
+    
+    public function users(){
+        return $this->belongsToMany(User::class);
+    }
 }

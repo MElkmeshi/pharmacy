@@ -35,7 +35,7 @@ public function handleFormSubmission(Request $request) {
    
 }
 
-    public function create()
+    public function store_values(Request $request)
     {
         $payment_method_options=payment_method_options::all();
         $options = options::all();
