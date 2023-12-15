@@ -5,12 +5,20 @@
 
 @section('content')
 
+<style>
 
 
+    .form-container form {
+        display: inline-block;
+        margin-right: 20px; /* Optional: Adjust the spacing between forms */
+    }
+</style>
+
+<div class="form-container">
 
 <form action="{{ route('confirm_order_all')}} " method="POST">
     @csrf
-
+    @method('POST')
     <label for="new_address">your current address:</label>
     <input type="text" id="new_address" name="new_address" value="{{$userAddress}}" required>
 
@@ -25,35 +33,29 @@
     </select>
 
     <div class="col-2">
-        <button type="submit" class="btn btn-danger"> cash on delivery </button>
+        <button type="submit" class="btn btn-danger" id="order"> create order </button>
     </div>
+    
 </form>
-
+<br>
+<br>
 <form action="{{ route('checkout') }}" method="POST">
     @csrf
     @method('POST')
-    <div class="col-2">
+    <div class="col-2" id="online">
         <button type="submit" class="btn btn-primary">online payment</button>
     </div>
+   
 </form>
-
-
-<form action="{{ route('checkout') }}" method="POST">
-    @csrf
-    @method('POST')
-    <div class="col-2">
-        <button type="submit" class="btn btn-primary">online payment</button>
-    </div>
-</form>
-
+</div>
+<br>
 
 <form action="{{ route('new') }}" method="GET">
-    @csrf
-    @method('GET')
-    <div class="col-2">
-        <button type="submit" class="btn btn-primary"> need another payment method</button>
-    </div>
+<div class="col-2" id="another">
+    <button type="submit" class="btn btn-primary">another payment</button>
+</div>
 </form>
+
 
 <script>
     document.querySelector('form').addEventListener('submit', function (event) {
@@ -79,7 +81,7 @@
 
 
 
-</select>
+
 
 
    
