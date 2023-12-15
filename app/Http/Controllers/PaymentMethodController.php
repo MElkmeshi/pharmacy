@@ -22,12 +22,16 @@ class PaymentMethodController extends Controller
 
 public function handleFormSubmission(Request $request) {
     $paymentId = (int) $request->input('payments');
-    echo $paymentId;
+    //echo $paymentId;
     
     $paymentMethod = payment_method::with('manypayments')->find($paymentId);
+    $optionIds = $paymentMethod->manypayments->pluck('option_id')->toArray();
+    // Join with the options table to get the names and types
+    $options = options::whereIn('id', $optionIds)->get();
+    return view('specific_payment', compact('paymentMethod', 'options'));
 
-    var_dump($paymentId);
-    echo $paymentMethod;
+   // var_dump($paymentId);
+    //echo $paymentMethod;
    
 }
 

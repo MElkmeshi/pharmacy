@@ -7,6 +7,21 @@
     <title>Specific payment</title>
 </head>
 <body>
-    
+ 
+    <!-- specific_payment.blade.php -->
+
+<h1>Payment Method: {{ $paymentMethod->name }}</h1>
+
+<h3>fill the data</h3>
+
+    @foreach($options as $option)
+         {{ $option->name }}:
+        <input type="{{ $option->type }}" placeholder="{{ $option->name }}">
+        <br>
+    @endforeach
+
+
+
+
 </body>
 </html>

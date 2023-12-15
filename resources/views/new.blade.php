@@ -165,7 +165,7 @@
 
 
 
-<form action="{{route('hazem')}}" method="GET" >
+<form action="{{route('specific_payment')}}" method="GET" >
 <label for="payment"> <h3>choose your prefered payment</h3></label>
 <br>
 
