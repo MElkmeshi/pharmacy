@@ -41,7 +41,7 @@
    
 
     </style>
-    <script type="text/javascript">
+     <script type="text/javascript">
         $.ajaxSetup({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -166,20 +166,22 @@
 <h1>Payment Method: {{ $paymentMethod->name }}</h1>
 
 <h3>fill the data</h3>
-<form action="" method="POST">
+<form action="{{ url('testpayment')}}" method="POST">
+    @csrf <!-- Add CSRF token -->
+  
+    
     @foreach($options as $option)
-         {{ $option->name }}:
-        <input type="{{ $option->type }}" placeholder="{{ $option->name }}">
+        {{ $option->name }}:
+        <input type="{{ $option->type }}" name="{{ $option->name }}" placeholder="{{ $option->name }}">
         <br>
     @endforeach
-
     @csrf
     @method('POST')
     <div class="col-2" id="online">
-        <button type="submit" class="btn btn-primary">confirm</button>
+        <button type="submit" class="btn btn-primary">Confirm</button>
     </div>
-
 </form>
+
 
   
  

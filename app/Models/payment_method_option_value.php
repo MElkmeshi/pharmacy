@@ -9,14 +9,17 @@ class payment_method_option_value extends Model
 {
     use HasFactory;
     protected $table='payment_method_option_value';
+    protected $primaryKey = 'id';
     protected $fillable = [
+        'paymentMethodoptionId',
         'value',
+        'userId',
     ];
-    public function values(){
+    
+   // public function values(){
         
-            return $this->belongsToMany(payment_method_option::class);
-        
-    }
+          //  return $this->belongsTo(payment_method_options::class,'paymentMethodoptionId');
+   // }
     
     public function users(){
         return $this->belongsToMany(User::class);

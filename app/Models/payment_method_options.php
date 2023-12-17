@@ -10,6 +10,8 @@ class payment_method_options extends Model
     use HasFactory;
     protected $table='payment_method_options';
 
+    protected $fillable = ['payment_method_id', 'option_id'];
+
     public function paymentMethod()
     {
         return $this->belongsToMany(payment_method::class);
@@ -21,7 +23,7 @@ class payment_method_options extends Model
 
 
     public function payment_values(){
-        return $this->belongsToMany(payment_method_options_value::class);
+        return $this->belongsToMany(payment_method_option_value::class);
     }
 
     
