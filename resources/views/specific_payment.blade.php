@@ -38,6 +38,14 @@
         align-items: center;
         height: 100vh;
     }
+    #payment,#data{
+        text-align: center;
+    }
+    .btn{
+        justify-content: center;
+       padding-inline: 1%;
+       margin-inline: 50%;
+    }
    
 
     </style>
@@ -163,30 +171,26 @@
 </nav>
     <!-- specific_payment.blade.php -->
 
-<h1>Payment Method: {{ $paymentMethod->name }}</h1>
+<h1 id="payment">Payment Method: {{ $paymentMethod->name }}</h1>
 
-<h3>fill the data</h3>
+<h3 id="data">fill the data</h3>
+
 <form action="{{ url('testpayment')}}" method="POST">
-    @csrf <!-- Add CSRF token -->
-  
-    
+    @csrf 
     @foreach($options as $option)
-        {{ $option->name }}:
-        <input type="{{ $option->type }}" name="{{ $option->name }}" placeholder="{{ $option->name }}">
-        <br>
-    @endforeach
-    @csrf
-    @method('POST')
-    <div class="col-2" id="online">
-        <button type="submit" class="btn btn-primary">Confirm</button>
+    &nbsp;{{ $option->name }}:
+    
+    <div class="mb-3">
+      
+        <input type="{{ $option->type }}" name="{{ $option->name }}" placeholder="{{ $option->name }}" class="form-control" id="{{ $option->name }}" aria-describedby="emailHelp">
+      
+
     </div>
-</form>
+    @endforeach
+    
+    <button type="submit" class="btn btn-primary d-flex justify-content-center">Submit</button>
 
-
-  
- 
-
-
+  </form>
 
 </body>
 </html>

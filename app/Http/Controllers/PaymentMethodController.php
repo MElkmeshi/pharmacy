@@ -52,10 +52,10 @@ public function handleFormSubmission(Request $request) {
         $formData = $request->except('_token');
        // $paymentMethodoptiodId = payment_method_options_value::with('values')->find($paymentId); 
    
-    foreach ($formData as $fieldName => $value) {
-      echo $Id;
-      echo $fieldName . ': ' . $value . '<br>';
-    }
+  //  foreach ($formData as $fieldName => $value) {
+      //echo $Id;
+      //echo $fieldName . ': ' . $value . '<br>';
+    //}
     foreach ($formData as $fieldName => $value) {
         $id=1;
         payment_method_option_value::create([
@@ -68,7 +68,7 @@ public function handleFormSubmission(Request $request) {
         ]);
    }
 
-    return view('testpayment', compact('formData'));
+    return view('home');
     }
 
 
