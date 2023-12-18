@@ -15,6 +15,7 @@ return new class extends Migration
             $table->string('status');
             $table->string('address')->nullable();
             $table->foreign('user_id')->references('id')->on('users');
+            $table->string('payment_method')->nullable();
         });
     }
 

@@ -32,6 +32,7 @@
     <p>Total Amount: ${{ $order->total_amount }}</p>
     <p>Status: {{ $order->status }}</p>
     <p>Address: {{ $order->address }}</p>
+    <p> Payment Method: {{$order->payment_method}}</p>
 
     <ul>
         @foreach ($order->orderItems as $orderItem)

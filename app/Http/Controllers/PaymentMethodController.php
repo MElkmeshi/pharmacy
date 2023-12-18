@@ -22,11 +22,13 @@ class PaymentMethodController extends Controller
 
 public function handleFormSubmission(Request $request) {
     $paymentId = (int) $request->input('payments');
+    
     //echo $paymentId;
    // $hazem=1;
     //$ids=payment_method_option_value::with('values')->find($hazem);
-
+    
     $paymentMethod = payment_method::with('manypayments')->find($paymentId);
+    
     $optionIds = $paymentMethod->manypayments->pluck('option_id')->toArray();
     // Join with the options table to get the names and types
     $options = options::whereIn('id', $optionIds)->get();
@@ -40,7 +42,7 @@ public function handleFormSubmission(Request $request) {
     public function store_values(Request $request)
     {
 
-
+        
         $Id = $request->session()->get('user_id');
         
        // Get all the submitted form data

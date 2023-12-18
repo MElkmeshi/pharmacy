@@ -15,7 +15,7 @@ class Order extends Model
     public $timestamps = false; // Disable timestamps
 
 
-    protected $fillable = ['user_id', 'total_amount', 'status', 'address'];
+    protected $fillable = ['user_id', 'total_amount', 'status', 'address','payment_method'];
 
     public function user()
     {

@@ -35,8 +35,7 @@ class order_cont extends Controller
     {
       
     $userId = $request->session()->get('user_id');
-
-   
+    
     $userAddress = $request->session()->get('user_address');
 
     $newAddress = $request->input('new_address');
@@ -48,12 +47,13 @@ class order_cont extends Controller
     $totalamount=$productPrice*$productQuantity;
 
     $address = $newAddress ? $newAddress : $userAddress;
-   
+    
     $order = Order::create([
         'user_id' => $userId,
         'total_amount' => $totalamount, 
         'status' => 'processing',
         'address' => $address,
+        'payment_method'=>'cash on delivery',
     ]);
 
     OrderItem::create([
@@ -75,7 +75,7 @@ class order_cont extends Controller
     
     $userId = $request->session()->get('user_id');
     $userAddress = $request->session()->get('user_address');
-
+    $payment_method='cash on delivery';
    
     $newAddress = $request->input('new_address');
     $address = $newAddress ? $newAddress : $userAddress;
@@ -92,6 +92,7 @@ class order_cont extends Controller
         'total_amount' => 0, // initial_total_amount (awel mara bs)
         'status' => 'processing',
         'address' => $address,
+        'payment_method'=>$payment_method,
     ]);
 
     
