@@ -41,21 +41,13 @@ public function handleFormSubmission(Request $request) {
     {
 
 
-        //$options=$ids;
-
-       // var_dump($options);
-
-       
         $Id = $request->session()->get('user_id');
         
        // Get all the submitted form data
         $formData = $request->except('_token');
        // $paymentMethodoptiodId = payment_method_options_value::with('values')->find($paymentId); 
    
-  //  foreach ($formData as $fieldName => $value) {
-      //echo $Id;
-      //echo $fieldName . ': ' . $value . '<br>';
-    //}
+ 
     foreach ($formData as $fieldName => $value) {
         $id=1;
         payment_method_option_value::create([

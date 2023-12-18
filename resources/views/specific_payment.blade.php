@@ -171,11 +171,11 @@
 </nav>
     <!-- specific_payment.blade.php -->
 
-<h1 id="payment">Payment Method: {{ $paymentMethod->name }}</h1>
+<h1 id="paymenT">Payment Method: {{ $paymentMethod->name }}</h1>
 
 <h3 id="data">fill the data</h3>
 
-<form action="{{ url('testpayment')}}" method="POST">
+<form id="paymentForm"action="{{ url('store_payment')}}" method="POST">
     @csrf 
     @foreach($options as $option)
     &nbsp;{{ $option->name }}:
@@ -183,14 +183,47 @@
     <div class="mb-3">
       
         <input type="{{ $option->type }}" name="{{ $option->name }}" placeholder="{{ $option->name }}" class="form-control" id="{{ $option->name }}" aria-describedby="emailHelp">
-      
+        <div id="{{ $option->name }}Error" class="text-danger"></div>
 
     </div>
     @endforeach
     
-    <button type="submit" class="btn btn-primary d-flex justify-content-center">Submit</button>
+   
+    <button type="submit" onclick="validateForm()" class="btn btn-primary d-flex justify-content-center">Submit</button>
 
   </form>
+
+  <script>
+    function validateForm() {
+        // Clear previous error messages
+        document.querySelectorAll('.text-danger').forEach(function(element) {
+            element.textContent = '';
+        });
+
+        var isValid = true;
+
+        // Validate each input field
+        @foreach($options as $option)
+            var fieldValue = document.getElementById("{{ $option->name }}").value.trim();
+            if (!fieldValue) {
+                document.getElementById("{{ $option->name }}Error").textContent = "{{ $option->name }} is required.";
+                isValid = false;
+            }
+
+            
+        @endforeach
+        
+        // If any validations fail, do not submit the form
+        if (!isValid) {
+            event.preventDefault();
+            return;
+        }
+  
+        document.getElementById("paymentForm").submit();
+        
+        
+    } 
+</script>
 
 </body>
 </html>
