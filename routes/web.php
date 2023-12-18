@@ -126,7 +126,7 @@ Route::post('/ajaxadminsearchuser', [user_cont::class,"ajaxadminsearchuser"])->n
 // EAV MODEL ROUTES
 Route::get('/new', [App\Http\Controllers\PaymentMethodController::class, 'index'])->name('new');
 Route::get('/specific_payment', [App\Http\Controllers\PaymentMethodController::class, 'handleFormSubmission'])->name('specific_payment');
-Route::post('/testpayment', [App\Http\Controllers\PaymentMethodController::class, 'store_values'])->name('testpayment');
+Route::post('/store_payment', [App\Http\Controllers\PaymentMethodController::class, 'store_values'])->name('store_payment');
 
 Route::middleware(['checkPermission:Add_Product'])->group(function ()  {
 });
