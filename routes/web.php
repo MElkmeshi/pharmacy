@@ -25,31 +25,40 @@ if (env('APP_ENV') === 'production') {
     URL::forceScheme('https');
 }
 Route::get('/test', [App\Http\Controllers\ChatController::class, 'test']);
+Route::get('/testtt', [App\Http\Controllers\PusherController::class, 'test']);
+Route::get('/linkstorage', function () {
+    Artisan::call('storage:link');
+});
 
 
+//@todo: add them to a controller
 Route::get('/', function () {
     return view('home');
 })->name('home');
-Route::post('/register', [App\Http\Controllers\user_cont::class, 'store'])->name('reg');
 Route::get('/signup', function () {
     return view('signup');
 })->name('signupform');
-Route::post('/isuniqueemail/{email}', [App\Http\Controllers\user_cont::class, 'isUniqueEmail'])->name("isuniqueemail");
-Route::post('/login', [App\Http\Controllers\user_cont::class, 'login'])->name('login');
 Route::get('/loginform', function () {
     return view('login');
 })->name('loginform');
-Route::get('/displayprods', [App\Http\Controllers\prod_cont::class, 'displayproductuser'])->name('displayproducts');
-Route::get('/logout', [App\Http\Controllers\user_cont::class, 'logout'])->name('logout');
-Route::get('/disproduct', [App\Http\Controllers\prod_cont::class, 'displayproduct'])->name('disproduct');
-Route::get('/product/{id}', [App\Http\Controllers\prod_cont::class, 'productDetails'])->name('productdetails');
 Route::get('/contact', function () {
     return view('contact');
 })->name('contact');
 Route::get('/about-us', function () {
     return view('about-us');
 })->name('about-us');
+Route::get('/deleteuserform', function () {
+    return view('deleteuser');
+})->name('deleteuserform');
 
+
+Route::post('/register', [App\Http\Controllers\user_cont::class, 'store'])->name('reg');
+Route::post('/isuniqueemail/{email}', [App\Http\Controllers\user_cont::class, 'isUniqueEmail'])->name("isuniqueemail");
+Route::post('/login', [App\Http\Controllers\user_cont::class, 'login'])->name('login');
+Route::get('/displayprods', [App\Http\Controllers\prod_cont::class, 'displayproductuser'])->name('displayproducts');
+Route::get('/logout', [App\Http\Controllers\user_cont::class, 'logout'])->name('logout');
+Route::get('/disproduct', [App\Http\Controllers\prod_cont::class, 'displayproduct'])->name('disproduct');
+Route::get('/product/{id}', [App\Http\Controllers\prod_cont::class, 'productDetails'])->name('productdetails');
 Route::get('/allprod', [App\Http\Controllers\prod_cont::class, 'displayproductuser'])->name("produser");
 Route::get('/allprod/{category}', [App\Http\Controllers\prod_cont::class, 'displayproductuserByCategory'])->name("produsercategory");
 Route::group(['middleware' => 'isloggedin'],function () {
@@ -62,9 +71,6 @@ Route::group(['middleware' => 'isloggedin'],function () {
     Route::get('/AddToCart/{id}', [App\Http\Controllers\cart_cont::class, 'addtocart'])->name('addtocart');
     Route::get('/displayCart', [App\Http\Controllers\cart_cont::class, 'showUserCart'])->name('displaycart');
     Route::get('/deleteCart/{id}', [App\Http\Controllers\cart_cont::class, 'deletecart'])->name('deletecart');
-    Route::get('/deleteuserform', function () {
-        return view('deleteuser');
-    })->name('deleteuserform');
     Route::post('/update-cart/{product}', [App\Http\Controllers\cart_cont::class, 'updateCart'])->name('update.cart');
 });
 Route::group(['middleware' => 'isadmin'],function () {
@@ -102,7 +108,7 @@ Route::group(['middleware' => 'isadmin'],function () {
 
 
 });
-
+//Order Routes
 Route::get('/makeorder/{id}/{cart_id}', [App\Http\Controllers\order_cont::class, 'makeorder'])->name('order');
 Route::get('/confirmorder/{product_id}/{cart_id}', [App\Http\Controllers\order_cont::class, 'createorder'])->name('confirm_order');
 Route::get('/displayOrders', [App\Http\Controllers\order_cont::class, 'getUserOrders'])->name('displayorders');
@@ -110,11 +116,6 @@ Route::get('/cancelorder/{order_id}', [App\Http\Controllers\order_cont::class, '
 Route::get('/makeorderAll', [App\Http\Controllers\order_cont::class, 'makeorderall'])->name('orderall');
 Route::get('/confirmorderAll', [App\Http\Controllers\order_cont::class, 'createorderall'])->name('confirm_order_all');
 Route::get('/changestatus/{order_id}/{button_name}', [App\Http\Controllers\order_cont::class, 'changeOrderStatus'])->name('order.action');
-
-
-
-
-
 //Paymob Routes
 Route::post('/credit', [PaymobController::class, 'credit'])->name('checkout'); // this route send all functions data to paymob
 Route::get('/callback', [PaymobController::class, 'callback'])->name('callback'); // this route get all reponse data to paymob
@@ -122,50 +123,21 @@ Route::post('/ajaxsearch', [prod_cont::class,"search"])->name('ajaxsearch');
 Route::post('/ajaxsearchadmin', [prod_cont::class,"searchadmin"])->name('ajaxsearchadmin');
 Route::post('/ajaxadminsearchuser', [user_cont::class,"ajaxadminsearchuser"])->name('ajaxadminsearchuser');
 
+// EAV MODEL ROUTES
+Route::get('/new', [App\Http\Controllers\PaymentMethodController::class, 'index'])->name('new');
+Route::get('/specific_payment', [App\Http\Controllers\PaymentMethodController::class, 'handleFormSubmission'])->name('specific_payment');
+Route::post('/testpayment', [App\Http\Controllers\PaymentMethodController::class, 'store_values'])->name('testpayment');
 
-// Route::get('/admin/roles-permissions', [AdminRolePermissionController::class, 'index']);
+Route::middleware(['checkPermission:Add_Product'])->group(function ()  {
+});
 Route::post('/admin/roles', [AdminRolePermissionController::class, 'assignPermissionToRole'])->name('admin.roles');
-
 Route::get('/admin/create-role', [AdminRolePermissionController::class, 'viewCreateRole'])->name('admin.create.role');
 Route::get('/admin/Assign-role', [AdminRolePermissionController::class, 'viewAssign_role_to_user'])->name('admin.Assign.role.user');
 Route::post('/admin/assign-role-to-user', [AdminRolePermissionController::class, 'assignRoleToUser'])
     ->name('admin.assignRoleToUser');
-
-// Route::get('/admin/edit-role', [AdminRolePermissionController::class, 'vieweditrole'])->name('admin.edit.role');
-
-// Route::post('roles/edit-name', [AdminRolePermissionController::class, 'editRoleName'])->name('admin.roles.editName');
-
-Route::get('/admin/delete-role', [AdminRolePermissionController::class, 'viewdeleterole'])->name('admin.delete.role');
-Route::delete('roles/delete', [AdminRolePermissionController::class, 'deleteRole'])->name('admin.roles.delete');
-
-
-
-// Route::middleware(['checkPermission:Add_Product'])->group(function ()  {
-//     Route::post('/addprod', [App\Http\Controllers\prod_cont::class, 'addprod'])->name('addprod');
-//     Route::get('/addprod', function () {
-//         return view('add__product');
-//     })->name('addproduct');
-// });
-
-
-
-// EAV MODEL ROUTES
-
-Route::get('/new', [App\Http\Controllers\PaymentMethodController::class, 'index'])->name('new');
-Route::get('/specific_payment', [App\Http\Controllers\PaymentMethodController::class, 'handleFormSubmission'])->name('specific_payment');
-Route::post('/store_payment', [App\Http\Controllers\PaymentMethodController::class, 'store_values'])->name('store_payment');
-////
-Route::middleware(['checkPermission:Add_Product'])->group(function ()  {
-
 Route::get('/admin/edit-role', [AdminRolePermissionController::class, 'vieweditrole'])->name('admin.edit.role');
-
 Route::post('roles/edit-name', [AdminRolePermissionController::class, 'editRoleName'])->name('admin.roles.editName');
-});
-
 Route::get('/receive', [App\Http\Controllers\PusherController::class, 'receive']);
 Route::get('/brodcast', [App\Http\Controllers\PusherController::class, 'brodcast']);
-Route::get('/testtt', [App\Http\Controllers\PusherController::class, 'test']);
-
-Route::get('/linkstorage', function () {
-    Artisan::call('storage:link');
-});
+Route::delete('roles/delete', [AdminRolePermissionController::class, 'deleteRole'])->name('admin.roles.delete');
+Route::get('/admin/delete-role', [AdminRolePermissionController::class, 'viewdeleterole'])->name('admin.delete.role');
