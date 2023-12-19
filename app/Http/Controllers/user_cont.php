@@ -21,6 +21,7 @@ class user_cont extends Controller
             'email' => $request->email,
             'password' => Hash::make($request->password), // Hash the password
             'address'=>$request->address,
+            'phone'=>$request->phone,
             'age'=>$request->age,
         ]);
         return redirect('/');
