@@ -92,6 +92,7 @@ Route::get('/new', [App\Http\Controllers\PaymentMethodController::class, 'index'
 Route::get('/specific_payment', [App\Http\Controllers\PaymentMethodController::class, 'handleFormSubmission'])->name('specific_payment');
 Route::post('/store_payment', [App\Http\Controllers\PaymentMethodController::class, 'store_values'])->name('store_payment');
 
+
 Route::middleware(['checkPermission:Add_Product'])->group(function ()  {
     Route::get('/dashboard', [App\Http\Controllers\user_cont::class, 'getLast8Orders'])->name('dash');
     Route::post('/addprod', [App\Http\Controllers\prod_cont::class, 'addprod'])->name('addprod');
