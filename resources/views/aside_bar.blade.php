@@ -22,7 +22,6 @@
                         <span class="icon">
                             <img src="/images/logo.png" alt="logo" width="70px" />
                         </span>
-                        <span class="title">Dr Elsayed</span>
                     </li>
                 </a>
                 
