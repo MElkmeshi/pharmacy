@@ -47,11 +47,11 @@
         .forget-password-form button {
             background-color: #4caf50;
             color: #fff;
-            padding: 10px;
+            padding: 20px;
             border: none;
             border-radius: 4px;
             cursor: pointer;
-            width: 200px
+            width: 150px
         }
 
         .forget-password-form button:hover {
