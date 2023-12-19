@@ -69,9 +69,9 @@
                 <p>Send reset link by</p>
             </div>
             <div class="sendbtns">
-                <button id="whatsup" type="submit">Reset Password</button>
-                <button id="e-mail" type="submit">Reset Password</button>
-                <button id="sms" type="submit">Reset Password</button>
+                <button id="whatsup" type="submit">whatsup</button>
+                <button id="e-mail" type="submit">e-mail</button>
+                <button id="sms" type="submit">sms</button>
             </div>
             
         </form>
