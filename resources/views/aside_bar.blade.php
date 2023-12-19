@@ -26,7 +26,7 @@
                     </li>
                 </a>
 
-                
+                <li class="{{ $active == 'dashboard' ? 'hovered' : '' }}">
                     <a href="{{ route('dash') }}">
                         <span class="icon">
                             <ion-icon name="home-outline"></ion-icon>
