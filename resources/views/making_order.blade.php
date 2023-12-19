@@ -1,5 +1,4 @@
-
-   
+ 
 @extends('layout.master',compact('menuItems'))
 @section('title',"orderall")
 
@@ -21,6 +20,7 @@
     <select name="payment" id="paymentMethod">
         <option value="1">Cash on Delivery</option>
         <option value="2">Online Payment</option>
+        <option value="2">another Payment</option>
     </select>
 
     <div class="col-2">

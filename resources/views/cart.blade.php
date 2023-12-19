@@ -53,8 +53,7 @@ $.ajaxSetup({
     @section('title', 'cart')
     @section('content')
     
-    <a href="{{ route('orderall') }}"><button type="button" class="btn btn-primary">  Order All
-    </button></a>
+   
 
 
 
@@ -112,7 +111,10 @@ $.ajaxSetup({
                 </div>
             </div>
         </div>
+        
     </div>
+    <a href="{{ route('orderall') }}"><button type="button" class="btn btn-primary">  Order All
+    </button></a>
 </div>
         @endforeach
     </ul>

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-
+use App\Models\Menu;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Redirect;
 use App\Models\payment_method;
@@ -23,8 +23,6 @@ class PaymentMethodController extends Controller
 public function handleFormSubmission(Request $request) {
     $paymentId = (int) $request->input('payments');
     
-    //echo $paymentId;
-   // $hazem=1;
     //$ids=payment_method_option_value::with('values')->find($hazem);
     
     $paymentMethod = payment_method::with('manypayments')->find($paymentId);
@@ -34,8 +32,7 @@ public function handleFormSubmission(Request $request) {
     $options = options::whereIn('id', $optionIds)->get();
     return view('specific_payment', compact('paymentMethod', 'options'));
 
-   // var_dump($paymentId);
-    //echo $paymentMethod;
+   
    
 }
 
@@ -61,8 +58,9 @@ public function handleFormSubmission(Request $request) {
             
         ]);
    }
+   $menuItems = Menu::with('children')->whereNull('parent_id')->get();
 
-    return view('home');
+    return view('home',compact('menuItems'));
     }
 
 
