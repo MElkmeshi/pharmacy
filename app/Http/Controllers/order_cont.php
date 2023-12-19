@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Menu;
 use App\Models\Order;
 use Illuminate\Http\Request;
 use App\Models\User;
@@ -14,19 +15,19 @@ class order_cont extends Controller
 {
     public function makeorder(Request $request,$id,$cartid)
     {
-      
+        $menuItems = Menu::with('children')->whereNull('parent_id')->get();
         $userAddress = $request->session()->get('user_address');
 
-        return view('making_order', ['id' => $id, 'userAddress' => $userAddress , 'cartid'=>$cartid]);
+        return view('making_order',compact('menuItems'), ['id' => $id, 'userAddress' => $userAddress , 'cartid'=>$cartid]);
     
     }
 
     public function makeorderall(Request $request)
     {
-      
+        $menuItems = Menu::with('children')->whereNull('parent_id')->get();
         $userAddress = $request->session()->get('user_address');
 
-        return view('making_order_all', ['userAddress' => $userAddress ]);
+        return view('making_order_all',compact('menuItems'), ['userAddress' => $userAddress ]);
     
     }
     
@@ -116,6 +117,7 @@ class order_cont extends Controller
 
 public function getUserOrders(Request $request)
 {
+
     $userId = $request->session()->get('user_id');
 
     $orders = Order::with(['orderItems.product' => function ($query) {

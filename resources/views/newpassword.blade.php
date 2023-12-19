@@ -60,16 +60,16 @@
 <body>
 
     <div class="password-form">
-        <h2>Enter Password</h2>
-        <form action="#" method="post">
-            
+        
+        <form action="{{route('set_newpassword')}}" method="post">
+            @csrf
             <div class="input-field">
-                <input type="text" class="input" id="email" name="email" required="">
-                <label id="input-label" for="email">Email</label>
+                <label id="input-label" for="token">Token</label>
+                <input type="text" class="input" id="token" name="token" required>
                 <div style="color: red" class="error-message" id="name-error"></div>
             </div>
-            <label for="password">Password:</label>
-            <input type="password" id="password" name="password" required>
+            <label for="newpassword">New_Password:</label>
+            <input type="password" id="newpassword" name="newpassword" required>
             <button type="submit">Submit</button>
         </form>
     </div>

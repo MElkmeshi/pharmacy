@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -39,6 +40,7 @@
 <body>
 
    
+   
     <nav class="navbar navbar-expand-lg sticky-top">
         <div class="container">
             <a class="navbar-brand" href="{{ route('home') }}">
@@ -71,7 +73,7 @@
                             </li>
                         @endforeach
                    
-    
+                    
                     @if (session()->has('user_name'))
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle p-2 p-lg-3" href="#" id="basic-nav-dropdown"

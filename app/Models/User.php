@@ -13,6 +13,7 @@ use App\Models\Order;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\Permission\Traits\HasRoles;
 use App\Models\Role;
+use App\Models\UserToken;
 
 
 class user extends Authenticatable
@@ -53,6 +54,12 @@ class user extends Authenticatable
     public function roles()
     {
         return $this->belongsToMany(Role::class);
+    }
+
+
+    public function userToken()
+    {
+        return $this->hasOne(UserToken::class);
     }
 
 

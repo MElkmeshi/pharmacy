@@ -65,17 +65,19 @@
 <body>
     <div class="forget-password-form">
         <h2>Forget Password</h2>
-        <form action="#" method="post">
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required>
-            <div>
-                <p>Send reset link by</p>
-            </div>
-            <div class="sendbtns">
-                <button id="whatsup" type="submit">whatsup</button>
-                <button id="e-mail" type="submit">e-mail</button>
-                <button id="sms" type="submit">sms</button>
-            </div>
+        <form action="{{ route('forgot-password_send-link') }}" method="post">
+            @csrf
+    <label for="email">Email:</label>
+    <input type="email" name="email" required>
+
+    <label for="channel">Communication Channel:</label>
+    <select name="channel" required>
+        <option value="email">Email</option>
+        <option value="sms">SMS</option>
+        <option value="whatsapp">WhatsApp</option>
+    </select>
+
+    <button type="submit">Send Reset Link</button>
             
         </form>
     </div>

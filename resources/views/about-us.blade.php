@@ -1,4 +1,4 @@
-@extends('layout.master'compact('menuItems'))
+@extends('layout.master',compact('menuItems'))
 
 
 @section('title',"About us")
