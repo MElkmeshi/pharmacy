@@ -38,6 +38,12 @@
     </form>
 </div>
 
+<form action="{{ route('new') }}" method="GET">
+    <div class="col-2" id="another">
+        <button type="submit" class="btn btn-primary">another payment</button>
+    </div>
+    </form>
+
 <script>
     document.querySelector('form').addEventListener('submit', function (event) {
         // Prevent the default form submission behavior
@@ -53,6 +59,10 @@
             // Redirect to the checkout route
             window.location.href = "{{ route('checkout') }}";
         }
+        else if (selectedOption === '3') {
+           
+           window.location.href = "{{ route('new') }}";
+       }
     });
 </script>
 

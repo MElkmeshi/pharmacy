@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Menu;
 use App\Models\Cart;
 use Illuminate\Http\Request;
 use App\Models\User;
@@ -23,6 +24,7 @@ class cart_cont extends Controller
 
     public function showUserCart(Request $request)
 {
+    $menuItems = Menu::with('children')->whereNull('parent_id')->get();
     $userId=$request->session()->get('user_id');
     $user = User::find($userId);
 
@@ -35,7 +37,7 @@ class cart_cont extends Controller
         ];
     });
 
-    return view('cart', ['productsInCart' => $productsInCart]);
+    return view('cart',compact('menuItems'), ['productsInCart' => $productsInCart]);
 }
 
 
