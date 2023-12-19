@@ -163,3 +163,9 @@ Route::middleware(['checkPermission:Delete_User'])->group(function ()  {
 
 Route::get('/receive', [App\Http\Controllers\PusherController::class, 'receive']);
 Route::get('/brodcast', [App\Http\Controllers\PusherController::class, 'brodcast']);
+Route::get('/reset', function () {
+    return view("resetpassword");
+})->name("reset");
+Route::get('/newpassword', function () {
+    return view("newpassword");
+})->name("newpassword");

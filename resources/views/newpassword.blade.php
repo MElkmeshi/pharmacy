@@ -62,6 +62,12 @@
     <div class="password-form">
         <h2>Enter Password</h2>
         <form action="#" method="post">
+            
+            <div class="input-field">
+                <input type="text" class="input" id="email" name="email" required="">
+                <label id="input-label" for="email">Email</label>
+                <div style="color: red" class="error-message" id="name-error"></div>
+            </div>
             <label for="password">Password:</label>
             <input type="password" id="password" name="password" required>
             <button type="submit">Submit</button>
