@@ -53,7 +53,7 @@
                 </li>
                 
                 <li class="nav-item">
-                    <a class="nav-link p-2 p-lg-3" href="{{ route('about-us') }}"> About us</a>
+                    <a class="nav-link p-2 p-lg-3" href="{{ route('about-us') }}"> About-us</a>
                 </li>
                
 
