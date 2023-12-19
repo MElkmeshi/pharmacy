@@ -40,6 +40,9 @@
             margin-bottom: 10px;
             box-sizing: border-box;
         }
+        .sendbtns{
+            display: flex;
+        }
 
         .forget-password-form button {
             background-color: #4caf50;
@@ -48,7 +51,7 @@
             border: none;
             border-radius: 4px;
             cursor: pointer;
-            width: 100%;
+            width: 200px
         }
 
         .forget-password-form button:hover {
@@ -62,8 +65,15 @@
         <form action="#" method="post">
             <label for="email">Email:</label>
             <input type="email" id="email" name="email" required>
-
-            <button type="submit">Reset Password</button>
+            <div>
+                <p>Send reset link by</p>
+            </div>
+            <div class="sendbtns">
+                <button id="whatsup" type="submit">Reset Password</button>
+                <button id="e-mail" type="submit">Reset Password</button>
+                <button id="sms" type="submit">Reset Password</button>
+            </div>
+            
         </form>
     </div>
 </body>
