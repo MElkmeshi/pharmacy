@@ -113,7 +113,7 @@ $.ajaxSetup({
             </div>
         </div>
     </div>
-    <a href="{{ route('orderall') }}"><button type="button" class="btn btn-danger" id="delete"> <i class="fa fa-trash"></i> Order All
+    <a href="{{ route('orderall') }}"><button type="button" class="btn btn-primary" > Order All
     </button></a>
 </div>
         @endforeach
