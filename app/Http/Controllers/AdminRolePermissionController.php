@@ -67,6 +67,11 @@ public function deleteRole(Request $request)
 
         return view('editrole',compact('roles'));
     }
+    public function viewpermission()
+    {
+
+        return view('permission');
+    }
 
     public function viewdeleterole()
     {

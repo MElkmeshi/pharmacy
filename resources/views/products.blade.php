@@ -132,55 +132,59 @@
 
 <body>
     @include('layout.header')
-    <div  class="col-md-12 w-100"> 
-        <input class="col-md-12 w-100 form-control shadow-lg p-3 mb-5 bg-white rounded" type="text" name="search" id="search" placeholder="search products">
-        </div>
-        <div id="searchresult">
-    <div class="big row">
-        @foreach ($products as $product)
-            <div class="disp col-3">
-                <h2 class="hed2">{{ $product->name }}</h2>
-                <p class="pr">Description: {{ $product->desciption }}</p>
-                <p class="pr">Price: {{ $product->price }}</p>
-                <img src="{{ Storage::url($product->image) }}" width="80" alt="Product Image">
-                <a href="{{ route('addtocart', ['id' => $product->id]) }}"><button class="sbt">Add to
-                        cart</button></a>
-                <a href="{{ route('productdetails', ['id' => $product->id]) }}"><button
-                        class="sbt">Details</button></a>
-            </div>
-        @endforeach
+    <div class="col-md-12 w-100">
+        <input class="col-md-12 w-100 form-control shadow-lg p-3 mb-5 bg-white rounded" type="text" name="search"
+            id="search" placeholder="search products">
     </div>
+    <div id="searchresult">
+        <div class="big row">
+            @foreach ($products as $product)
+                <div class="disp col-3">
+                    <h2 class="hed2">{{ $product->name }}</h2>
+                    <p class="pr">Description: {{ $product->desciption }}</p>
+                    <p class="pr">Price: {{ $product->price }}</p>
+                    <img src="{{ Storage::url($product->image) }}" width="80" alt="Product Image">
+                    <a href="{{ route('addtocart', ['id' => $product->id]) }}"><button class="sbt">Add to
+                            cart</button></a>
+                    <a href="{{ route('productdetails', ['id' => $product->id]) }}"><button
+                            class="sbt">Details</button></a>
+                </div>
+            @endforeach
         </div>
+    </div>
     <div style=" display: flex;
     justify-content: center;
     align-items: center;
     margin-top: 20px;">
-        {{ $products->links() }}
+        {{-- {{ $products->links() }} --}}
     </div>
     @include('layout.footer')
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
     </script>
-    <script src="{{ asset("js/jquery-3.7.1.min.js") }}"></script>
+    <script src="{{ asset('js/jquery-3.7.1.min.js') }}"></script>
     <script>
-        $(document).ready(function(){
-            $(document).on("input","#search",function(){
-                var search=$(this).val();
+        $(document).ready(function() {
+            $(document).on("input", "#search", function() {
+                var search = $(this).val();
                 jQuery.ajax({
-          url:"{{ route("ajaxsearch") }}",
-          type:'post',
-          datatype:'html',
-          cache:false,
-          data:{search:search,'_token':"{{ csrf_token() }}"},
-          success:function(data){
-            $("#searchresult").html(data);
-          },
-          error:function(){
+                    url: "{{ route('ajaxsearch') }}",
+                    type: 'post',
+                    datatype: 'html',
+                    cache: false,
+                    data: {
+                        search: search,
+                        '_token': "{{ csrf_token() }}"
+                    },
+                    success: function(data) {
+                        $("#searchresult").html(data);
+                    },
+                    error: function() {
 
-          }
-        });
+                    }
+                });
             });
-    });
+        });
     </script>
 </body>
 
