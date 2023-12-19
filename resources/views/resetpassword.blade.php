@@ -52,9 +52,11 @@
             border: none;
             border-radius: 4px;
             cursor: pointer;
-            width: 150px
+            width: 100px;
         }
-
+        #whatsup #e-mail {
+            padding-right: 10px;
+        }
         .forget-password-form button:hover {
             background-color: #45a049;
         }
