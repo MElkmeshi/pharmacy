@@ -3,5 +3,6 @@ namespace App\Contracts;
 
 interface ForgetPasswordInterface
 {
-    public function sendlink($user, $token);
+    public function sendlink($useremail, $token);
+    
 }

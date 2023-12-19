@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminRolePermissionController;
 use Illuminate\Support\Facades\URL;
+// use App\Http\Controllers\Auth\ForgotPasswordController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -169,3 +171,8 @@ Route::get('/reset', function () {
 Route::get('/newpassword', function () {
     return view("newpassword");
 })->name("newpassword");
+
+
+
+Route::post('/forgot-password', [App\Http\Controllers\Auth\ForgetPasswordController::class, 'sendResetLink'])->name('forgot-password_send-link');
+Route::post('/reset-password', [App\Http\Controllers\Auth\ResetPasswordController::class, 'resetWithToken'])->name('set_newpassword');
