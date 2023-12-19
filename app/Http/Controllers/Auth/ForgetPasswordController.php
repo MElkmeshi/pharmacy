@@ -6,24 +6,43 @@ use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Password;
+use App\Contracts\ForgetPasswordInterface;
+use App\Models\User;
 
 class ForgotPasswordController extends Controller
 {
-    public function showLinkRequestForm()
+    // public function showLinkRequestForm()
+    // {
+    //     return view('auth.passwords.email');
+    // }
+
+    // public function sendResetLinkEmail(Request $request)
+    // {
+    //     $request->validate(['email' => 'required|email']);
+
+    //     $status = Password::sendResetLink(
+    //         $request->only('email')
+    //     );
+
+    //     return $status === Password::RESET_LINK_SENT
+    //                 ? back()->with(['status' => __($status)])
+    //                 : back()->withErrors(['email' => __($status)]);
+    // }
+
+
+    private $forgetPasswordService;
+
+    public function __construct(ForgetPasswordInterface $forgetPasswordService)
     {
-        return view('auth.passwords.email');
+        $this->forgetPasswordService = $forgetPasswordService;
     }
 
-    public function sendResetLinkEmail(Request $request)
+    public function sendResetLink(User $user)
     {
-        $request->validate(['email' => 'required|email']);
+        $token = 'generate_your_token_here';
 
-        $status = Password::sendResetLink(
-            $request->only('email')
-        );
+        $result = $this->forgetPasswordService->sendlink($user, $token);
 
-        return $status === Password::RESET_LINK_SENT
-                    ? back()->with(['status' => __($status)])
-                    : back()->withErrors(['email' => __($status)]);
+        return view('forget-password', compact('result'));
     }
 }
