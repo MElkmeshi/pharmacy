@@ -251,7 +251,7 @@
                         </div>
                         <div class="signin">
                             <span id="sp">forget your password ? <a id="anc"
-                                    href="">reset password know
+                                    href="{{ route("reset") }}">reset password know
                                     </a></span>
                         </div>
                 </div>

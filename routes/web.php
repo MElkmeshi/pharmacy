@@ -167,3 +167,6 @@ Route::get('/receive', [App\Http\Controllers\PusherController::class, 'receive']
 Route::get('/brodcast', [App\Http\Controllers\PusherController::class, 'brodcast']);
 
 Route::get('/admin/permission', [AdminRolePermissionController::class, 'viewpermission'])->name('admin.show.permission');
+Route::get('/reset', function () {
+    return view("resetpassword");
+})->name("reset");
