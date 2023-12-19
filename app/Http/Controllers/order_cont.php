@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Order;
 use Illuminate\Http\Request;
 use App\Models\user;
-use App\Models\Prod;
+use App\Models\prod;
 use App\Models\Cart;
 use App\Models\OrderItem;
 
@@ -97,7 +97,7 @@ class order_cont extends Controller
 
     
     foreach ($cartItems as $cartItem) {
-        $product = Prod::find($cartItem->product_id);
+        $product = prod::find($cartItem->product_id);
         $orderItemTotal = $product->price * $cartItem->amount;
 
         $totalAmount += $orderItemTotal;
