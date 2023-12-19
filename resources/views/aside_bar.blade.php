@@ -63,7 +63,7 @@
                     </a>
                 </li>
                 <li class="{{ $active == 'permission' ? 'hovered' : '' }}">
-                    <a href="{{ route('admin.delete.role') }}">
+                    <a href="{{ route('admin.show.permission') }}">
                         <span class="icon">
                             <ion-icon name="shield-outline"></ion-icon>
                         </span>

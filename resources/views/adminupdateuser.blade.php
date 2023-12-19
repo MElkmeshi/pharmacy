@@ -1,11 +1,12 @@
 @extends('aside_bar')
 
+@section($active = 'displayUsers')
 
 @section('name')
 
-<title>
-    Update user
-   </title>
+    <title>
+        Update user
+    </title>
     <link rel="stylesheet" href="/css/addproduct.css">
 @endsection
 
@@ -58,33 +59,28 @@
                     <!-- Name -->
                     <div class="form-group">
                         <label class="label" for="name">Name:</label>
-                        <input class="input" type="text" id="name" name="name" value="{{ $user->name }}" required>
+                        <input class="input" type="text" id="name" name="name" value="{{ $user->name }}"
+                            required>
                         <div style="color: red" class="error-message" id="name-error"></div>
                     </div>
 
                     <!-- Address -->
                     <div class="form-group">
                         <label class="label" for="address">Address:</label>
-                        <input class="input" type="text" id="address" name="address" value="{{ $user->address }}" required>
+                        <input class="input" type="text" id="address" name="address" value="{{ $user->address }}"
+                            required>
                         <div style="color: red" class="error-message" id="address-error"></div>
                     </div>
 
                     <!-- Age -->
                     <div class="form-group">
                         <label class="label" for="age">Age:</label>
-                        <input class="input" type="text" id="age" name="age" value="{{ $user->age }}" required>
+                        <input class="input" type="text" id="age" name="age" value="{{ $user->age }}"
+                            required>
                         <div style="color: red" class="error-message" id="age-error"></div>
                     </div>
 
-                    <div class="form-group">
 
-                        <label class="label" for="category">Type of user</label>
-
-                        <select class="form-control" name="user_role" id="user_role" required="">
-                            <option value="user">User </option>
-                            <option value="admin">Admin </option>
-                        </select>
-                    </div>
 
                     <div class="form-group">
                         <button type="submit">Update</button>

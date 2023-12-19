@@ -166,4 +166,4 @@ Route::get('/dis_users', [App\Http\Controllers\user_cont::class, 'disusers'])->n
 Route::get('/receive', [App\Http\Controllers\PusherController::class, 'receive']);
 Route::get('/brodcast', [App\Http\Controllers\PusherController::class, 'brodcast']);
 
-Route::get('/admin/permission', [AdminRolePermissionController::class, 'vieweditrole'])->name('admin.edit.role');
+Route::get('/admin/permission', [AdminRolePermissionController::class, 'viewpermission'])->name('admin.show.permission');
