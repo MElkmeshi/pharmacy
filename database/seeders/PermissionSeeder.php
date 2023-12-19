@@ -20,6 +20,11 @@ class PermissionSeeder extends Seeder
             'Update_Order',
             'Delete_Order',
             'Live_Chat_With_User',
+            'Add_Permission',
+            'Update_Permission',
+            'Delete_Permission',
+            'Update_User',
+            'Delete_User'
         ];
 
         foreach ($permissions as $permission) {
