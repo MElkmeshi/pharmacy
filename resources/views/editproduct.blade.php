@@ -1,5 +1,6 @@
 @extends('aside_bar')
 
+@section($active = 'displayUsers')
 
 @section('name')
 <title>Edit product</title>
