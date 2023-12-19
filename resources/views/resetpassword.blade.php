@@ -42,6 +42,7 @@
         }
         .sendbtns{
             display: flex;
+            padding: 10px;
         }
 
         .forget-password-form button {
