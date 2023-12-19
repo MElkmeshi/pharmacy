@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Cart;
 use Illuminate\Http\Request;
-use App\Models\user;
+use App\Models\User;
 use App\Models\Prod;
 
 class cart_cont extends Controller
