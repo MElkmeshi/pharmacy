@@ -175,4 +175,6 @@ Route::get('/admin/permission', [AdminRolePermissionController::class, 'viewperm
 Route::get('/reset', function () {
     return view("resetpassword");
 })->name("reset");
-
+Route::get('/newpassword', function () {
+    return view("newpassword");
+})->name("newpassword");
