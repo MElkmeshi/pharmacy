@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash; // Import the Hash facade
 use App\Http\Requests\CreateUserRequest;
 use App\Http\Requests\UpdateUserRequest;
+use Illuminate\Support\Facades\Auth;
 use Spatie\Permission\Contracts\Role;
 
 class user_cont extends Controller
@@ -29,6 +30,7 @@ class user_cont extends Controller
     public function logout(Request $request,)
     {
         $request->session()->flush();
+        Auth::logout();
         return redirect(route('home'));
     }
 
@@ -57,7 +59,7 @@ class user_cont extends Controller
     $request->session()->put('user_address', $user->address);
     $request->session()->put('user_age', $user->age);
     $request->session()->put('user_role', $user->role);
-
+    Auth::login($user);
    // $user->assignRole('user');
 
        return redirect(route('home'));
@@ -91,7 +93,6 @@ public function admin_show_updateuser_form(Request $request,$id){
 
     $user = user::find($id);
     if (!$user) {
-
         return redirect('/')->with('error', 'Product not found.');
     }
     else

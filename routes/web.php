@@ -190,5 +190,12 @@ Route::get('/dis_users', [App\Http\Controllers\user_cont::class, 'disusers'])->n
 Route::get('/receive', [App\Http\Controllers\PusherController::class, 'receive']);
 Route::get('/brodcast', [App\Http\Controllers\PusherController::class, 'brodcast']);
 
+<<<<<<< HEAD
 Route::get('/admin/permission', [AdminRolePermissionController::class, 'vieweditrole'])->name('admin.edit.role');
 
+=======
+Route::get('/admin/permission', [AdminRolePermissionController::class, 'viewpermission'])->name('admin.show.permission');
+Route::get('/reset', function () {
+    return view("resetpassword");
+})->name("reset");
+>>>>>>> 599bcd3276b599a4d1590b0255414b62b87df745
