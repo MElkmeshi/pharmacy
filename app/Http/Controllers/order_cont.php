@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Order;
 use Illuminate\Http\Request;
-use App\Models\user;
+use App\Models\User;
 use App\Models\prod;
 use App\Models\Cart;
 use App\Models\OrderItem;
@@ -40,7 +40,7 @@ class order_cont extends Controller
 
     $newAddress = $request->input('new_address');
 
-    $productPrice = Prod::find($id)->price;
+    $productPrice = prod::find($id)->price;
 
     $productQuantity = Cart::find($cartid)->amount;
 
