@@ -17,7 +17,7 @@ class user_cont extends Controller
 
     public function store(CreateUserRequest $request)
     {
-        $newuser = user::create([
+        $newuser = User::create([
             'name' => $request->username,
             'email' => $request->email,
             'password' => Hash::make($request->password), // Hash the password
@@ -46,7 +46,7 @@ class user_cont extends Controller
     $password = $request->input('password');
 
     // Find a user with the given email
-    $user = user::where('email', $email)->first();
+    $user = User::where('email', $email)->first();
 
     if ($user && Hash::check($password, $user->password)) {
         // Password matches the stored password
@@ -91,7 +91,7 @@ public function show_updateuser_form(Request $request){
 
 public function admin_show_updateuser_form(Request $request,$id){
 
-    $user = user::find($id);
+    $user = User::find($id);
     if (!$user) {
         return redirect('/')->with('error', 'Product not found.');
     }
@@ -106,7 +106,7 @@ public function admin_updateuser(Request $request, $id){
     $address = $request->input('address');
     $age = $request->input('age');
     $role = $request->input('user_role');
-    $user = user::find( $id );
+    $user = User::find( $id );
     $user->name = $name;
     $user->address = $address;
     $user->age = $age;
@@ -125,7 +125,7 @@ public function admin_updateuser(Request $request, $id){
 }
 public function isUniqueEmail(Request $request,$email){
 
-    $user = user::where('email',urldecode($email) )->get();
+    $user = User::where('email',urldecode($email) )->get();
     return $user->count() == 0 ? 'true' : 'false';
 }
 
@@ -137,7 +137,7 @@ public function updateuser(UpdateUserRequest $request){
     $age = $request->input('age');
     $password = $request->input('password');
     $userId = $request->session()->get('user_id');
-    $user = user::find($userId);
+    $user = User::find($userId);
     $user->name = $name;
     if (!empty($password)) {
         if (Hash::needsRehash($password)) {
@@ -166,7 +166,7 @@ public function deleteuser(Request $request){
     $emailToDelete = $request->input('email');
 
 
-    $userToDelete = user::where('email', $emailToDelete)->first();
+    $userToDelete = User::where('email', $emailToDelete)->first();
 
     if ($userToDelete) {
 
@@ -190,7 +190,7 @@ public static function getLast8Orders()
 
 public function disusers(){
 
-    $users = user::get();
+    $users = User::get();
     //\App\Models\prod::select('id', 'name', 'desciption', 'price','image')->get();
 
    // Pass the retrieved data to the "home" view
@@ -201,7 +201,7 @@ public function disusers(){
 public function ajaxadminsearchuser(request $request){
     if ($request->ajax()) {
         $adminsearchuser=$request->adminsearchuser;
-        $data=user::where("name","like","%{$adminsearchuser}%")->orderby("id","ASC")->get();
+        $data=User::where("name","like","%{$adminsearchuser}%")->orderby("id","ASC")->get();
         return view("adminsearchuser",["data"=>$data]);
         }
 }
