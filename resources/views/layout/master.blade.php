@@ -51,7 +51,7 @@
             </button>
             <div class="collapse navbar-collapse" id="main">
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                        @foreach ($menuItems as $menuItem)
+                        @foreach ($menuItems->where('required_role', 'user') as $menuItem)
                             <li class="nav-item">
                                 @if ($menuItem->children->isEmpty())
                                     <a class="nav-link p-2 p-lg-3" href="{{ $menuItem->url }}">{{ $menuItem->name }}</a>

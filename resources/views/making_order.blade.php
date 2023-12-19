@@ -1,6 +1,6 @@
 
    
-@extends('layout.master')
+@extends('layout.master',compact('menuItems'))
 @section('title',"orderall")
 
 @section('content')

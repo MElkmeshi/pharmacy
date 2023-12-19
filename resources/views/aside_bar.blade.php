@@ -25,7 +25,7 @@
                         <span class="title">Dr Elsayed</span>
                     </li>
                 </a>
-
+                
                 <li class="{{ $active == 'dashboard' ? 'hovered' : '' }}">
                     <a href="{{ route('dash') }}">
                         <span class="icon">

@@ -69,8 +69,8 @@ Route::get('/contact', function () {
 Route::get('/about-us', function () {
     $menuItems = Menu::with('children')->whereNull('parent_id')->get();
 
-    return view('contact',compact('menuItems'));
-    return view('about-us');
+    return view('about-us',compact('menuItems'));
+   
 })->name('about-us');
 
 
