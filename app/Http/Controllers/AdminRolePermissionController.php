@@ -135,7 +135,9 @@ public function deleteRole(Request $request)
     public function viewAssign_role_to_user(){
 
         $roles = Role::all();
-        return view('assign_role_user',compact('roles'));
+        $users = User::pluck('email', 'email');
+
+        return view('assign_role_user', compact('roles', 'users'));
     }
 
 
