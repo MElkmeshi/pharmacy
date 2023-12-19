@@ -53,10 +53,15 @@
                             </div>
                     
     
-                            <div >
-                                <label for="email">User Email</label>
-                                <input type="email" name="email"  required>
+                            <div class="form-group">
+                                <label for="email">Select User</label>
+                                <select name="email" class="form-control chosen-select">
+                                    @foreach ($users as $email)
+                                        <option value="{{ $email }}">{{ $email }}</option>
+                                    @endforeach
+                                </select>
                             </div>
+                            
     
                             <button type="submit" >Assign Role</button>
                         </form>
