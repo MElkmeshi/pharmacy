@@ -1,5 +1,3 @@
-<!DOCTYPE html>
-<html>
 
 <head>
     <title>Chat</title>
@@ -230,7 +228,14 @@
     }
 </style>
 
-<body>
+@extends('layout.master')
+
+@section('title',"Chat")
+
+@section('content')
+    
+
+
 
     <body>
         <div class="container-fluid h-100">
@@ -364,6 +369,5 @@
 
         });
     </script>
-
-
-</html>
+@endsection
+    

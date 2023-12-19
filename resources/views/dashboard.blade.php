@@ -22,8 +22,8 @@
 
         <div class="card">
             <div>
-                <div class="numbers">80</div>
-                <div class="cardName">Sales</div>
+                <div class="numbers">{{$totalOrders}}</div>
+                <div class="cardName">Total Orders</div>
             </div>
 
             <div class="iconBx">
@@ -75,7 +75,7 @@
                         <tbody>
                             @foreach ($orders as $order)
                             <tr>
-                                <td>{{$order->name}}</td>
+                                <td>{{$order->user->name}}</td>
                                 <td>${{ $order->total_amount }}</td>
                                 <td>{{ $order->address }}</td>
                                 <td ><span class="status {{$order->status}}">{{ $order->status }}</span></td>

@@ -31,6 +31,10 @@ Route::get('/linkstorage', function () {
 });
 
 
+Route::get('/chats/chat', function () {
+    return view('chat');
+})->name('chats');
+
 //@todo: add them to a controller
 Route::get('/', function () {
     return view('home');

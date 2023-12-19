@@ -179,11 +179,11 @@ public function deleteuser(Request $request){
 
 public static function getLast8Orders()
     {
-
+        $totalOrders = Order::count();
         $orders = Order::orderBy('id', 'desc')->take(8)->get();
         $users = User::orderBy('id', 'desc')->take(8)->get(['name', 'address']);
 
-            return view('dashboard', compact('orders','users'));
+            return view('dashboard', compact('orders','users','totalOrders'));
     }
 
 
