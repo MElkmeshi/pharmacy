@@ -26,7 +26,7 @@
                     </li>
                 </a>
 
-                <li class="{{$active == "dashboard" ? "hovered" : ""}}">
+                <li class="{{ $active == 'dashboard' ? 'hovered' : '' }}">
                     <a href="{{ route('dash') }}">
                         <span class="icon">
                             <ion-icon name="home-outline"></ion-icon>
@@ -35,7 +35,7 @@
                     </a>
                 </li>
 
-                <li class="{{$active == "addProduct" ? "hovered" : ""}}">
+                <li class="{{ $active == 'addProduct' ? 'hovered' : '' }}">
                     <a href="{{ route('addproduct') }}">
                         <span class="icon">
                             <ion-icon name="add-outline"></ion-icon>
@@ -45,7 +45,7 @@
                 </li>
 
 
-                <li class="{{$active == "displayProduct" ? "hovered" : ""}}">
+                <li class="{{ $active == 'displayProduct' ? 'hovered' : '' }}">
                     <a href="{{ route('disproduct') }}">
                         <span class="icon">
                             <ion-icon name="create-outline"></ion-icon>
@@ -54,7 +54,7 @@
                     </a>
                 </li>
 
-                <li class="{{$active == "displayUsers" ? "hovered" : ""}}">
+                <li class="{{ $active == 'displayUsers' ? 'hovered' : '' }}">
                     <a href="{{ route('dis_users') }}">
                         <span class="icon">
                             <ion-icon name="people-outline"></ion-icon>
@@ -62,8 +62,8 @@
                         <span class="title">Customers</span>
                     </a>
                 </li>
-                <li class="{{$active == "permission" ? "hovered" : ""}}">
-                    <a href="{{ route("admin.delete.role") }}">
+                <li class="{{ $active == 'permission' ? 'hovered' : '' }}">
+                    <a href="{{ route('admin.delete.role') }}">
                         <span class="icon">
                             <ion-icon name="shield-outline"></ion-icon>
                         </span>
@@ -71,8 +71,8 @@
                     </a>
                 </li>
 
-                <li>
-                    <a href="{{ route("chats") }}">
+                <li class="{{ $active == 'Chat' ? 'hovered' : '' }}">
+                    <a href="{{ route('chats') }}">
                         <span class="icon">
                             <ion-icon name="chatbubble-outline"></ion-icon>
                         </span>
@@ -80,7 +80,7 @@
                     </a>
                 </li>
 
-                <li class="{{$active == "displayOrders" ? "hovered" : ""}}">
+                <li class="{{ $active == 'displayOrders' ? 'hovered' : '' }}">
                     <a href="{{ route('orders_admin') }}">
                         <span class="icon">
                             <ion-icon name="cart-outline"></ion-icon>
@@ -126,7 +126,7 @@
     <!-- ====== ionicons ======= -->
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-    <script src="{{ asset("js/jquery-3.7.1.min.js") }}"></script>
+    <script src="{{ asset('js/jquery-3.7.1.min.js') }}"></script>
     @yield('script')
 </body>
 
