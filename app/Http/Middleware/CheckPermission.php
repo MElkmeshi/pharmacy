@@ -27,10 +27,9 @@ class CheckPermission
     $user = User::find($userId);
 
     foreach ($permissions as $permission) {
-        // if ($user->can($permission)) {
-        //     return $next($request);
-        // }
-        return $next($request);
+        if ($user->can($permission)) {
+            return $next($request);
+        }
     }
 
     return abort(403, 'Unauthorized action.');

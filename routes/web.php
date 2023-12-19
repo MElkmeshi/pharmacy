@@ -93,29 +93,6 @@ Route::get('/specific_payment', [App\Http\Controllers\PaymentMethodController::c
 Route::post('/store_payment', [App\Http\Controllers\PaymentMethodController::class, 'store_values'])->name('store_payment');
 
 
-
-
-
-
-// Route::get('/dashboard', [App\Http\Controllers\user_cont::class, 'getLast8Orders'])->name('dash');
-// Route::post('/admin/roles', [AdminRolePermissionController::class, 'assignPermissionToRole'])->name('admin.roles');
-// Route::get('/admin/Assign-role', [AdminRolePermissionController::class, 'viewAssign_role_to_user'])->name('admin.Assign.role.user');
-// Route::post('/admin/assign-role-to-user', [AdminRolePermissionController::class, 'assignRoleToUser'])
-// ->name('admin.assignRoleToUser');
-// Route::get('/admin/edit-role', [AdminRolePermissionController::class, 'vieweditrole'])->name('admin.edit.role');
-// Route::post('roles/edit-name', [AdminRolePermissionController::class, 'editRoleName'])->name('admin.roles.editName');
-// Route::get('/dashboard', [App\Http\Controllers\user_cont::class, 'getLast8Orders'])->name('dash');
-//     Route::post('/deleteuser', [App\Http\Controllers\user_cont::class, 'deleteuser'])->name('deleteuser');
-//     Route::get('/dashboard', [App\Http\Controllers\user_cont::class, 'getLast8Orders'])->name('dash');
-//     Route::get('/updateuserform/{id}', [App\Http\Controllers\user_cont::class, 'admin_show_updateuser_form'])->name('adminupdateuserform');
-//     Route::post('/updateuserform/{id}', [App\Http\Controllers\user_cont::class, 'admin_updateuser'])->name('adminupdateuser');
-//     Route::get('/dashboard', [App\Http\Controllers\user_cont::class, 'getLast8Orders'])->name('dash');
-//     Route::post('/admin/roles', [AdminRolePermissionController::class, 'assignPermissionToRole'])->name('admin.roles');
-//     Route::get('/admin/create-role', [AdminRolePermissionController::class, 'viewCreateRole'])->name('admin.create.role');
-
-
-
-
 Route::middleware(['checkPermission:Add_Product'])->group(function ()  {
     Route::get('/dashboard', [App\Http\Controllers\user_cont::class, 'getLast8Orders'])->name('dash');
     Route::post('/addprod', [App\Http\Controllers\prod_cont::class, 'addprod'])->name('addprod');
@@ -190,12 +167,12 @@ Route::get('/dis_users', [App\Http\Controllers\user_cont::class, 'disusers'])->n
 Route::get('/receive', [App\Http\Controllers\PusherController::class, 'receive']);
 Route::get('/brodcast', [App\Http\Controllers\PusherController::class, 'brodcast']);
 
-<<<<<<< HEAD
+
 Route::get('/admin/permission', [AdminRolePermissionController::class, 'vieweditrole'])->name('admin.edit.role');
 
-=======
+
 Route::get('/admin/permission', [AdminRolePermissionController::class, 'viewpermission'])->name('admin.show.permission');
 Route::get('/reset', function () {
     return view("resetpassword");
 })->name("reset");
->>>>>>> 599bcd3276b599a4d1590b0255414b62b87df745
+
