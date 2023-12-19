@@ -43,10 +43,15 @@
                         <form method="POST" action="{{ route('admin.assignRoleToUser') }}">
                             @csrf
     
-                            <div >
-                                <label for="role">Role Name</label>
-                                <input type="text" name="role"  required>
+                            <div class="form-group">
+                                <label for="role">Select Role</label>
+                                <select name="role" class="form-control chosen-select">
+                                    @foreach ($roles as $role)
+                                        <option value="{{ $role->name }}">{{ $role->name }}</option>
+                                    @endforeach
+                                </select>
                             </div>
+                    
     
                             <div >
                                 <label for="email">User Email</label>

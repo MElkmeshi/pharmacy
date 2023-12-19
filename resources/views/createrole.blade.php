@@ -28,8 +28,24 @@
                     @csrf
 
                     <div class="form-group">
-                        <label for="name">Role Name</label>
-                        <input type="text" name="name" class="form-control" required>
+
+                        <label for="role">Select Role</label>
+                        {{-- <select name="name" class="form-control chosen-select">
+                @foreach ($roles as $role)
+                    <option value="{{ $role->name }}">{{ $role->name }}</option>
+                @endforeach
+            </select> --}}
+
+                        <input list="namelist" name="name" id="name">
+                        <datalist id="namelist">
+                            @foreach ($roles as $role)
+                                <option value="{{ $role->name }}">
+                            @endforeach
+                        </datalist>
+
+
+                        <input type="submit">
+
                     </div>
 
                     <div class="form-group">
