@@ -10,14 +10,7 @@ use App\Models\User;
 
 class AdminRolePermissionController extends Controller
 {
-    public function index()
-    {
-        $roles = Role::all();
-        //$permissions = Permission::all();
-
-        //return view('admin.roles_permissions.index', compact('roles', 'permissions'));
-        return view('admin.roles_permissions.index', compact('roles'));
-    }
+  
 
     public function createRole(Request $request)
     {
@@ -61,20 +54,26 @@ public function deleteRole(Request $request)
 
     public function viewCreateRole()
     {
+
         $permissions = Permission::all();
-        return view('createrole', compact('permissions'));
+        $roles = Role::all();
+
+        return view('createrole', compact('roles','permissions'));
     }
 
     public function vieweditrole()
     {
+        $roles = Role::all();
 
-        return view('editrole');
+        return view('editrole',compact('roles'));
     }
 
     public function viewdeleterole()
     {
+        $roles = Role::all();
 
-        return view('deleterole');
+
+        return view('deleterole',compact('roles'));
     }
 
 
@@ -128,9 +127,10 @@ public function deleteRole(Request $request)
 }
 
 
-    public function viewAssign_role_to_user()
-    {
-        return view('assign_role_user');
+    public function viewAssign_role_to_user(){
+
+        $roles = Role::all();
+        return view('assign_role_user',compact('roles'));
     }
 
 

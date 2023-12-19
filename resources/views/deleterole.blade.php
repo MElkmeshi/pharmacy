@@ -29,9 +29,14 @@
                             @csrf
                             @method('DELETE')
                             <div class="form-group">
-                                <label for="name">Role Name</label>
-                                <input type="text" name="name" class="form-control"  required>
+                                <label for="name">Select Role</label>
+                                <select name="name" class="form-control chosen-select">
+                                    @foreach ($roles as $role)
+                                        <option value="{{ $role->name }}">{{ $role->name }}</option>
+                                    @endforeach
+                                </select>
                             </div>
+                    
 
                             <button type="submit" class="btn btn-danger">Delete Role</button>
                         </form>

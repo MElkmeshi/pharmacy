@@ -31,9 +31,14 @@
                             @csrf
 
                             <div class="form-group">
-                                <label for="name">Role Name</label>
-                                <input type="text" name="name" class="form-control"  required>
+                                <label for="name">Select Role</label>
+                                <select name="name" class="form-control chosen-select">
+                                    @foreach ($roles as $role)
+                                        <option value="{{ $role->name }}">{{ $role->name }}</option>
+                                    @endforeach
+                                </select>
                             </div>
+                    
 
                             <div class="form-group">
                                 <label for="new_name">New Role Name</label>
