@@ -1,4 +1,3 @@
-<!-- start of navbar -->
 <nav class="navbar navbar-expand-lg sticky-top">
     <div class="container">
         <a class="navbar-brand" href="{{ route('home') }}">
@@ -48,15 +47,23 @@
                         </li>
                     </ul>
                 </li>
-
+                
                 <li class="nav-item">
                     <a class="nav-link p-2 p-lg-3" href="{{ route('contact') }}"> contact</a>
                 </li>
-
+                
                 <li class="nav-item">
-                    <a class="nav-link p-2 p-lg-3" href="{{ route('about-us') }}"> About us</a>
+                    <a class="nav-link p-2 p-lg-3" href="{{ route('about-us') }}"> About-us</a>
                 </li>
+               
 
+                @if(session()->has('user_name'))
+                    @if (!(strtolower(session('user_role')) == 'admin'))
+                    <li class="nav-item">
+                       <a class="nav-link p-2 p-lg-3" href="{{ route('chats') }}"> Message</a>
+                    </li>
+                    @endif
+                @endif
                 @if (session()->has('user_name'))
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle p-2 p-lg-3" href="#" id="basic-nav-dropdown"

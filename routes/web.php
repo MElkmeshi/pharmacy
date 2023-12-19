@@ -3,6 +3,7 @@
 use App\Http\Controllers\ChatController;
 
 use App\Http\Controllers\PaymobController;
+use App\Http\Controllers\MenuController;
 use App\Http\Controllers\prod_cont;
 use App\Http\Controllers\user_cont;
 use Illuminate\Support\Facades\Artisan;
@@ -12,6 +13,9 @@ use Illuminate\Support\Facades\URL;
 // use App\Http\Controllers\Auth\ForgotPasswordController;
 
 
+
+
+use App\Models\Menu;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -33,25 +37,47 @@ Route::get('/linkstorage', function () {
 });
 
 
+Route::get('/chats/chat', function () {
+    return view('chat');
+})->name('chats');
+
 //@todo: add them to a controller
-Route::get('/', function () {
-    return view('home');
-})->name('home');
 Route::get('/signup', function () {
     return view('signup');
 })->name('signupform');
 Route::get('/loginform', function () {
     return view('login');
 })->name('loginform');
-Route::get('/contact', function () {
-    return view('contact');
-})->name('contact');
-Route::get('/about-us', function () {
-    return view('about-us');
-})->name('about-us');
 Route::get('/deleteuserform', function () {
     return view('deleteuser');
 })->name('deleteuserform');
+
+
+//rendering navbar dynamically
+
+Route::get('/', function () {
+    $menuItems = Menu::with('children')->whereNull('parent_id')->get();
+
+    return view('home',compact('menuItems'));
+    
+})->name('home');
+
+Route::get('/contact', function () {
+    $menuItems = Menu::with('children')->whereNull('parent_id')->get();
+
+    return view('contact',compact('menuItems'));
+})->name('contact');
+
+Route::get('/about-us', function () {
+    $menuItems = Menu::with('children')->whereNull('parent_id')->get();
+
+    return view('about-us',compact('menuItems'));
+   
+})->name('about-us');
+
+
+
+
 
 
 Route::post('/register', [App\Http\Controllers\user_cont::class, 'store'])->name('reg');

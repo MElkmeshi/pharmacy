@@ -18,9 +18,11 @@ class ChatController extends Controller
     public function sendmessage(Request $request)
     {
         $userID = $request->session()->get('user_id');
-        $role =  $request->session()->get('user_role');
+        $user = User::find($userID);
+        $isAdmin = $user->can('Live_Chat_With_User');
+        $role = $isAdmin ? "Admin" : "user";
         $username = "";
-        if(strtolower($role) == 'admin'){
+        if($isAdmin){
             Chat::create([
                 'from' => $userID,
                 'message' => $request->message,
@@ -112,7 +114,10 @@ class ChatController extends Controller
             }
         }
         $linkpath = str_replace("public", "storage", $path);
-        $role =  $request->session()->get('user_role');
+        // $role =  $request->session()->get('user_role');
+        $user = User::find($userID);
+        $isAdmin = $user->can('Live_Chat_With_User');
+        $role = $isAdmin ? "Admin" : "user";
         $message = "<img src='$linkpath' width='400px'>";
         error_log($message);
         $username = "";
@@ -145,9 +150,13 @@ class ChatController extends Controller
         // $permission = Permission::create(['name' => 'delete articles']);
         // error_log($permission);
         // return $role;
-        $adminRole = Role::create(['name' => 'admin3']);
-        $adminRole->givePermissionTo('delete articles');
-        return $adminRole;
+        // $adminRole = Role::create(['name' => 'admin3']);
+        // $adminRole->givePermissionTo('delete articles');
+        // return $adminRole;
+        // $userId = session('user_id');
+        // $user = User::find($userId);
+        // $user->can('Live_Chat_With_User');
+        // return ? "true" : "false";
     }
 
 }

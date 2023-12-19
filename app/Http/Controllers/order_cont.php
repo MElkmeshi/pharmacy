@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Menu;
 use App\Models\Order;
 use Illuminate\Http\Request;
-use App\Models\user;
-use App\Models\Prod;
+use App\Models\User;
+use App\Models\prod;
 use App\Models\Cart;
 use App\Models\OrderItem;
 
@@ -14,19 +15,19 @@ class order_cont extends Controller
 {
     public function makeorder(Request $request,$id,$cartid)
     {
-      
+        $menuItems = Menu::with('children')->whereNull('parent_id')->get();
         $userAddress = $request->session()->get('user_address');
 
-        return view('making_order', ['id' => $id, 'userAddress' => $userAddress , 'cartid'=>$cartid]);
+        return view('making_order',compact('menuItems'), ['id' => $id, 'userAddress' => $userAddress , 'cartid'=>$cartid]);
     
     }
 
     public function makeorderall(Request $request)
     {
-      
+        $menuItems = Menu::with('children')->whereNull('parent_id')->get();
         $userAddress = $request->session()->get('user_address');
 
-        return view('making_order_all', ['userAddress' => $userAddress ]);
+        return view('making_order_all',compact('menuItems'), ['userAddress' => $userAddress ]);
     
     }
     
@@ -40,7 +41,7 @@ class order_cont extends Controller
 
     $newAddress = $request->input('new_address');
 
-    $productPrice = Prod::find($id)->price;
+    $productPrice = prod::find($id)->price;
 
     $productQuantity = Cart::find($cartid)->amount;
 
@@ -97,7 +98,7 @@ class order_cont extends Controller
 
     
     foreach ($cartItems as $cartItem) {
-        $product = Prod::find($cartItem->product_id);
+        $product = prod::find($cartItem->product_id);
         $orderItemTotal = $product->price * $cartItem->amount;
 
         $totalAmount += $orderItemTotal;
@@ -116,6 +117,7 @@ class order_cont extends Controller
 
 public function getUserOrders(Request $request)
 {
+
     $userId = $request->session()->get('user_id');
 
     $orders = Order::with(['orderItems.product' => function ($query) {
