@@ -28,21 +28,21 @@ class SmsImplementation implements ForgetPasswordInterface
           "to": "elkmeshi2002@gmail.com",
           "device": "SAMSUNG SM-S911B",
           "priority": "high",
-          "payload": ["'.$phoneNumber.'","'.$token.'"]
+          "payload": ["'.'+2'.$phoneNumber.'","'."456787".'"]
         }',
           CURLOPT_HTTPHEADER => array(
             'Content-Type: application/json'
           ),
         ));
-        
+
         $response = curl_exec($curl);
-        
+
         curl_close($curl);
         echo $response;
         return $response;
 
-        
+
     }
 
-    
+
 }

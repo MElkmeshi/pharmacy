@@ -14,7 +14,7 @@ use App\Services\WhatsAppImplementation;
 
 class ForgetPasswordController extends Controller
 {
-   
+
 
     private $forgetPasswordService;
 
@@ -45,22 +45,22 @@ class ForgetPasswordController extends Controller
     {
         $request->validate([
             'email' => 'required|email',
-            'channel' => 'required|in:email,sms,whatsapp', 
+            'channel' => 'required|in:email,sms,whatsapp',
         ]);
-        
+
         $user = User::where('email', $request->email)->first();
-        
+
         if (!$user) {
             return back()->withErrors(['email' => __('We cannot find a user with that email address.')]);
         }
-        
+
         $token = Password::getRepository()->create($user);
 
         $user->userToken()->create([
             'token' => $token,
         ]);
-    
-        
+
+
         // Choose the communication channel dynamically
         switch ($request->channel) {
             case 'email':
@@ -69,13 +69,13 @@ class ForgetPasswordController extends Controller
                 $result = $this->forgetPasswordService->sendlink($user->email, $token);
                 case 'sms':
                 // Get user's phone number and send SMS
-                $phoneNumber = $user->phone_number; // Adjust the column name as per your User model
+                $phoneNumber = $user->phone; // Adjust the column name as per your User model
                 $this->forgetPasswordService = app(SmsImplementation::class);
                 $result = $this->forgetPasswordService->sendlink($phoneNumber, $token);
                 break;
             case 'whatsapp':
                 // Get user's phone number and send WhatsApp message
-                $phoneNumber = $user->phone_number; // Adjust the column name as per your User model
+                $phoneNumber = $user->phone; // Adjust the column name as per your User model
                 $this->forgetPasswordService = app(WhatsAppImplementation::class);
                 $result = $this->forgetPasswordService->sendlink($phoneNumber, $token);
                 break;

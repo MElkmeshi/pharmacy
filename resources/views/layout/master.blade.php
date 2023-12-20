@@ -52,28 +52,63 @@
             </button>
             <div class="collapse navbar-collapse" id="main">
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                    @foreach ($menuItems->where('required_role', 'user') as $menuItem)
-                        <li class="nav-item">
-                            @if ($menuItem->children->isEmpty())
-                                <a class="nav-link p-2 p-lg-3" href="{{ $menuItem->url }}">{{ $menuItem->name }}</a>
-                            @else
-                                <div class="dropdown">
-                                    <a class="nav-link p-2 p-lg-3 dropdown-toggle" href="#" role="button"
-                                        data-bs-toggle="dropdown" aria-expanded="false">
-                                        {{ $menuItem->name }}
-                                    </a>
-                                    <ul class="dropdown-menu">
-                                        @foreach ($menuItem->children as $child)
-                                            <li><a class="dropdown-item"
-                                                    href="{{ $child->url }}">{{ $child->name }}</a></li>
-                                        @endforeach
-                                    </ul>
-                                </div>
-                            @endif
-                        </li>
-                    @endforeach
+                    <li class="nav-item">
+                        <a class="nav-link p-2 p-lg-3 active" aria-current="page" href="{{ route('home') }}">Home</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link p-2 p-lg-3 dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            products
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item"
+                                    href="{{ route('produsercategory', ['category' => 'medications']) }}">Medications</a>
+                            </li>
+                            <li><a class="dropdown-item"
+                                    href="{{ route('produsercategory', ['category' => 'skin_care']) }}">Skin Care</a>
+                            </li>
+                            <li><a class="dropdown-item"
+                                    href="{{ route('produsercategory', ['category' => 'baby_care']) }}">Baby Care</a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item"
+                                    href="{{ route('produsercategory', ['category' => 'medical_equipment']) }}">Medical
+                                    equipments</a>
+                            </li>
+                            <li>
+                                <hr class="dropdown-divider" />
+                            </li>
+                            <li><a class="dropdown-item"
+                                    href="{{ route('produsercategory', ['category' => 'vitamins']) }}">Vitamins</a></li>
+                            <li><a class="dropdown-item"
+                                    href="{{ route('produsercategory', ['category' => 'supplements']) }}">
+                                    Supplements</a>
+                            </li>
+                            <li><a class="dropdown-item"
+                                    href="{{ route('produsercategory', ['category' => 'bills']) }}">Bills</a></li>
+                            <li>
+                                <a class="dropdown-item"
+                                    href="{{ route('produsercategory', ['category' => 'antibiotics']) }}">antibiotique</a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link p-2 p-lg-3" href="{{ route('contact') }}"> contact</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link p-2 p-lg-3" href="{{ route('about-us') }}"> About-us</a>
+                    </li>
 
 
+                    @if (session()->has('user_name'))
+                        @if (!(strtolower(session('user_role')) == 'admin'))
+                            <li class="nav-item">
+                                <a class="nav-link p-2 p-lg-3" href="{{ route('chats') }}"> Message</a>
+                            </li>
+                        @endif
+                    @endif
                     @auth
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle p-2 p-lg-3" href="#" id="basic-nav-dropdown"
@@ -122,6 +157,7 @@
                             <div class="m-3"><a class="btn btn-primary rounded-bill main-btn"
                                     href="{{ route('signupform') }}">SignUp</a>
                             @endauth
+
                 </ul>
                 <div class="icons ps-3 pe-3 d-none d-lg-block">
                     <a href="{{ route('produser') }}"> <i class="fa-solid fa-magnifying-glass"></i></a>
