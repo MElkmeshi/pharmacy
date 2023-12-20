@@ -175,7 +175,7 @@
 
 <h3 id="data">fill the data</h3>
 
-<form id="paymentForm"action="{{ url('store_payment')}}" method="POST">
+<form id="paymentForm"  action="{{ url('store_payment')}}"  method="POST">
     @csrf 
     @foreach($options as $option)
     &nbsp;{{ $option->name }}:
