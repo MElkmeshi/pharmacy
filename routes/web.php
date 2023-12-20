@@ -57,22 +57,19 @@ Route::get('/deleteuserform', function () {
 
 Route::get('/', function () {
     $menuItems = Menu::with('children')->whereNull('parent_id')->get();
-
     return view('home',compact('menuItems'));
-    
+
 })->name('home');
 
 Route::get('/contact', function () {
     $menuItems = Menu::with('children')->whereNull('parent_id')->get();
-
     return view('contact',compact('menuItems'));
 })->name('contact');
 
 Route::get('/about-us', function () {
     $menuItems = Menu::with('children')->whereNull('parent_id')->get();
-
     return view('about-us',compact('menuItems'));
-   
+
 })->name('about-us');
 
 
@@ -107,7 +104,6 @@ Route::get('/displayOrders', [App\Http\Controllers\order_cont::class, 'getUserOr
 Route::get('/cancelorder/{order_id}', [App\Http\Controllers\order_cont::class, 'UserCancelOrder'])->name('cancelorder');
 Route::get('/makeorderAll', [App\Http\Controllers\order_cont::class, 'makeorderall'])->name('orderall');
 Route::get('/confirmorderAll', [App\Http\Controllers\order_cont::class, 'createorderall'])->name('confirm_order_all');
-Route::get('/changestatus/{order_id}/{button_name}', [App\Http\Controllers\order_cont::class, 'changeOrderStatus'])->name('order.action');
 //Paymob Routes
 Route::post('/credit', [PaymobController::class, 'credit'])->name('checkout'); // this route send all functions data to paymob
 Route::get('/callback', [PaymobController::class, 'callback'])->name('callback'); // this route get all reponse data to paymob
@@ -122,7 +118,6 @@ Route::post('/store_payment', [App\Http\Controllers\PaymentMethodController::cla
 
 
 Route::middleware(['checkPermission:Add_Product'])->group(function ()  {
-    Route::get('/dashboard', [App\Http\Controllers\user_cont::class, 'getLast8Orders'])->name('dash');
     Route::post('/addprod', [App\Http\Controllers\prod_cont::class, 'addprod'])->name('addprod');
     Route::get('/addprod', function () {
         return view('add__product');
@@ -131,63 +126,59 @@ Route::middleware(['checkPermission:Add_Product'])->group(function ()  {
 });
 Route::middleware(['checkPermission:Delete_Product'])->group(function ()  {
     Route::get('/delete/{id}', [App\Http\Controllers\prod_cont::class, 'deleteprod'])->name('deleteprod');
-    Route::get('/dashboard', [App\Http\Controllers\user_cont::class, 'getLast8Orders'])->name('dash');
-    Route::get('/displayprod', [App\Http\Controllers\prod_cont::class, 'displayproducts'])->name('displayproducts');
 });
 Route::middleware(['checkPermission:Update_Product'])->group(function ()  {
-    Route::get('/dashboard', [App\Http\Controllers\user_cont::class, 'getLast8Orders'])->name('dash');
-    Route::get('/displayprod', [App\Http\Controllers\prod_cont::class, 'displayproducts'])->name('displayproducts');
     Route::get('/edit/{id}', [App\Http\Controllers\prod_cont::class, 'editprodform'])->name('editprodform');
     Route::post('/editproduct/{id}', [App\Http\Controllers\prod_cont::class, 'update'])->name('editprod');
 });
 Route::middleware(['checkPermission:Update_Order'])->group(function ()  {
-    Route::get('/dashboard', [App\Http\Controllers\user_cont::class, 'getLast8Orders'])->name('dash');
-    Route::get('/orders',[App\Http\Controllers\order_cont::class, 'getAllOrdersWithUsers'])->name('orders_admin');
+Route::get('/changestatus/{order_id}/{button_name}', [App\Http\Controllers\order_cont::class, 'changeOrderStatus'])->name('order.action');
+Route::get('/orders',[App\Http\Controllers\order_cont::class, 'getAllOrdersWithUsers'])->name('orders_admin');
 });
 Route::middleware(['checkPermission:Delete_Order'])->group(function ()  {
-    Route::get('/dashboard', [App\Http\Controllers\user_cont::class, 'getLast8Orders'])->name('dash');
+    Route::get('/changestatus/{order_id}/{button_name}', [App\Http\Controllers\order_cont::class, 'changeOrderStatus'])->name('order.action');
     Route::get('/orders',[App\Http\Controllers\order_cont::class, 'getAllOrdersWithUsers'])->name('orders_admin');
 });
 Route::middleware(['checkPermission:Live_Chat_With_User'])->group(function ()  {
-    Route::get('/dashboard', [App\Http\Controllers\user_cont::class, 'getLast8Orders'])->name('dash');
     Route::get('/chats', [ChatController::class, 'chats'])->name("chats");
     Route::get('/messages', [ChatController::class, 'messages']);
 });
 Route::middleware(['checkPermission:Add_Permission'])->group(function ()  {
-    Route::get('/dashboard', [App\Http\Controllers\user_cont::class, 'getLast8Orders'])->name('dash');
     Route::post('/admin/roles', [AdminRolePermissionController::class, 'assignPermissionToRole'])->name('admin.roles');
-    Route::get('/admin/permission', [AdminRolePermissionController::class, 'viewpermission'])->name('admin.show.permission');
     Route::get('/admin/create-role', [AdminRolePermissionController::class, 'viewCreateRole'])->name('admin.create.role');
 });
 Route::middleware(['checkPermission:Update_Permission'])->group(function ()  {
-    Route::get('/dashboard', [App\Http\Controllers\user_cont::class, 'getLast8Orders'])->name('dash');
     Route::post('/admin/roles', [AdminRolePermissionController::class, 'assignPermissionToRole'])->name('admin.roles');
     Route::get('/admin/Assign-role', [AdminRolePermissionController::class, 'viewAssign_role_to_user'])->name('admin.Assign.role.user');
     Route::post('/admin/assign-role-to-user', [AdminRolePermissionController::class, 'assignRoleToUser'])
     ->name('admin.assignRoleToUser');
     Route::get('/admin/edit-role', [AdminRolePermissionController::class, 'vieweditrole'])->name('admin.edit.role');
     Route::post('roles/edit-name', [AdminRolePermissionController::class, 'editRoleName'])->name('admin.roles.editName');
-    Route::get('/admin/permission', [AdminRolePermissionController::class, 'viewpermission'])->name('admin.show.permission');
 });
 Route::middleware(['checkPermission:Delete_Permission'])->group(function ()  {
-    Route::get('/dashboard', [App\Http\Controllers\user_cont::class, 'getLast8Orders'])->name('dash');
     Route::delete('roles/delete', [AdminRolePermissionController::class, 'deleteRole'])->name('admin.roles.delete');
     Route::get('/admin/delete-role', [AdminRolePermissionController::class, 'viewdeleterole'])->name('admin.delete.role');
-    Route::get('/admin/permission', [AdminRolePermissionController::class, 'viewpermission'])->name('admin.show.permission');
 });
 Route::middleware(['checkPermission:Update_User'])->group(function ()  {
-    Route::get('/dashboard', [App\Http\Controllers\user_cont::class, 'getLast8Orders'])->name('dash');
     Route::get('/updateuserform/{id}', [App\Http\Controllers\user_cont::class, 'admin_show_updateuser_form'])->name('adminupdateuserform');
     Route::post('/updateuserform/{id}', [App\Http\Controllers\user_cont::class, 'admin_updateuser'])->name('adminupdateuser');
-    Route::get('/dis_users', [App\Http\Controllers\user_cont::class, 'disusers'])->name('dis_users');
 });
 
 Route::middleware(['checkPermission:Delete_User'])->group(function ()  {
-    Route::get('/dashboard', [App\Http\Controllers\user_cont::class, 'getLast8Orders'])->name('dash');
     Route::post('/deleteuser', [App\Http\Controllers\user_cont::class, 'deleteuser'])->name('deleteuser');
+});
+Route::middleware(['checkPermission:Delete_User,Update_User'])->group(function ()  {
     Route::get('/dis_users', [App\Http\Controllers\user_cont::class, 'disusers'])->name('dis_users');
 });
-
+Route::middleware(['checkPermission:Delete_User,Update_User,Delete_Permission,Update_Permission,Add_Permission,Live_Chat_With_User,Add_Product,Update_Product,Update_Order,Delete_Order,Delete_Product'])->group(function ()  {
+    Route::get('/dashboard', [App\Http\Controllers\user_cont::class, 'getLast8Orders'])->name('dash');
+});
+Route::middleware(['checkPermission:Delete_Permission,Update_Permission,Add_Permission'])->group(function ()  {
+    Route::get('/admin/permission', [AdminRolePermissionController::class, 'viewpermission'])->name('admin.show.permission');
+});
+Route::middleware(['checkPermission:Add_Product,Update_Product,Delete_Product'])->group(function ()  {
+Route::get('/displayprod', [App\Http\Controllers\prod_cont::class, 'displayproducts'])->name('displayproducts');
+});
 
 Route::get('/receive', [App\Http\Controllers\PusherController::class, 'receive']);
 Route::get('/brodcast', [App\Http\Controllers\PusherController::class, 'brodcast']);

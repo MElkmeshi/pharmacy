@@ -19,7 +19,7 @@ class order_cont extends Controller
         $userAddress = $request->session()->get('user_address');
 
         return view('making_order',compact('menuItems'), ['id' => $id, 'userAddress' => $userAddress , 'cartid'=>$cartid]);
-    
+
     }
 
     public function makeorderall(Request $request)
@@ -28,15 +28,15 @@ class order_cont extends Controller
         $userAddress = $request->session()->get('user_address');
 
         return view('making_order_all',compact('menuItems'), ['userAddress' => $userAddress ]);
-    
+
     }
-    
+
 
   public function createorder(Request $request,$id,$cartid)
     {
-      
+
     $userId = $request->session()->get('user_id');
-    
+
     $userAddress = $request->session()->get('user_address');
 
     $newAddress = $request->input('new_address');
@@ -48,10 +48,10 @@ class order_cont extends Controller
     $totalamount=$productPrice*$productQuantity;
 
     $address = $newAddress ? $newAddress : $userAddress;
-    
+
     $order = Order::create([
         'user_id' => $userId,
-        'total_amount' => $totalamount, 
+        'total_amount' => $totalamount,
         'status' => 'processing',
         'address' => $address,
         'payment_method'=>'cash on delivery',
@@ -66,28 +66,28 @@ class order_cont extends Controller
 
     //return redirect()->route('orders.show', $order->id);
     return redirect(route('home'));
-    
+
     }
 
-    
+
 
     public function createorderall(Request $request)
 {
-    
+
     $userId = $request->session()->get('user_id');
     $userAddress = $request->session()->get('user_address');
     $payment_method='cash on delivery';
-   
+
     $newAddress = $request->input('new_address');
     $address = $newAddress ? $newAddress : $userAddress;
 
-    
+
     $cartItems = Cart::where('user_id', $userId)->get();
 
-    
+
     $totalAmount = 0;
 
-    
+
     $order = Order::create([
         'user_id' => $userId,
         'total_amount' => 0, // initial_total_amount (awel mara bs)
@@ -96,7 +96,7 @@ class order_cont extends Controller
         'payment_method'=>$payment_method,
     ]);
 
-    
+
     foreach ($cartItems as $cartItem) {
         $product = prod::find($cartItem->product_id);
         $orderItemTotal = $product->price * $cartItem->amount;

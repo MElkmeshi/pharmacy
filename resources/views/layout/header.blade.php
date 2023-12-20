@@ -47,21 +47,21 @@
                         </li>
                     </ul>
                 </li>
-                
+
                 <li class="nav-item">
                     <a class="nav-link p-2 p-lg-3" href="{{ route('contact') }}"> contact</a>
                 </li>
-                
+
                 <li class="nav-item">
                     <a class="nav-link p-2 p-lg-3" href="{{ route('about-us') }}"> About-us</a>
                 </li>
-               
 
-                @if(session()->has('user_name'))
+
+                @if (session()->has('user_name'))
                     @if (!(strtolower(session('user_role')) == 'admin'))
-                    <li class="nav-item">
-                       <a class="nav-link p-2 p-lg-3" href="{{ route('chats') }}"> Message</a>
-                    </li>
+                        <li class="nav-item">
+                            <a class="nav-link p-2 p-lg-3" href="{{ route('chats') }}"> Message</a>
+                        </li>
                     @endif
                 @endif
                 @if (session()->has('user_name'))
@@ -107,7 +107,7 @@
                 @endif
             </ul>
             <div class="icons ps-3 pe-3 d-none d-lg-block">
-                <a href="{{ route("produser") }}"> <i class="fa-solid fa-magnifying-glass"></i></a>
+                <a href="{{ route('produser') }}"> <i class="fa-solid fa-magnifying-glass"></i></a>
                 <a href="{{ route('displaycart') }}"><i class="fa-solid fa-cart-shopping"></i></a>
                 <i class="fa-regular fa-heart"></i>
             </div>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Events\ChatMessageEvent;
 use App\Models\Chat;
+use App\Models\Menu;
 use App\Models\User;
 use Exception;
 use Illuminate\Http\Request;
@@ -43,7 +44,8 @@ class ChatController extends Controller
     }
     public function chat()
     {
-        return view('chat');
+        $menuItems = Menu::with('children')->whereNull('parent_id')->get();
+        return view('chat', compact('menuItems'));
     }
     public function chats()
     {
