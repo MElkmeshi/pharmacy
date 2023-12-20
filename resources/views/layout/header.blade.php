@@ -49,7 +49,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link p-2 p-lg-3" href="{{ route('contact') }}"> contact</a>
+                    <a class="nav-link p-2 p-lg-3" href="{{ route('contact') }}"> contact-us</a>
                 </li>
 
                 <li class="nav-item">
